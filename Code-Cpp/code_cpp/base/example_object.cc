@@ -6,11 +6,11 @@
 
 ExampleObject::ExampleObject() : val_(0) {}
 
-int ExampleObject::GetValue() const {
+int ExampleObject::GetVal() const {
   return val_;
 }
 
-void ExampleObject::SetValue(int value) {
+void ExampleObject::SetVal(int value) {
   ExampleObject::val_ = value;
 }
 

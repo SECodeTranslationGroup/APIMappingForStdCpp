@@ -8,8 +8,8 @@ class ExampleObject {
   int val_;
  public:
   ExampleObject();
-  int GetValue() const;
-  void SetValue(int value);
+  int GetVal() const;
+  void SetVal(int value);
 
 };
 
