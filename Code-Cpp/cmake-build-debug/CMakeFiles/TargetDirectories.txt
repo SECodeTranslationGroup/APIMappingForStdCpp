@@ -1,3 +1,0 @@
-C:/YTR/My/Repository/APIMappingForStdCpp/Code-Cpp/cmake-build-debug/CMakeFiles/Code_Cpp.dir
-C:/YTR/My/Repository/APIMappingForStdCpp/Code-Cpp/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/YTR/My/Repository/APIMappingForStdCpp/Code-Cpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
