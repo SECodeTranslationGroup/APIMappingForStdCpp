@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.23)
+project(Code_Cpp)
+
+set(CMAKE_CXX_STANDARD 23)
+
+add_executable(Code_Cpp main.cc code_cpp/base/global_entry.h code_cpp/base/global_entry.cc code_cpp/base/memory/weak_ptr_entry.cc code_cpp/base/memory/weak_ptr_entry.h)

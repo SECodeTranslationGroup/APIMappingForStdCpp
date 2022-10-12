@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/YTR/My/Repository/APIMappingForStdCpp/Code-Cpp/cmake-build-debug/CMakeFiles/Code_Cpp.dir/embed.manifest"

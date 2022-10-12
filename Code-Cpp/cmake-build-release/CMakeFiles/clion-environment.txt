@@ -1,0 +1,4 @@
+ToolSet: 17.0 (local)@C:\YTR\Tools\MSVC
+Options: msvc.arch=amd64
+
+Options:-DCMAKE_MAKE_PROGRAM=C:/YTR/Softwares/Jetbrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/ninja/win/ninja.exe
