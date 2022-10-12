@@ -1,4 +1,4 @@
 /Code-Cpp/cmake-build-release/
 /Code-Cpp/cmake-build-debug/
-/Code-CSharp/Bin/
-/Code-CSharp/obj/
+/Code-CSharp/Bin/Debug
+/Code-CSharp/obj/Debug
