@@ -2,15 +2,14 @@
 
 public class WeakPtrEntry {
   private static WeakReference _weak;
-  private static string _strong;
+  private static ExampleObject _strong;
 
   public static void WeakPtrProgram() {
-    _strong = new string("Example");
+    _strong = new ExampleObject();
     _weak = new WeakReference(_strong);
-    Console.WriteLine((_weak.Target == null) ? "null" : (_weak.Target as string));
-    Console.WriteLine(!_weak.IsAlive ? "expired" : "not expired");
+    ExampleObject obj = _weak.Target as ExampleObject;
+    int objValue = (_weak.Target as ExampleObject).Val;
     _weak.Target = null;
-    Console.WriteLine((_weak.Target == null) ? "null" : (_weak.Target as string));
-    Console.WriteLine(!_weak.IsAlive ? "expired" : "not expired");
+    bool expired = !_weak.IsAlive;
   }
 }

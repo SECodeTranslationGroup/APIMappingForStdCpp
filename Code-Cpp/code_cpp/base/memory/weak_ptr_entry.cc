@@ -1,15 +1,14 @@
 #include <iostream>
 #include "weak_ptr_entry.h"
 
-std::weak_ptr<std::string> WeakPtrEntry::weak_;
-std::shared_ptr<std::string> WeakPtrEntry::strong_;
+std::weak_ptr<ExampleObject> WeakPtrEntry::weak_;
+std::shared_ptr<ExampleObject> WeakPtrEntry::strong_;
 
 void WeakPtrEntry::WeakPtrProgram() {
-  strong_ = std::make_shared<std::string>("Example");
-  weak_ = std::weak_ptr<std::string>(strong_);
-  std::cout << ((weak_.lock() == nullptr) ? "null" : *weak_.lock()) << std::endl;
-  std::cout << (weak_.expired() ? "expired" : "not expired") << std::endl;
+  strong_ = std::make_shared<ExampleObject>();
+  weak_ = std::weak_ptr<ExampleObject>(strong_);
+  ExampleObject obj = *weak_.lock();
+  int objValue = weak_.lock()->GetValue();
   weak_.reset();
-  std::cout << ((weak_.lock() == nullptr) ? "null" : *weak_.lock()) << std::endl;
-  std::cout << (weak_.expired() ? "expired" : "not expired") << std::endl;
+  bool expired = weak_.expired();
 }

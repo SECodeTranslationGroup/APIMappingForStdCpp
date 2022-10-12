@@ -3,11 +3,12 @@
 
 #include <string>
 #include <memory>
+#include "../example_object.h"
 
 class WeakPtrEntry {
  private:
-  static std::weak_ptr<std::string> weak_;
-  static std::shared_ptr<std::string> strong_;
+  static std::weak_ptr<ExampleObject> weak_;
+  static std::shared_ptr<ExampleObject> strong_;
 
  public:
   static void WeakPtrProgram();
