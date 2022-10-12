@@ -1,3 +1,11 @@
 /Code-CSharp/Bin/Debug
 /Code-CSharp/obj/Debug
 /Code-Java/out
+/Code-Cpp/cmake-build-release/.ninja_deps
+/Code-Cpp/cmake-build-release/.ninja_log
+/Code-Cpp/cmake-build-release/CMakeFiles/Code_Cpp.dir/code_cpp/base/global_entry.cc.obj
+/Code-Cpp/cmake-build-release/CMakeFiles/Code_Cpp.dir/code_cpp/base/memory/weak_ptr_entry.cc.obj
+/Code-Cpp/cmake-build-release/CMakeFiles/Code_Cpp.dir/main.cc.obj
+/Code-Cpp/cmake-build-release/Code_Cpp.exe
+/Code-Cpp/cmake-build-release/Code_Cpp.exe.manifest
+/Code-Cpp/cmake-build-release/Testing/Temporary/LastTest.log
