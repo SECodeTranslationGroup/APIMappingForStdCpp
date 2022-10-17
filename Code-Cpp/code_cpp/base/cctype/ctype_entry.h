@@ -3,7 +3,7 @@
 
 class CtypeEntry {
  private:
-  static char kConstChar = ' ';
+  static const char kConstChar = ' ';
  public:
   static void CTypeProgram();
 };
