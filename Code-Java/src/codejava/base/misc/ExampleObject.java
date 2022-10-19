@@ -1,4 +1,4 @@
-package codejava.base;
+package codejava.base.misc;
 
 public class ExampleObject {
   private int val;

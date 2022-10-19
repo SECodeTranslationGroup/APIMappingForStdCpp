@@ -1,6 +1,6 @@
 package codejava.base.memory;
 
-import codejava.base.ExampleObject;
+import codejava.base.misc.ExampleObject;
 import java.lang.ref.WeakReference;
 
 public class WeakPtrEntry {

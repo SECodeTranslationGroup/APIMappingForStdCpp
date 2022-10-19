@@ -1,4 +1,5 @@
-﻿using CodeCsharp.Base;
+﻿using System.Text;
+using CodeCsharp.Base;
 using CodeCsharp.Base.CCType;
 using CodeCsharp.Base.Memory;
 

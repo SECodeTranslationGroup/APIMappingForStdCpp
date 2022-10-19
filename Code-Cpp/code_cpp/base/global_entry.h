@@ -4,6 +4,7 @@
 class GlobalEntry {
  public:
   static void HelloWorldEntry();
+  static void TestAllEntry();
 };
 
 

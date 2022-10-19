@@ -2,6 +2,7 @@
 #define CODE_CPP_CODE_CPP_BASE_EXAMPLE_OBJECT_H_
 
 #include <string>
+#include <iostream>
 
 class ExampleObject {
  private:
