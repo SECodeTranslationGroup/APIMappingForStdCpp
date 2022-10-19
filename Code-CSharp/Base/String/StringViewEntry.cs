@@ -10,6 +10,5 @@ public class StringViewEntry {
     ReadOnlySpan<char> sub = view.Slice(1,2);
     int result = view.CompareTo(sub,StringComparison.Ordinal);
     string s1 = view.ToString();
-
   }
 }
