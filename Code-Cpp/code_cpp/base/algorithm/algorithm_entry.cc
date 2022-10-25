@@ -8,6 +8,7 @@
 #include <random>
 
 #include "algorithm_entry.h"
+
 void AlgorithmEntry::AlgorithmProgram() {
   std::vector<int> list{1, 2, 1, 2, 3};
   std::function<bool(int)> pred = [](auto i) { return i > 1; };
@@ -71,38 +72,50 @@ void AlgorithmEntry::AlgorithmProgram() {
   std::vector<int> list1, list2;
   std::partition_copy(list.begin(), list.end(), list1.begin(), list2.begin(), pred);
 
-  std::sort(list.begin(), list.end(), [](int a, int b) { return a * a + 2 * a < b * b + 2 * b ;});
-  std::stable_sort(list.begin(),list.end());
-  std::partial_sort_copy(list.begin(),list.end(),to_list.begin(),to_list.end(),[](int a, int b) { return a * a + 2 * a < b * b + 2 * b ;});
+  std::sort(list.begin(), list.end(), [](int a, int b) { return a * a + 2 * a < b * b + 2 * b; });
+  std::stable_sort(list.begin(), list.end());
+  std::partial_sort_copy(list.begin(),
+                         list.end(),
+                         to_list.begin(),
+                         to_list.end(),
+                         [](int a, int b) { return a * a + 2 * a < b * b + 2 * b; });
 
-  bool b4 = std::binary_search(list.begin(),list.end(),1);
+  bool b4 = std::binary_search(list.begin(), list.end(), 1);
 
-  int max = std::max(1,2);
-  auto max_it = std::max_element(list.begin(),list.end());
-  std::optional<int> max_element = max_it == list.end()?std::nullopt: std::make_optional(*max_it);
-  max_it = std::max_element(list.begin(),list.end(),[](auto a, auto b) { return a * a + 2 * a < b * b + 2 * b ;});
-  max_element = max_it == list.end()?std::nullopt: std::make_optional(*max_it);
+  int max = std::max(1, 2);
+  auto max_it = std::max_element(list.begin(), list.end());
+  std::optional<int> max_element = max_it == list.end() ? std::nullopt : std::make_optional(*max_it);
+  max_it = std::max_element(list.begin(), list.end(), [](auto a, auto b) { return a * a + 2 * a < b * b + 2 * b; });
+  max_element = max_it == list.end() ? std::nullopt : std::make_optional(*max_it);
 
-  int min = std::min(1,2);
-  auto min_it = std::min_element(list.begin(),list.end());
-  std::optional<int> min_element = max_it == list.end()?std::nullopt: std::make_optional(*(min_it));
-  min_it = std::min_element(list.begin(),list.end(),[](auto a, auto b) { return a * a + 2 * a < b * b + 2 * b ;});
-  min_element = min_it == list.end()?std::nullopt: std::make_optional(*min_it);
+  int min = std::min(1, 2);
+  auto min_it = std::min_element(list.begin(), list.end());
+  std::optional<int> min_element = min_it == list.end() ? std::nullopt : std::make_optional(*(min_it));
+  min_it = std::min_element(list.begin(), list.end(), [](auto a, auto b) { return a * a + 2 * a < b * b + 2 * b; });
+  min_element = min_it == list.end() ? std::nullopt : std::make_optional(*min_it);
 
-  int clamp = std::clamp(5,0,100);
+  int clamp = std::clamp(5, 0, 100);
 
-  std::iota(list.begin(),list.end(),1);
-  int add_sum = std::accumulate(list.begin(),list.end(),0);
-  int multiply_sum = std::accumulate(list.begin(),list.end(),1,std::multiplies<int>());
-  std::iota(to_list.begin(),to_list.end(),-3);
+  std::iota(list.begin(), list.end(), 1);
+  int add_sum = std::accumulate(list.begin(), list.end(), 0);
+  int multiply_sum = std::accumulate(list.begin(), list.end(), 1, std::multiplies<int>());
+  std::iota(to_list.begin(), to_list.end(), -3);
 
-  int inner_product_sum = std::inner_product(list.begin(),list.end(),to_list.begin(),0);
-  std::adjacent_difference(list.begin(),list.end(),to_list.begin());
+  int inner_product_sum = std::inner_product(list.begin(), list.end(), to_list.begin(), 0);
+  std::adjacent_difference(list.begin(), list.end(), to_list.begin());
 
-  std::partial_sum(list.begin(),list.end(),to_list.begin());
+  std::partial_sum(list.begin(), list.end(), to_list.begin());
+}
+bool AlgorithmEntry::Test1() {
+  std::vector<int> list1{1, 2, 1, 2, 3};
+  std::vector<int> list2{1, 2, 1, 2, 3};
 
+  int sum = std::inner_product(list1.begin(), list1.end(), list2.begin(),
+                               1, [](auto a, auto b) { return a * b;},
+                               [](auto a, auto b) { return a + b;});
 
+  std::partial_sum(list1.begin(), list1.end(), list2.begin(),
+                   [](auto a, auto b) { return a * b;});
 
-
-
+  return sum > 0;
 }

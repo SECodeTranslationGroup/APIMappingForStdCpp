@@ -1,9 +1,9 @@
 ﻿namespace CodeCsharp.Base.CCType; 
 
-public class CTypeEntry {
+public class CctypeEntry {
   private static readonly char ConstChar = ' ';
 
-  public static void CTypeProgram() {
+  public static void CctypeProgram() {
     bool b1 = Char.IsLetterOrDigit(ConstChar);
     bool b2 = Char.IsLetter(ConstChar);
     bool b3 = Char.IsLower(ConstChar);

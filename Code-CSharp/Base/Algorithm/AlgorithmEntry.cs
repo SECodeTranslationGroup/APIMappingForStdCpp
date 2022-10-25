@@ -89,4 +89,17 @@ public class AlgorithmEntry {
     int sss = 0;
     toList = list.Select(a => sss += a).ToList();
   }
+  
+  public bool Test1(){
+    List<int> list1 = new List<int> { 1, 2, 1, 2, 3 };
+    List<int> list2 = new List<int> { 1, 2, 1, 2, 3 };
+
+    int sum = list1.Zip(list2, (a, b) => a + b)
+        .Aggregate((a, b) => a * b);
+    
+    int a = 1;
+    list2 = list1.Select(i => a += i).ToList();
+    
+    return sum >0 ;
+  }
 }

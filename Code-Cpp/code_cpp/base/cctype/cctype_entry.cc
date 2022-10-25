@@ -1,7 +1,7 @@
-#include "ctype_entry.h"
+#include "cctype_entry.h"
 #include "../misc/example_object.h"
 
-void CtypeEntry::CTypeProgram() {
+void CctypeEntry::CctypeProgram() {
   char c = ' ';
   bool b1 = isalnum(c);
   bool b2 = isalpha(c);
@@ -19,7 +19,7 @@ void CtypeEntry::CTypeProgram() {
   char c2 = (char)toupper(c);
 }
 
-bool CtypeEntry::Test1() {
+bool CctypeEntry::Test1() {
   bool ret = true;
   ret = ret && isalnum('7') && isalnum('a') && isalnum('A') && !isalnum('\0') && !isalnum(' ');
   ret = ret && !isalpha('7') && isalpha('a') && isalpha('A') && !isalpha('\0') && !isalpha(' ');
@@ -27,7 +27,7 @@ bool CtypeEntry::Test1() {
   ret = ret && isxdigit('7') && isxdigit('a') && isxdigit('A') && !isxdigit('x') && !isxdigit('U');
   return ret;
 }
-bool CtypeEntry::Test2() {
+bool CctypeEntry::Test2() {
   bool ret = true;
   ret = ret && !islower('7') && islower('a') && !islower('A') && !islower('\0') && !islower(' ');
   ret = ret && !isupper('7') && !isupper('a') && isupper('A') && !isupper('\0') && !isupper(' ');
@@ -35,26 +35,26 @@ bool CtypeEntry::Test2() {
   ret = ret && (toupper('C') == 'C') && (toupper('c') == 'C') && toupper('9') == '9' && toupper('\0') == '\0';
   return ret;
 }
-bool CtypeEntry::Test3() {
+bool CctypeEntry::Test3() {
   bool ret = true;
   ret = ret && iscntrl('\0') && iscntrl('\b') && iscntrl('\t') && !iscntrl(' ') && !iscntrl('C');
   ret = ret && !isprint('\0') && !isprint('\b') && !isprint('\t') && isprint(' ') && isprint('C');
   ret = ret && !isgraph('\0') && !isgraph('\b') && !isgraph('\t') && !isgraph(' ') && isgraph('C');
   return ret;
 }
-bool CtypeEntry::Test4() {
+bool CctypeEntry::Test4() {
   bool ret = true;
   ret = ret && !isspace('\0') && !isspace('\b') && isspace('\t') && isspace(' ') && !isspace('C');
   ret = ret && !('\0' == ' ') && !('\b' == ' ') && !('\t' == ' ') && (' ' == ' ') && !('c' == ' ');
   return ret;
 }
-bool CtypeEntry::Test5() {
+bool CctypeEntry::Test5() {
   bool ret = true;
   ret = ret && !ispunct('\0') && !ispunct('\b') && !ispunct('\t') && !ispunct(' ') && !ispunct('C');
   ret = ret && ispunct(',') && ispunct('!') && ispunct('/') && ispunct(':') && ispunct('?');
   return ret;
 }
-bool CtypeEntry::TestAll() {
+bool CctypeEntry::TestAll() {
   bool test = Test1() && Test2() && Test3() && Test4() && Test5();
   if (!test)
     std::cout << "Ctype Test Failed!";

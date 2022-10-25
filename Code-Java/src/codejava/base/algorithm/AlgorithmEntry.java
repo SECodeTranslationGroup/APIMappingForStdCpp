@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
@@ -112,14 +113,29 @@ public class AlgorithmEntry {
         .mapToObj(i -> finalList1.get(i) * finalToList.get(i))
         .reduce(0, Integer::sum);
     toList = IntStream.range(0, list.size())
-        .mapToObj(i -> i == 0 ? i : finalList1.get(i) - finalList1.get(i-1))
+        .mapToObj(i -> i == 0 ? i : finalList1.get(i) - finalList1.get(i - 1))
         .collect(Collectors.toList());
 
     Integer[] arr = list.toArray(Integer[]::new);
     Arrays.parallelPrefix(arr, Integer::sum);
     toList = Arrays.asList(arr);
 
-    AtomicInteger sss = new AtomicInteger();
-    toList = list.stream().map(sss::addAndGet).collect(Collectors.toList());
+    AtomicReference<Integer> a = new AtomicReference<>(0);
+    toList = list.stream().map(i -> a.getAndSet(a.get() + i)).collect(Collectors.toList());
+  }
+
+  public boolean Test1() {
+    List<Integer> list1 = Arrays.asList(1, 2, 1, 2, 3);
+    List<Integer> list2 = Arrays.asList(1, 2, 1, 2, 3);
+
+    List<Integer> finalList = list2;
+    int sum = IntStream.range(0, list1.size())
+        .mapToObj(i -> list1.get(i) + finalList.get(i))
+        .reduce(1, (a, b) -> a * b);
+
+    AtomicReference<Integer> a = new AtomicReference<>(1);
+    list2 = list1.stream().map(i -> a.getAndSet(a.get() * i)).collect(Collectors.toList());
+
+    return sum > 0;
   }
 }

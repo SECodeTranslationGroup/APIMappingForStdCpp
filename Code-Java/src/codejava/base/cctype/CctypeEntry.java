@@ -1,9 +1,9 @@
 package codejava.base.cctype;
 
-public class CtypeEntry {
+public class CctypeEntry {
   private final static char CONST_CHAR = ' ';
 
-  public static void CTypeProgram() {
+  public static void CctypeProgram() {
     boolean b1 = Character.isLetterOrDigit(CONST_CHAR);
     boolean b2 = Character.isLetter(CONST_CHAR);
     boolean b3 = Character.isLowerCase(CONST_CHAR);
