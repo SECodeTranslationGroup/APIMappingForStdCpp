@@ -58,8 +58,8 @@ public class AlgorithmEntry {
 
     toList = list.OrderBy(i => rng.Next()).Take(3).ToList();
 
-    Dictionary<bool, List<int>> d = list.GroupBy(pred).ToDictionary(
-        group => group.Key, group => group.ToList());
+    Dictionary<bool, List<int>> d = list.GroupBy(pred).
+        ToDictionary(group => group.Key, group => group.ToList());
     List<int> list1 = d[true];
     List<int> list2 = d[false];
 
@@ -98,7 +98,12 @@ public class AlgorithmEntry {
         .Aggregate((a, b) => a * b);
     
     int a = 1;
-    list2 = list1.Select(i => a += i).ToList();
+    list2 = list1.Select(i => a *= i).ToList();
+    
+    Dictionary<bool, List<int>> d = list1.GroupBy(i=>i>3).
+        ToDictionary(group => group.Key, group => group.ToList());
+    List<int> list3 = d[true];
+    List<int> list4 = d[false];
     
     return sum >0 ;
   }

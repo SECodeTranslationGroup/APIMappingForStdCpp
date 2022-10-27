@@ -136,6 +136,11 @@ public class AlgorithmEntry {
     AtomicReference<Integer> a = new AtomicReference<>(1);
     list2 = list1.stream().map(i -> a.getAndSet(a.get() * i)).collect(Collectors.toList());
 
+    Map<Boolean, List<Integer>> groups = list1.stream().
+        collect(Collectors.partitioningBy( i -> i > 3));
+    List<Integer> list3 = groups.get(true);
+    List<Integer> list4 = groups.get(false);
+
     return sum > 0;
   }
 }

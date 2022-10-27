@@ -64,7 +64,7 @@ void AlgorithmEntry::AlgorithmProgram() {
   std::rotate_copy(list.begin(), list.begin() + 1, list.end(), to_list.begin());
 
   std::random_device rd;
-  std::mt19937 rng(rd());
+  std::default_random_engine rng(rd());
   std::shuffle(list.begin(), list.end(), rng);
 
   std::sample(list.begin(), list.end(), to_list.begin(), 3, rng);
@@ -111,11 +111,15 @@ bool AlgorithmEntry::Test1() {
   std::vector<int> list2{1, 2, 1, 2, 3};
 
   int sum = std::inner_product(list1.begin(), list1.end(), list2.begin(),
-                               1, [](auto a, auto b) { return a * b;},
-                               [](auto a, auto b) { return a + b;});
+                               1, [](auto a, auto b) { return a * b; },
+                               [](auto a, auto b) { return a + b; });
 
   std::partial_sum(list1.begin(), list1.end(), list2.begin(),
-                   [](auto a, auto b) { return a * b;});
+                   [](auto a, auto b) { return a * b; });
+
+  std::vector<int> list3, list4;
+  std::partition_copy(list1.begin(), list1.end(),
+                      list3.begin(), list4.begin(), [](auto i) { return i > 3; });
 
   return sum > 0;
 }
