@@ -18,7 +18,7 @@ public class StringEntry {
     string s4 = new string(cs, 0, 5);
     string s5 = new string(s);
 
-    bool b1 = string.IsNullOrEmpty(myString);
+    bool b1 = string.IsNullOrEmpty(myString); 
     myString = new string(cs);
     int size = myString.Length;
     char c1 = myString[1];

@@ -1,5 +1,5 @@
 ﻿namespace CodeCsharp.Base.Algorithm;
-
+using System;
 public class AlgorithmEntry {
   public static void AlgorithmProgram() {
     List<int> list = new List<int> { 1, 2, 1, 2, 3 };

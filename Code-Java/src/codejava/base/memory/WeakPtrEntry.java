@@ -8,8 +8,8 @@ public class WeakPtrEntry {
   private static ExampleObject strong;
 
   public static void WeakPtrProgram() {
-    strong = new ExampleObject();
-    weak = new WeakReference<>(strong);
+    ExampleObject strong = new ExampleObject();
+    WeakReference<ExampleObject> weak = new WeakReference<>(strong);
     ExampleObject obj = weak.get();
     int objValue = weak.get().getVal();
     weak.clear();
