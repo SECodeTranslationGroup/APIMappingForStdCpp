@@ -1,7 +1,3 @@
-//
-// Created by 85339 on 2022/10/26.
-//
-
 #include "numbers_entry.h"
 void NumbersEntry::NumbersProgram() {
   double e = std::numbers::e;

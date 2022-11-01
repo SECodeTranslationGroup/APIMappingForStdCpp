@@ -1,7 +1,3 @@
-//
-// Created by 85339 on 2022/10/27.
-//
-
 #include "random_entry.h"
 void RandomEntry::RandomProgram() {
   std::random_device rd;

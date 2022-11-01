@@ -19,13 +19,13 @@ public class BitsetEntry {
     bitset1.clear(3);
     bitset1.clear(3, 19);
     bitset1.set(3);
-    bitset1.set(3,19);
+    bitset1.set(3, 19);
 
     bitset1.clear();
     bitset1.set(0, bitset1.size() - 1);
 
     bitset1.flip(3);
-    bitset1.flip(3,19);
+    bitset1.flip(3, 19);
     bitset1.flip(0, bitset1.size() - 1);
 
     boolean value = bitset1.get(3);

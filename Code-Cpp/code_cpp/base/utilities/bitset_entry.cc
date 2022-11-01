@@ -1,7 +1,3 @@
-//
-// Created by 85339 on 2022/10/30.
-//
-
 #include "bitset_entry.h"
 void BitsetEntry::BitsetProgram() {
   std::bitset<64> bitset1;

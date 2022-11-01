@@ -1,7 +1,3 @@
-//
-// Created by 85339 on 2022/10/27.
-//
-
 #include "chrono_entry.h"
 
 void ChronoEntry::ChronoProgram() {

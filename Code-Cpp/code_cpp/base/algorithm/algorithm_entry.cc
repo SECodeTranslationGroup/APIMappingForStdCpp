@@ -1,7 +1,3 @@
-//
-// Created by 85339 on 2022/10/19.
-//
-
 #include <vector>
 #include <functional>
 #include <optional>

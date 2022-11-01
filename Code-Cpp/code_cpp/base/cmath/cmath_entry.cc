@@ -1,7 +1,3 @@
-//
-// Created by 85339 on 2022/10/25.
-//
-
 #include "cmath_entry.h"
 
 void CmathEntry::CmathProgram() {

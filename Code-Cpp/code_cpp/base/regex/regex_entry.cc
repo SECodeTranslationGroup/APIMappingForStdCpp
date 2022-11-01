@@ -1,7 +1,3 @@
-//
-// Created by 85339 on 2022/10/26.
-//
-
 #include "regex_entry.h"
 void RegexEntry::RegexProgram() {
   std::string str("foo.txt");

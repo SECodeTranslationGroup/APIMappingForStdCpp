@@ -1,7 +1,3 @@
-//
-// Created by 85339 on 2022/10/27.
-//
-
 #include "optional_entry.h"
 #include "../misc/example_object.h"
 
