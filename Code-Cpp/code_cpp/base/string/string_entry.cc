@@ -1,87 +1,105 @@
 #include "string_entry.h"
 void StringEntry::StringProgram() {
-  char c = 'C';
-  char cs[] = "123456789";
-  std::string s = "123456789";
+  //initialize string with const literal
+  std::string str = "123456789";
+  //initialize empty string
   std::string my_string = std::string();
-  std::string s1 = std::string(cs);
-  std::string s2 = std::string(3, c);
-  std::string s3 = std::string(s,2,5);
-  std::string s4 = std::string(cs, 5);
-  std::string s5 = s; // s6 = std::string(s);
-
+  //initialize with repeat chars
+  std::string s1 = std::string(3, 'c');
+  //initialize with substring
+  std::string s2 = std::string(str, 2, 5);
+  //is string empty
   bool b1 = my_string.empty();
-  my_string = cs;
+  //copy string
+  my_string = str;
+  //length of string
   int size = my_string.length();
+  //get char by index of string
   char c1 = my_string[1];
+  //get char array
   char* data = my_string.data();
+  //get first char
   char cf = my_string.front();
+  //get last char
   char cb = my_string.back();
-
-  std::string& ref = my_string;
+  //get a sub string
   std::string sub = my_string.substr(1,2);
-  bool b2 = my_string.starts_with(c);
-  bool b3 = my_string.starts_with(cs);
-  bool b4 = my_string.starts_with(s);
-  bool b5 = my_string.ends_with(c);
-  bool b6 = my_string.ends_with(cs);
-  bool b7 = my_string.ends_with(s);
-  bool b8 = my_string.contains(c);
-  bool b9 = my_string.contains(cs);
-  bool b10 = my_string.contains(s);
-
-  int result = my_string.compare(s);
-
-  int index1 = my_string.find(s,0);
-  int index2 = my_string.find(cs);
-  int index3 = my_string.find(c,1);
-  int index4 = my_string.find(c);
-  int index5 = my_string.rfind(s);
-  int index6 = my_string.rfind(cs,2);
-  int index7 = my_string.rfind(c,2);
-  int index8 = my_string.rfind(c);
-
+  //whether string starts with a char or another string
+  bool b2 = my_string.starts_with('c');
+  bool b3 = my_string.starts_with(str);
+  //whether string ends with a char or another string
+  bool b4 = my_string.ends_with('c');
+  bool b5 = my_string.ends_with(str);
+  //whether string contains a char or another string
+  bool b6 = my_string.contains('c');
+  bool b7 = my_string.contains(str);
+  //compare with another string
+  int result = my_string.compare(str);
+  //find first occurence of a char or a substring
+  int i1 = my_string.find('c');
+  int i2 = my_string.find(str);
+  //find first occurence of a char or a substring from index
+  int i3 = my_string.find('c',1);
+  int i4 = my_string.find(str, 1);
+  //find last occurence of a char or a substring
+  int i5 = my_string.rfind('c');
+  int i6 = my_string.rfind(str);
+  //find last occurence of a char or a substring from index
+  int i7 = my_string.rfind('c',1);
+  int i8 = my_string.rfind(str, 1);
+  //convert from integer to string
   my_string = std::to_string(12345);
+  //convert from string to integer or long
   int int_value = stoi(my_string);
   long long_value = stol(my_string);
+  //convert from float to string
   my_string = std::to_string(3.1415);
+  //convert from string to float or double
   float float_value = stof(my_string);
   double double_value = stod(my_string);
-
+  //initialize an empty string buffer
   std::string empty_buf;
-  std::string buf(cs);
+  //initialize a string buffer from a string
+  std::string buf(str);
+  //clear string buffer
   buf.clear();
+  //resize string buffer
   buf.resize(10);
-
-  buf.resize(10,c);
-
+  //resize string buffer and fill with char
+  buf.resize(10,'c');
+  //reserve capacity
   buf.reserve(100);
+  //capacity of string buffer
   int capacity = buf.capacity();
+  //trim string buffer to size
   buf.shrink_to_fit();
-
-  buf.append(cs); //buf += cs;
-  buf.append(s); //buf += s;
-  buf.append (cs,1,4);
-  buf.append(s,1,4);
-  buf.append(c,10);
-
-  buf += c; //buf.append(c,1); s.push_back(c);
+  //append string to buffer
+  buf.append(str); //buf += str;
+  //append substring to buffer
+  buf.append(str, 1, 4);
+  //append repeated char to buffer
+  buf.append('c',10);
+  //append one char to buffer
+  str.push_back('c');
+  //delete last char
   buf.pop_back();
+  //delete a range of chars
   buf.erase(3,5);
-
-  buf.replace(1,3,cs);
-
-  buf.replace(1,3,s);
-
-  buf.replace(1,3,3,c);
-
-  buf.insert(1,cs);
-  buf.insert(1,s);
-  buf.insert(1,3,c);
-  buf.insert(1,s,1,1);
-
-  std::string add_string = s + s1;
-  std::string add_string2 = s + c;
-  std::string add_string3 = s + std::to_string(1);
+  //replace a range of chars with string
+  buf.replace(1, 3, str);
+  //replace a range of chars with repeat chars
+  buf.replace(1,3,3,'c');
+  //insert string at a position
+  buf.insert(1, str);
+  //insert repeat chars at a position
+  buf.insert(1,3,'c');
+  //insert sub string at a position
+  buf.insert(1, str, 1, 1);
+  //string concat another string
+  std::string add_string = str + s1;
+  //string concat char
+  std::string add_string2 = str + 'c';
+  //string concat other type of values
+  std::string add_string3 = str + std::to_string(1);
 
 }
