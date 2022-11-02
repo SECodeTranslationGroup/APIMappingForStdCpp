@@ -35,15 +35,15 @@ public class AlgorithmEntry {
     int i1 = Collections.frequency(list, 1);
     //count how many elements satisfy condition
     int i2 = (int) list.stream().filter(i -> i > 1).count();
-    //find index of first element equals value, orelse -1
+    //find index of first element equals value, or else -1
     int i3 = list.indexOf(1);
-    //find index of last element equals value, orelse -1
+    //find index of last element equals value, or else -1
     int i4 = list.lastIndexOf(1);
-    //find index of first element satisfies condition, orelse -1
+    //find index of first element satisfies condition, or else -1
     int i5 = IntStream.range(0, list.size()).filter(i -> i > 1).findFirst().orElse(-1);
     //find index of first element satisfies condition using optional
     Optional<Integer> res1 = list.stream().filter(i -> i > 1).findFirst();
-    //find index of first element doesn't satisfy condition, orelse -1
+    //find index of first element doesn't satisfy condition, or else -1
     int i6 = IntStream.range(0, list.size()).filter(i -> !(i > 1)).findFirst()
         .orElse(-1);
     //find index of first element doesn't satisfy condition using optional

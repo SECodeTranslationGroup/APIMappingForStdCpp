@@ -20,15 +20,15 @@ public class AlgorithmEntry {
     int i1 = list.Count(i => i == 1);
     //count how many elements satisfy condition
     int i2 = list.Count(i => i > 1);
-    //find index of first element equals value, orelse -1
+    //find index of first element equals value, or else -1
     int i3 = list.IndexOf(1);
-    //find index of last element equals value, orelse -1
+    //find index of last element equals value, or else -1
     int i4 = list.LastIndexOf(1);
-    //find index of first element satisfies condition, orelse -1
+    //find index of first element satisfies condition, or else -1
     int i5 = list.FindIndex(i => i > 1);
     //find index of first element satisfies condition using optional
     int? res1 = list.Find(i => i > 1);
-    //find index of first element doesn't satisfy condition, orelse -1
+    //find index of first element doesn't satisfy condition, or else -1
     int i6 = list.Find(i => !(i > 1));
     //find index of first element doesn't satisfy condition using optional
     int? res2 = list.Find(i => !(i > 1));

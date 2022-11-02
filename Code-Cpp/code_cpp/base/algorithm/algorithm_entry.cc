@@ -22,18 +22,18 @@ void AlgorithmEntry::AlgorithmProgram() {
   int i1 = std::count(list.begin(), list.end(), 1);
   //count how many elements satisfy condition
   int i2 = std::count_if(list.begin(), list.end(), [](auto i) { return i > 1; });
-  //find index of first element equals value, orelse -1
+  //find index of first element equals value, or else -1
   auto it1 = std::find(list.begin(), list.end(), 1);
   int i3 = it1 != list.end() ? it1 - list.begin() : -1;
-  //find index of last element equals value, orelse -1
+  //find index of last element equals value, or else -1
   auto it2 = std::find(list.rbegin(), list.rend(), 1);
   int i4 = it2 != list.rend() ? list.rend() - it2 - 1 : -1;
-  //find index of first element satisfies condition, orelse -1
+  //find index of first element satisfies condition, or else -1
   auto it3 = std::find_if(list.begin(), list.end(), [](auto i) { return i > 1; });
   int i5 = it3 != list.end() ? it3 - list.begin() : -1;
   //find index of first element satisfies condition using optional
   std::optional<int> res1 = it3 != list.end() ? std::make_optional(*it3) : std::nullopt;
-  //find index of first element doesn't satisfy condition, orelse -1
+  //find index of first element doesn't satisfy condition, or else -1
   auto it4 = std::find_if_not(list.begin(), list.end(), [](auto i) { return i > 1; });
   int i6 = it4 == list.end() ? -1 : it4 - list.begin();
   //find index of first element doesn't satisfy condition using optional
@@ -51,10 +51,11 @@ void AlgorithmEntry::AlgorithmProgram() {
   //fill a list with length and value
   std::fill_n(list.begin()+1, 3, 1);
   //remove all element equal value
-  list.erase(std::remove(list.begin(), list.end(), 1), list.end());
+  list.erase(std::remove(list.begin(), list.end(), 1), list.end());//std::erase(list,1);
   //remove all element satisfy condition
   list.erase(std::remove_if(list.begin(), list.end(),
-                            [](auto i) { return i > 1; }), list.end());
+                            [](auto i) { return i > 1; }),
+             list.end());//std::erase_if(list,[](auto i) { return i > 1; });
   //copy a list removes all element equal value to another list
   std::remove_copy(list.begin(), list.end(), to_list.begin(), 1);
   //copy a list removes all element satisfy condition to another list
