@@ -7,10 +7,12 @@ GlobalEntry.HelloWorldEntry();
 // WeakPtrEntry.WeakPtrProgram();
 // CTypeEntry.CTypeProgram();
 
-int Foo(List<int> list, int value) {
-  int i1 = list.IndexOf(value);
-  int i2 = list.LastIndexOf(value);
-  return i2 - i1;
+List<string> l = new List<string>{"1","2","3","4","5"};
+var o = l.GetRange(1, 3);
+l[1] += "2";
+foreach (var i in l) {
+  Console.Write(i);
 }
-List<int> list = new List<int> { 1, 2, 3, 2, 1 };
-Console.WriteLine(Foo(list,1)); // 4
+foreach (var i in o) {
+  Console.Write(i);
+}

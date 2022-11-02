@@ -2,20 +2,35 @@
 #include "../misc/example_object.h"
 
 void CctypeEntry::CctypeProgram() {
+  //initialize char
   char c = ' ';
+  //whether char is letter or number
   bool b1 = isalnum(c);
+  //whether char is letter
   bool b2 = isalpha(c);
+  //whether char is lowercase letter
   bool b3 = islower(c);
+  //whether char is uppercase letter
   bool b4 = isupper(c);
+  //whether char is number
   bool b5 = isdigit(c);
+  //whether char is hex number
   bool b6 = isxdigit(c);
+  //whether char is control character
   bool b7 = iscntrl(c);
+  //whether char is white space character
   bool b8 = isspace(c);
+  //whether char is space character
   bool b9 = c == ' ';
+  //whether char is printable
   bool b10 = isprint(c);
+  //whether char has graph representation
   bool b11 = isgraph(c);
+  //whether char is punctuation character
   bool b12 = ispunct(c);
+  //change uppercase letter to lowercase letter
   char c1 = (char)tolower(c);
+  //change uppercase letter to lowercase letter
   char c2 = (char)toupper(c);
 }
 

@@ -1,22 +1,36 @@
 ﻿namespace CodeCsharp.Base.CCType; 
 
 public class CctypeEntry {
-  private static readonly char ConstChar = ' ';
-
   public static void CctypeProgram() {
-    bool b1 = Char.IsLetterOrDigit(ConstChar);
-    bool b2 = Char.IsLetter(ConstChar);
-    bool b3 = Char.IsLower(ConstChar);
-    bool b4 = Char.IsUpper(ConstChar);
-    bool b5 = Char.IsDigit(ConstChar);
-    bool b6 = Uri.IsHexDigit(ConstChar);
-    bool b7 = Char.IsControl(ConstChar);
-    bool b8 = Char.IsWhiteSpace(ConstChar);
-    bool b9 = Char.IsSeparator(ConstChar);
-    bool b10 = !Char.IsControl(ConstChar);
-    bool b11 = !Char.IsControl(ConstChar) && !Char.IsSeparator(ConstChar);
-    bool b12 = Char.IsPunctuation(ConstChar);
-    char c1 = Char.ToLower(ConstChar);
-    char c2 = Char.ToUpper(ConstChar);
+    //initialize char
+    char c = ' ';
+    //whether char is letter or number
+    bool b1 = Char.IsLetterOrDigit(c);
+    //whether char is letter
+    bool b2 = Char.IsLetter(c);
+    //whether char is lowercase letter
+    bool b3 = Char.IsLower(c);
+    //whether char is uppercase letter
+    bool b4 = Char.IsUpper(c);
+    //whether char is number
+    bool b5 = Char.IsDigit(c);
+    //whether char is hex number
+    bool b6 = Uri.IsHexDigit(c);
+    //whether char is control character
+    bool b7 = Char.IsControl(c);
+    //whether char is white space character
+    bool b8 = Char.IsWhiteSpace(c);
+    //whether char is space character
+    bool b9 = Char.IsSeparator(c);
+    //whether char is printable
+    bool b10 = !Char.IsControl(c);
+    //whether char has graph representation
+    bool b11 = !Char.IsControl(c) && !Char.IsSeparator(c);
+    //whether char is punctuation character
+    bool b12 = Char.IsPunctuation(c);
+    //change uppercase letter to lowercase letter
+    char c1 = Char.ToLower(c);
+    //change uppercase letter to lowercase letter
+    char c2 = Char.ToUpper(c);
   }
 }
