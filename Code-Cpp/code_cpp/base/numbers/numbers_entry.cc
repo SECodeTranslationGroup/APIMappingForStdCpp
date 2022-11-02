@@ -1,8 +1,10 @@
 #include "numbers_entry.h"
 void NumbersEntry::NumbersProgram() {
+  //e
   double e = std::numbers::e;
+  //pi
   double pi = std::numbers::pi;
-
+  //limits
   int int_max = std::numeric_limits<int>::max();
   int int_min = std::numeric_limits<int>::min();
   short short_max = std::numeric_limits<short>::max();

@@ -2,9 +2,11 @@ package codejava.base.numbers;
 
 public class NumbersEntry {
   public static void NumbersProgram() {
+    //e
     double e = Math.E;
+    //pi
     double pi = Math.PI;
-
+    //limits
     int intMax = Integer.MAX_VALUE;
     int intMin = Integer.MIN_VALUE;
     short shortMax = Short.MAX_VALUE;

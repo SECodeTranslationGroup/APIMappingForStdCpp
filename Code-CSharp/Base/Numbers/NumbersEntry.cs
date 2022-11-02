@@ -2,9 +2,11 @@
 
 public class NumbersEntry {
   public static void NumbersProgram() {
+    //e
     double e = Math.E;
+    //pi
     double pi = Math.PI;
-
+    //limits
     int intMax = int.MaxValue;
     int intMin = int.MinValue;
     short shortMax = short.MaxValue;
