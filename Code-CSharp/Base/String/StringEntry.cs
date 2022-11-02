@@ -38,7 +38,7 @@ public class StringEntry {
     bool b9 = myString.Contains(new string(cs));
     bool b10 = myString.Contains(sub);
 
-    int result = String.Compare(myString, s, StringComparison.Ordinal);
+    int result = String.CompareOrdinal(myString, s);
 
     int index1 = myString.IndexOf(s, 0, StringComparison.Ordinal);
     int index2 = myString.IndexOf(new string(cs), StringComparison.Ordinal);
