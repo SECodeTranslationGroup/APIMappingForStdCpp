@@ -1,6 +1,5 @@
 #include "map_entry.h"
 #include <vector>
-#include <algorithm>
 #include <optional>
 
 void MapEntry::MapProgram() {
@@ -28,4 +27,6 @@ void MapEntry::MapProgram() {
   result = it != map.end() ? std::make_optional(it->second) : std::nullopt;
   it = map.upper_bound("cc");
   result = it != map.end() ? std::make_optional(it->second) : std::nullopt;
+
+  map.erase("cc");
 }

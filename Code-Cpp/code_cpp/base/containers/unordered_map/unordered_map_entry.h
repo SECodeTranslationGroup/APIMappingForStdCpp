@@ -5,9 +5,6 @@
 #include "../../misc/example_object.h"
 
 class UnorderedMapEntry {
-private:
-    static std::unordered_map<int,ExampleObject> hashmap_;
-    static ExampleObject obj;
 public:
     static void UnorderedMapProgram();
 
