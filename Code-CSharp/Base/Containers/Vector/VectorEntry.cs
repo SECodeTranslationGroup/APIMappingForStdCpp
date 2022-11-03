@@ -27,7 +27,8 @@ public class VectorEntry {
 
     bool b1 = vec.Contains("gg");
     IList<string> constVecRef = vec.AsReadOnly();
-    bool b3 = vec.Equals(constVecRef);
+    bool b2 = vec.Equals(constVecRef);
+    
     string element = vec[3];
     vec[3] = "hh";
     

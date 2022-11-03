@@ -29,7 +29,8 @@ public class VectorEntry {
 
     boolean b1 = vec.contains("gg");
     List<String> constVecRef = Collections.unmodifiableList(vec);
-    boolean b3 = vec.equals(constVecRef);
+    boolean b2 = vec.equals(constVecRef);
+
     String element = vec.get(3);
     vec.set(3, "hh");
 

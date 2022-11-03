@@ -127,7 +127,7 @@ public class AlgorithmEntry {
     //fill list with range start with 1
     list = IntStream.range(1, list.size() + 1).boxed().collect(Collectors.toList());
     //fill list with range start with value
-    toList = IntStream.range(-3, list.size() - 3).boxed().collect(Collectors.toList());
+    list = IntStream.range(-3, list.size() - 3).boxed().collect(Collectors.toList());
     //initialize calculate lists
     List<Integer> cList = new ArrayList<>(list), cList2 = new ArrayList<>(list);
     //sum of the list

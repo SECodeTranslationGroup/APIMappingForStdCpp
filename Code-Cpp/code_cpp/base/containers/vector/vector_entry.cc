@@ -4,7 +4,8 @@
 
 void VectorEntry::VectorProgram() {
   std::vector<std::string> vec;
-  std::vector<std::string> vec1 = std::vector<std::string>{"aa", "bb", "cc", "dd"};
+  std::vector<std::string> vec1{"aa", "bb", "cc", "dd"};
+  vec = vec1;
   vec.assign(10, "");
   vec.resize(20,"");
 
@@ -13,14 +14,16 @@ void VectorEntry::VectorProgram() {
 
   vec.emplace_back("ee");
   vec.emplace(vec.begin() + 1, "ff");
+
   vec.insert(vec.end(), vec1.begin(), vec1.end());
   vec.insert(vec.begin() + 1, vec1.begin(), vec1.end());
 
   int size = vec.size();
 
   bool b1 = std::find(vec.begin(), vec.end(), "bb") != vec.end();
-  const std::vector<std::string> &constVecRef = vec;
-  bool b3 = vec == constVecRef;
+  const std::vector<std::string> &kConstVecRef = vec;
+  bool b2 = vec == kConstVecRef;
+
   std::string element = vec[3];
   vec[3] = "hh";
 

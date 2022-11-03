@@ -109,7 +109,7 @@ public class AlgorithmEntry {
     //fill list with range start with 1
     list = Enumerable.Range(1, list.Count + 1).ToList();
     //fill list with range start with value
-    toList = Enumerable.Range(-3, list.Count - 3).ToList();
+    list = Enumerable.Range(-3, list.Count - 3).ToList();
     //initialize calculate lists
     List<int> cList = new List<int>(list), cList2 = new List<int>(list);
     //sum of the list

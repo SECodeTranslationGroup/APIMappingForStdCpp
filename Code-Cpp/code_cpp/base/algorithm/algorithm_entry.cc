@@ -41,11 +41,13 @@ void AlgorithmEntry::AlgorithmProgram() {
   //initialize another list
   std::vector<int> to_list;
   //copy a sublist to another list
-  std::copy(list.begin() + 1, list.end() - 1, to_list.begin());
+  std::copy(list.begin() + 1, list.end() - 1, std::back_inserter(to_list));
   //copy all element satisfy condition to another list
-  std::copy_if(list.begin(), list.end(), to_list.begin(), [](auto i) { return i > 1; });
+  to_list.clear();
+  std::copy_if(list.begin(), list.end(), std::back_inserter(to_list), [](auto i) { return i > 1; });
   //copy a sublist to another list with length
-  std::copy_n(list.begin(), 3, to_list.begin());
+  to_list.clear();
+  std::copy_n(list.begin(), 3, std::back_inserter(to_list));
   //fill a list with value
   std::fill(list.begin(), list.end(), 1);
   //fill a list with length and value
@@ -57,43 +59,51 @@ void AlgorithmEntry::AlgorithmProgram() {
                             [](auto i) { return i > 1; }),
              list.end());//std::erase_if(list,[](auto i) { return i > 1; });
   //copy a list removes all element equal value to another list
-  std::remove_copy(list.begin(), list.end(), to_list.begin(), 1);
+  to_list.clear();
+  std::remove_copy(list.begin(), list.end(), std::back_inserter(to_list), 1);
   //copy a list removes all element satisfy condition to another list
-  std::remove_copy_if(list.begin(), list.end(), to_list.begin(), [](auto i) { return i > 1; });
+  to_list.clear();
+  std::remove_copy_if(list.begin(), list.end(), std::back_inserter(to_list), [](auto i) { return i > 1; });
   //replace all element equal value to new value
   std::replace(list.begin(), list.end(), 1, 2);
   //replace all element satisfy condition to new value
   std::replace_if(list.begin(), list.end(), [](auto i) { return i > 1; }, 2);
   //copy a list replace all element equal value to new value to another list
-  std::replace_copy(list.begin(), list.end(), to_list.begin(), 1, 2);
+  to_list.clear();
+  std::replace_copy(list.begin(), list.end(), std::back_inserter(to_list), 1, 2);
   //copy a list replace all element satisfy condition to new value to another list
-  std::replace_copy_if(list.begin(), list.end(), to_list.begin(), [](auto i) { return i > 1; }, 2);
+  to_list.clear();
+  std::replace_copy_if(list.begin(), list.end(), std::back_inserter(to_list), [](auto i) { return i > 1; }, 2);
   //swap two element at two index values
   std::iter_swap(list.begin() + 1, list.begin() + 2);
   //reverse all element
   std::reverse(list.begin(), list.end());
   //copy a list reverse all element to another list
-  std::reverse_copy(list.begin(), list.end(), to_list.begin());
+  to_list.clear();
+  std::reverse_copy(list.begin(), list.end(), std::back_inserter(to_list));
   //rotate right with distance
   std::rotate(list.begin(), list.begin() + 1, list.end());
   //copy a list rotate right with distance to another list
-  std::rotate_copy(list.begin(), list.begin() + 1, list.end(), to_list.begin());
+  to_list.clear();
+  std::rotate_copy(list.begin(), list.begin() + 1, list.end(), std::back_inserter(to_list));
   //initialize random generator
   std::random_device rd;
   std::default_random_engine rng(rd());
   //random shuffle
   std::shuffle(list.begin(), list.end(), rng);
   //random sample
-  std::sample(list.begin(), list.end(), to_list.begin(), 3, rng);
+  to_list.clear();
+  std::sample(list.begin(), list.end(), std::back_inserter(to_list), 3, rng);
   //initialize partition lists
   std::vector<int> list1, list2;
   //partition to two lists with condition
-  std::partition_copy(list.begin(), list.end(), list1.begin(), list2.begin(), [](auto i) { return i > 1; });
+  std::partition_copy(list.begin(), list.end(), std::back_inserter(list1), std::back_inserter(list2), [](auto i) { return i > 1; });
   //sort list
   std::sort(list.begin(), list.end());
   //sort list with compare function
   std::sort(list.begin(), list.end(), [](int a, int b) { return a * a + 2 * a < b * b + 2 * b; });
   //copy a list sorted to another list
+  to_list.resize(list.size());
   std::partial_sort_copy(list.begin(), list.end(),
                          to_list.begin(), to_list.end());
   //binary search whether value exist
@@ -119,7 +129,7 @@ void AlgorithmEntry::AlgorithmProgram() {
   //fill list with range start with 1
   std::iota(list.begin(), list.end(), 1);
   //fill list with range start with value
-  std::iota(to_list.begin(), to_list.end(), -3);
+  std::iota(list.begin(), list.end(), -3);
   //initialize calculate lists
   std::vector<int> c_list = std::vector<int>(list), c_list_2 = std::vector<int>(list);
   //sum of the list
@@ -133,14 +143,18 @@ void AlgorithmEntry::AlgorithmProgram() {
                                            1, [](auto a, auto b) { return a * b; },
                                            [](auto a, auto b) { return a + b; });
   //copy adjacent difference of list to another list
-  std::adjacent_difference(c_list.begin(), c_list.end(), to_list.begin());
+  to_list.clear();
+  std::adjacent_difference(c_list.begin(), c_list.end(), std::back_inserter(to_list));
   //copy adjacent difference of list using difference function to another list
-  std::adjacent_difference(c_list.begin(), c_list.end(), to_list.begin(),
+  to_list.clear();
+  std::adjacent_difference(c_list.begin(), c_list.end(), std::back_inserter(to_list),
                            [](auto a, auto b) { return a * b; });
   //copy partial sum of list to another list
-  std::partial_sum(c_list.begin(), c_list.end(), to_list.begin());
+  to_list.clear();
+  std::partial_sum(c_list.begin(), c_list.end(), std::back_inserter(to_list));
   //copy partial sum of list using reduce function to another list
-  std::partial_sum(c_list.begin(), c_list.end(), to_list.begin(), [](auto a, auto b) { return a * b; });
+  to_list.clear();
+  std::partial_sum(c_list.begin(), c_list.end(), std::back_inserter(to_list), [](auto a, auto b) { return a * b; });
 }
 bool AlgorithmEntry::Test1() {
   std::vector<int> list1{1, 2, 1, 2, 3};
