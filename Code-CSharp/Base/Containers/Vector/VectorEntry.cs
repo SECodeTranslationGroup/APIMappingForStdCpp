@@ -26,8 +26,8 @@ public class VectorEntry {
     int size = vec.Count;
 
     bool b1 = vec.Contains("gg");
-    IList<string> constVecRef = vec.AsReadOnly();
-    bool b2 = vec.Equals(constVecRef);
+    ImmutableList<string> constVecRef = vec.ToImmutableList();
+    bool b2 = Enumerable.SequenceEqual(vec,constVecRef);
     
     string element = vec[3];
     vec[3] = "hh";

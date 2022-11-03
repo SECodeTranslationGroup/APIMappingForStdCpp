@@ -10,6 +10,7 @@ void PriorityQueueEntry::PriorityQueueProgram() {
   heap = heap1;
 
   bool is_empty = heap.empty();
+  heap = {};
 
   heap.emplace("ee");
   heap.pop();

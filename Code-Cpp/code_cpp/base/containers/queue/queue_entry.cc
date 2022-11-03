@@ -9,6 +9,7 @@ void QueueEntry::QueueProgram() {
   queue = queue1;
 
   bool is_empty = queue.empty();
+  queue = {};
 
   queue.emplace("ee");
   queue.pop();

@@ -7,9 +7,9 @@ import java.util.List;
 
 public class VectorEntry {
   public static void VectorProgram() {
-    List<String> vec = new ArrayList<>();
-    List<String> vec1 = Arrays.asList("aa", "bb", "cc", "dd");
-
+    ArrayList<String> vec = new ArrayList<>();
+    ArrayList<String> vec1 = new ArrayList<>(Arrays.asList("aa", "bb", "cc", "dd"));
+    vec =  new ArrayList<>(vec1);
     vec = new ArrayList<>(Collections.nCopies(10, ""));
     if (vec.size() >= 20) {
       vec.subList(20, vec.size()).clear();

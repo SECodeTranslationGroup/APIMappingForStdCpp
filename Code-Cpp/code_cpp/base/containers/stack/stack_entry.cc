@@ -9,6 +9,7 @@ void StackEntry::StackProgram() {
   stack = stack1;
 
   bool is_empty = stack.empty();
+  stack = {};
 
   stack.emplace("ee");
   stack.pop();

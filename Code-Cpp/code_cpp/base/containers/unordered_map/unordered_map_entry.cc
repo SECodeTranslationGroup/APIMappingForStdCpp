@@ -12,8 +12,10 @@ void UnorderedMapEntry::UnorderedMapProgram() {
   hash_map.try_emplace("ee", "e");
   hash_map["ee"] = "e2";
 
-  std::vector<std::pair<std::string, std::string>> vec{{"aa", "a"}, {"bb", "b"}, {"cc", "c"}, {"dd", "d"}};
-  hash_map.insert(vec.begin(), vec.end());
+  std::unordered_map<std::string, std::string> vec{{"aa", "a"}, {"bb", "b"}, {"cc", "c"}, {"dd", "d"}};
+  hash_map.merge(vec);
+  for (const auto &p:vec)
+    hash_map[p.first]=p.second;
 
   int size = hash_map.size();
 
@@ -21,8 +23,8 @@ void UnorderedMapEntry::UnorderedMapProgram() {
   const std::unordered_map<std::string, std::string> &kConstHashMapRef = hash_map;
   bool b2 = hash_map == kConstHashMapRef;
 
+  hash_map.erase("cc");
+
   auto it = hash_map.find("cc");
   std::optional<std::string> result = it != hash_map.end() ? std::make_optional(it->second) : std::nullopt;
-
-  hash_map.erase("cc");
 }

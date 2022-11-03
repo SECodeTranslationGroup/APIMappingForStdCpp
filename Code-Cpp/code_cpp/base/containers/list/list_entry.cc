@@ -23,8 +23,8 @@ void ListEntry::ListProgram() {
   int size = list.size();
 
   bool b1 = std::find(list.begin(), list.end(), "bb") != list.end();
-  const std::list<std::string> &kConstlistRef = list;
-  bool b3 = list == kConstlistRef;
+  const std::list<std::string> &kConstListRef = list;
+  bool b2 = list == kConstListRef;
   std::string element = list.front();
   element = list.back();
 
@@ -34,10 +34,6 @@ void ListEntry::ListProgram() {
   list.erase(std::next(list.begin(), 1),std::prev(list.end(), 1));
 
   list.sort();
-  list1.sort();
-  list.merge(list1);
-  list.splice(std::next(list.begin(), 1),list1);
-  list.unique();
   list.reverse();
   list.remove("ff");
   list.remove_if([](auto e){return e > "dd";});

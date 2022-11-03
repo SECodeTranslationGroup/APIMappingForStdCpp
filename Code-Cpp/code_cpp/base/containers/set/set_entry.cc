@@ -22,7 +22,8 @@ void SetEntry::SetProgram() {
   const std::set<std::string> &kConstSetRef = set;
   bool b2 = set == kConstSetRef;
 
-  set.erase("dd");
+  set.erase("cc");
+  
   std::set<std::string> result_set;
   std::set_difference(set.begin(), set.end(), set1.begin(),
                       set1.end(), std::inserter(result_set, result_set.begin()));
