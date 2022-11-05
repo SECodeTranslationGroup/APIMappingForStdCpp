@@ -37,9 +37,9 @@ void VectorEntry::VectorProgram() {
   std::string element = vec[3];
   //update element
   vec[3] = "hh";
-  //removes last element
+  //remove last element
   vec.pop_back();
-  //removes element at given position
+  //remove element at given position
   vec.erase(vec.begin()+3);
   //remove a range of elements at given position
   vec.erase(vec.begin()+1,vec.begin()+3);

@@ -45,9 +45,9 @@ public class VectorEntry {
     String element = vec.get(3);
     //update element
     vec.set(3, "hh");
-    //removes last element
+    //remove last element
     vec.remove(vec.size() - 1);
-    //removes element at given position
+    //remove element at given position
     vec.remove(3);
     //remove a range of elements at given position
     vec.subList(1, 3).clear();

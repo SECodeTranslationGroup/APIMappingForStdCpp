@@ -32,7 +32,7 @@ void UnorderedMapEntry::UnorderedMapProgram() {
   const std::unordered_map<std::string, std::string> &kConstHashMapRef = hash_map;
   //whether two hash maps equal
   bool b2 = hash_map == kConstHashMapRef;
-  //removes element equal key
+  //remove element equal key
   hash_map.erase("cc");
   //get value of key or else default
   auto it = hash_map.find("cc");

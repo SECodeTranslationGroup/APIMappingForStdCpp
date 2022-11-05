@@ -38,7 +38,7 @@ public class MapEntry {
     Map<String, String> constMapRef = Collections.unmodifiableMap(map);
     //whether two maps equal
     boolean b2 = map.equals(constMapRef);
-    //removes element equal key
+    //remove element equal key
     map.remove("cc");
     //get value of key or else default
     String defaultResult = map.getOrDefault("cc", "default");

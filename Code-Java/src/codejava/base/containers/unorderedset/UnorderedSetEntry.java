@@ -32,7 +32,7 @@ public class UnorderedSetEntry {
     Set<String> constSetRef = Collections.unmodifiableSet(hashSet);
     //whether two hash sets equal
     boolean b2 = hashSet.equals(constSetRef);
-    //removes element equal value
+    //remove element equal value
     hashSet.remove("cc");
   }
 }

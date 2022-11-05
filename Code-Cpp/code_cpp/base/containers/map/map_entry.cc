@@ -32,7 +32,7 @@ void MapEntry::MapProgram() {
   const std::map<std::string, std::string> &kConstMapRef = map;
   //whether two maps equal
   bool b2 = map == kConstMapRef;
-  //removes element equal key
+  //remove element equal key
   map.erase("cc");
   //get value of key or else default
   auto it = map.find("cc");

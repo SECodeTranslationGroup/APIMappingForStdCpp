@@ -58,9 +58,11 @@ public class ListEntry {
     list.sort(null);
     //reverse list
     Collections.reverse(list);
-    //removes all elements equal value
+    //remove first elements equal value
     list.remove("ff");
-    //removes all elements satisfy condition
+    //remove all elements equal value
+    while (list.remove("ff"));
+    //remove all elements satisfy condition
     list.removeIf(e -> e.compareTo("dd") > 0);
   }
 }

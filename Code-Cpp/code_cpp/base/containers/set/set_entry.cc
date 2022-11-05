@@ -29,7 +29,7 @@ void SetEntry::SetProgram() {
   const std::set<std::string> &kConstSetRef = set;
   //whether two sets equal
   bool b2 = set == kConstSetRef;
-  //removes element equal value
+  //remove element equal value
   set.erase("cc");
   //initialize result set for calculation
   std::set<std::string> result_set;

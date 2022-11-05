@@ -34,7 +34,7 @@ public class SetEntry {
     Set<String> constSetRef = Collections.unmodifiableSet(set);
     //whether two sets equal
     boolean b2 = set.equals(constSetRef);
-    //removes element equal value
+    //remove element equal value
     set.remove("cc");
     //initialize result set for calculation
     TreeSet<String> resultSet = new TreeSet<>(set);

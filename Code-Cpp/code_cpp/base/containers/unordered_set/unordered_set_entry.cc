@@ -27,6 +27,6 @@ void VectorEntry::UnorderedSetProgram() {
   const std::unordered_set<std::string> &kConstHashSetRef = hash_set;
   //whether two hash sets equal
   bool b2 = hash_set == hash_set1;
-  //removes element equal value
+  //remove element equal value
   hash_set.erase("dd");
 }

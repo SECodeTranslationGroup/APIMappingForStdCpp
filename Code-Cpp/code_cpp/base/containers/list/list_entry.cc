@@ -47,13 +47,17 @@ void ListEntry::ListProgram() {
   //remove element at given position
   list.erase(std::next(list.begin(), 3));
   //remove a range of elements at given position
-  list.erase(std::next(list.begin(), 1),std::prev(list.end(), 1));
+  list.erase(std::next(list.begin(), 1), std::prev(list.end(), 1));
   //sort list
   list.sort();
   //reverse list
   list.reverse();
-  //removes all elements equal value
+  //remove first elements equal value
+  auto it = std::find(list.begin(), list.end(), "ff");
+  if (it != list.end()) list.erase(it);
   list.remove("ff");
-  //removes all elements satisfy condition
-  list.remove_if([](auto e){return e > "dd";});
+  //remove all elements equal value
+  list.remove("ff");
+  //remove all elements satisfy condition
+  list.remove_if([](auto e) { return e > "dd"; });
 }

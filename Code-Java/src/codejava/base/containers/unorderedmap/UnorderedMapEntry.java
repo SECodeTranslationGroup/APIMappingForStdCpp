@@ -38,7 +38,7 @@ public class UnorderedMapEntry {
     Map<String, String> constHashMapRef = Collections.unmodifiableMap(hashMap);
     //whether two hash maps equal
     boolean b2 = hashMap.equals(constHashMapRef);
-    //removes element equal key
+    //remove element equal key
     hashMap.remove("cc");
     //get value of key or else default
     String defaultResult = hashMap.getOrDefault("cc", "default");
