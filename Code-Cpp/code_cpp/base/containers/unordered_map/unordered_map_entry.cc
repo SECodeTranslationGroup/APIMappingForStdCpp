@@ -34,7 +34,9 @@ void UnorderedMapEntry::UnorderedMapProgram() {
   bool b2 = hash_map == kConstHashMapRef;
   //removes element equal key
   hash_map.erase("cc");
-  //get optional value of key
+  //get value of key or else default
   auto it = hash_map.find("cc");
+  std::string default_result =  it != hash_map.end() ? it->second : "default";
+  //get optional value of key
   std::optional<std::string> result = it != hash_map.end() ? std::make_optional(it->second) : std::nullopt;
 }

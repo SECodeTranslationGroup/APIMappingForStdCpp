@@ -36,9 +36,9 @@ void MapEntry::MapProgram() {
   map.erase("cc");
   //get value of key or else default
   auto it = map.find("cc");
-  std::string default_result =  map.find("cc") != map.end() ? it->second : "default";
+  std::string default_result =  it != map.end() ? it->second : "default";
   //get optional value of key
-  std::optional<std::string> result = map.find("cc") != map.end() ? std::make_optional(it->second) : std::nullopt;
+  std::optional<std::string> result = it != map.end() ? std::make_optional(it->second) : std::nullopt;
   //get optional value of first key lower or equal given key
   it = map.lower_bound("cc");
   result = it != map.end() ? std::make_optional(it->second) : std::nullopt;

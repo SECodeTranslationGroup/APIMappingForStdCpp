@@ -3,7 +3,8 @@
 void FstreamEntry::FstreamProgram() {
   //initialize string
   std::string str = "output";
-  //create file and open output file stream
+  //create file
+  //open output file stream
   std::ofstream out_file("file.txt", std::ios::out | std::ios::trunc);
   //whether open operation succeeds
   bool is_open = !out_file;
@@ -24,7 +25,7 @@ void FstreamEntry::FstreamProgram() {
   //read several char into buffer
   in_file.get(cb,6);
   //create string from buffer
-  str = std::string(cb);
+  str = std::string(cb,6);
   //close
   in_file.close();
   //open append file stream
