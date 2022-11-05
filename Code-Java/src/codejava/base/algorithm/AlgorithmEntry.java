@@ -21,7 +21,7 @@ public class AlgorithmEntry {
   public static void AlgorithmProgram() {
     //initialize first list
     List<Integer> list = Arrays.asList(1, 2, 1, 2, 3);
-    //whether all element satisfy condition
+    //whether all elements satisfy condition
     boolean b1 = list.stream().allMatch(i -> i > 3);
     //whether any element satisfy condition
     boolean b2 = list.stream().anyMatch(i -> i > 3);
@@ -52,7 +52,7 @@ public class AlgorithmEntry {
     List<Integer> toList = new ArrayList<>();
     //copy a sublist to another list
     toList = list.stream().skip(1).limit(list.size() - (1 + 1)).collect(Collectors.toList());
-    //copy all element satisfy condition to another list
+    //copy all elements satisfy condition to another list
     toList = list.stream().filter(i -> i > 1).collect(Collectors.toList());
     //copy a sublist to another list with length
     toList = list.stream().limit(3).collect(Collectors.toList());
@@ -60,27 +60,27 @@ public class AlgorithmEntry {
     Collections.fill(list, 1);
     //fill a list with length and value
     Collections.fill(list.subList(1, 1 + 3), 1);
-    //remove all element equal value
+    //remove all elements equal value
     list.removeIf(i -> i == 1);
-    //remove all element satisfy condition
+    //remove all elements satisfy condition
     list.removeIf(i -> i > 1);
-    //copy a list removes all element equal value to another list
+    //copy a list removes all elements equal value to another list
     toList = list.stream().filter(i -> !(i == 1)).collect(Collectors.toList());
-    //copy a list removes all element satisfy condition to another list
+    //copy a list removes all elements satisfy condition to another list
     toList = list.stream().filter(i -> !(i > 1)).collect(Collectors.toList());
-    //replace all element equal value to new value
+    //replace all elements equal value to new value
     list = list.stream().map(i -> i == 1 ? 2 : i).collect(Collectors.toList());
-    //replace all element satisfy condition to new value
+    //replace all elements satisfy condition to new value
     list = list.stream().map(i -> i > 1 ? 2 : i).collect(Collectors.toList());
-    //copy a list replace all element equal value to new value to another list
+    //copy a list replace all elements equal value to new value to another list
     toList = list.stream().map(i -> i == 1 ? 2 : i).collect(Collectors.toList());
-    //copy a list replace all element satisfy condition to new value to another list
+    //copy a list replace all elements satisfy condition to new value to another list
     toList = list.stream().map(i -> i > 1 ? 2 : i).collect(Collectors.toList());
     //swap two element at two index values
     Collections.swap(list, 1, 2);
-    //reverse all element
+    //reverse list
     Collections.reverse(list);
-    //copy a list reverse all element to another list
+    //copy a reversed list to another list
     Collections.reverse(toList = new ArrayList<>(list));
     //rotate right with distance
     Collections.rotate(list, 1);

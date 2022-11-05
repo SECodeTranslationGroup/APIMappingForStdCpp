@@ -8,7 +8,7 @@
 void AlgorithmEntry::AlgorithmProgram() {
   //initialize first list
   std::vector<int> list{1, 2, 1, 2, 3};
-  //whether all element satisfy condition
+  //whether all elements satisfy condition
   bool b1 = std::all_of(list.begin(), list.end(), [](auto i) { return i > 1; });
   //whether any element satisfy condition
   bool b2 = std::any_of(list.begin(), list.end(), [](auto i) { return i > 1; });
@@ -42,7 +42,7 @@ void AlgorithmEntry::AlgorithmProgram() {
   std::vector<int> to_list;
   //copy a sublist to another list
   std::copy(list.begin() + 1, list.end() - 1, std::back_inserter(to_list));
-  //copy all element satisfy condition to another list
+  //copy all elements satisfy condition to another list
   to_list.clear();
   std::copy_if(list.begin(), list.end(), std::back_inserter(to_list), [](auto i) { return i > 1; });
   //copy a sublist to another list with length
@@ -52,33 +52,33 @@ void AlgorithmEntry::AlgorithmProgram() {
   std::fill(list.begin(), list.end(), 1);
   //fill a list with length and value
   std::fill_n(list.begin()+1, 3, 1);
-  //remove all element equal value
+  //remove all elements equal value
   list.erase(std::remove(list.begin(), list.end(), 1), list.end());//std::erase(list,1);
-  //remove all element satisfy condition
+  //remove all elements satisfy condition
   list.erase(std::remove_if(list.begin(), list.end(),
                             [](auto i) { return i > 1; }),
              list.end());//std::erase_if(list,[](auto i) { return i > 1; });
-  //copy a list removes all element equal value to another list
+  //copy a list removes all elements equal value to another list
   to_list.clear();
   std::remove_copy(list.begin(), list.end(), std::back_inserter(to_list), 1);
-  //copy a list removes all element satisfy condition to another list
+  //copy a list removes all elements satisfy condition to another list
   to_list.clear();
   std::remove_copy_if(list.begin(), list.end(), std::back_inserter(to_list), [](auto i) { return i > 1; });
-  //replace all element equal value to new value
+  //replace all elements equal value to new value
   std::replace(list.begin(), list.end(), 1, 2);
-  //replace all element satisfy condition to new value
+  //replace all elements satisfy condition to new value
   std::replace_if(list.begin(), list.end(), [](auto i) { return i > 1; }, 2);
-  //copy a list replace all element equal value to new value to another list
+  //copy a list replace all elements equal value to new value to another list
   to_list.clear();
   std::replace_copy(list.begin(), list.end(), std::back_inserter(to_list), 1, 2);
-  //copy a list replace all element satisfy condition to new value to another list
+  //copy a list replace all elements satisfy condition to new value to another list
   to_list.clear();
   std::replace_copy_if(list.begin(), list.end(), std::back_inserter(to_list), [](auto i) { return i > 1; }, 2);
   //swap two element at two index values
   std::iter_swap(list.begin() + 1, list.begin() + 2);
-  //reverse all element
+  //reverse list
   std::reverse(list.begin(), list.end());
-  //copy a list reverse all element to another list
+  //copy a reversed list to another list
   to_list.clear();
   std::reverse_copy(list.begin(), list.end(), std::back_inserter(to_list));
   //rotate right with distance

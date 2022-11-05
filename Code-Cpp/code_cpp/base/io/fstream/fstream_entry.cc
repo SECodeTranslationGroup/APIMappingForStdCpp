@@ -1,49 +1,73 @@
 #include "fstream_entry.h"
 #include <sstream>
 void FstreamEntry::FstreamProgram() {
+  //initialize string
   std::string str = "output";
-
-  std::fstream out_file("file.txt", std::ios::out | std::ios::trunc);
+  //create file and open output file stream
+  std::ofstream out_file("file.txt", std::ios::out | std::ios::trunc);
+  //whether open operation succeeds
   bool is_open = !out_file;
+  //write a char
   out_file.put('c');
-  out_file << str;
+  //write a string with line seperator
+  out_file << str << std::endl;
+  //close
   out_file.close();
-
-  std::fstream in_file("file.txt", std::ios::in);
+  //open input file stream
+  std::ifstream in_file("file.txt", std::ios::in);
+  //get first char
   char c1 = in_file.get();
+  //peek next char
   char c2 = in_file.peek();
+  //intialize a buffer
   char cb[100];
-  in_file.get(cb,str.size());
+  //read several char into buffer
+  in_file.get(cb,6);
+  //create string from buffer
   str = std::string(cb);
-//  std::stringstream buf;
-//  buf << in_file.rdbuf();
+  //close
   in_file.close();
-
-  std::fstream app_file("file.txt", std::ios::out | std::ios::app);
+  //open append file stream
+  std::ofstream app_file("file.txt", std::ios::out | std::ios::app);
+  //append a char
   app_file.put('c');
+  //close
   app_file.close();
-
-  std::fstream binary_out_file("binaryfile.txt", std::ios::out | std::ios::trunc | std::ios::binary);
+  //open binary output file stream
+  std::ofstream binary_out_file("binaryfile.txt", std::ios::out | std::ios::trunc | std::ios::binary);
+  //write string data in binary
   binary_out_file.write(str.data(),str.size());
+  //write int data in binary
   int int_num = 10;
   binary_out_file.write(reinterpret_cast<const char *>(&int_num),sizeof(int_num));
+  //write double data in binary
   double double_num = 3.14;
   binary_out_file.write(reinterpret_cast<const char *>(&double_num),sizeof(double_num));
+  //close
   binary_out_file.close();
-
-  std::fstream binary_in_file("binaryfile.txt", std::ios::in | std::ios::binary);
-  binary_out_file.read(str.data(),str.size());
-  binary_out_file.read(reinterpret_cast<char *>(&int_num), sizeof(int_num));
-  binary_out_file.read(reinterpret_cast<char *>(&double_num), sizeof(double_num));
-  in_file.seekg(0,std::ios::end);
-  long length = in_file.tellg();
-  binary_out_file.close();
-
+  //open binary input file stream
+  std::ifstream binary_in_file("binaryfile.txt", std::ios::in | std::ios::binary);
+  //read string data in binary
+  binary_in_file.read(str.data(),str.size());
+  //read int data in binary
+  binary_in_file.read(reinterpret_cast<char *>(&int_num), sizeof(int_num));
+  //read double data in binary
+  binary_in_file.read(reinterpret_cast<char *>(&double_num), sizeof(double_num));
+  //get byte length of binary file
+  binary_in_file.seekg(0,std::ios::end);
+  long length = binary_in_file.tellg();
+  //close
+  binary_in_file.close();
+  //open random access file stream
   std::fstream random_access_file("file.txt", std::ios::in | std::ios::out);
+  //set position
   random_access_file.seekg(3);
+  //get a char from position
   char c3 = random_access_file.get();
+  //get position
   long pos = random_access_file.tellg();
+  //write a char from position
   random_access_file.put('d');
+  //close
   random_access_file.close();
-
 }

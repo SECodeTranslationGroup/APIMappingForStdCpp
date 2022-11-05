@@ -6,7 +6,7 @@ public class AlgorithmEntry {
   public static void AlgorithmProgram() {
     //initialize first list
     List<int> list = new List<int> { 1, 2, 1, 2, 3 };
-    //whether all element satisfy condition
+    //whether all elements satisfy condition
     bool b1 = list.All(i => i > 1);
     //whether any element satisfy condition
     bool b2 = list.Any(i => i > 1);
@@ -36,7 +36,7 @@ public class AlgorithmEntry {
     List<int> toList = new List<int>();
     //copy a sublist to another list
     toList = list.Skip(1).Take(list.Count - (1 + 1)).ToList();
-    //copy all element satisfy condition to another list
+    //copy all elements satisfy condition to another list
     toList = list.Where(i => i > 1).ToList();
     //copy a sublist to another list with length
     toList = list.Take(3).ToList();
@@ -44,27 +44,27 @@ public class AlgorithmEntry {
     list = Enumerable.Repeat(1, list.Count).ToList();
     //fill a list with length and value
     list = list.Select((s, index) => (index >= 1 && index < 1 + 3) ? 1 : s).ToList();
-    //remove all element equal value
+    //remove all elements equal value
     list.RemoveAll(i => i == 1);
-    //remove all element satisfy condition
+    //remove all elements satisfy condition
     list.RemoveAll(i => i > 1);
-    //copy a list removes all element equal value to another list
+    //copy a list removes all elements equal value to another list
     toList = list.Where(i => !(i == 1)).ToList();
-    //copy a list removes all element satisfy condition to another list
+    //copy a list removes all elements satisfy condition to another list
     toList = list.Where(i => !(i > 1)).ToList();
-    //replace all element equal value to new value
+    //replace all elements equal value to new value
     list = list.Select(i => i == 1 ? 2 : i).ToList();
-    //replace all element satisfy condition to new value
+    //replace all elements satisfy condition to new value
     list = list.Select(i => i > 1 ? 2 : i).ToList();
-    //copy a list replace all element equal value to new value to another list
+    //copy a list replace all elements equal value to new value to another list
     toList = list.Select(i => i == 1 ? 2 : i).ToList();
-    //copy a list replace all element satisfy condition to new value to another list
+    //copy a list replace all elements satisfy condition to new value to another list
     toList = list.Select(i => i > 1 ? 2 : i).ToList();
     //swap two element at two index values
     (list[1], list[2]) = (list[2], list[1]);
-    //reverse all element
+    //reverse list
     list.Reverse();
-    //copy a list reverse all element to another list
+    //copy a reversed list to another list
     toList = new List<int>(list);
     toList.Reverse();
     //rotate right with distance
