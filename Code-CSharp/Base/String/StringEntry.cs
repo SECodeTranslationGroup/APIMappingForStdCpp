@@ -1,17 +1,14 @@
-﻿using System.Diagnostics;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text;
 
 namespace CodeCsharp.Base.String;
-
-using System;
 
 public class StringEntry {
   public static void StringProgram() {
     //initialize string with const literal
     string str = "123456789";
     //initialize empty string
-    string myString = String.Empty;
+    string myString = string.Empty;
     //initialize with repeat chars
     string s2 = new string('c', 3);
     //initialize with substring
@@ -42,7 +39,7 @@ public class StringEntry {
     bool b8 = myString.Contains('c');
     bool b10 = myString.Contains(str);
     //compare with another string
-    int result = String.CompareOrdinal(myString, str);
+    int result = string.CompareOrdinal(myString, str);
     //find first occurence of a char or a substring
     int i1 = myString.IndexOf(str, StringComparison.Ordinal);
     int i2 = myString.IndexOf('c');

@@ -62,7 +62,7 @@ public class ListEntry {
     list.Remove("ff");
     for (node = list.First; node != null;) {
       nextNode = node.Next;
-      if ((e => e > "dd")(node.Value)) list.Remove(node);
+      if (string.CompareOrdinal(node.Value,"dd")>0) list.Remove(node);
       node = nextNode;
     }
   }

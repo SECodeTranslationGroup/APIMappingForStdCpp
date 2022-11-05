@@ -1,7 +1,5 @@
 package codejava.base.string;
 
-import java.nio.CharBuffer;
-
 public class StringEntry {
   public static void StringProgram() {
     //initialize string with const literal
