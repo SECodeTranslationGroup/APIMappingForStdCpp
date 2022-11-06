@@ -105,6 +105,6 @@ bool MapEntry::TestAll() {
     ret = ret && it.first == it.second;
   }
   if (!ret)
-    std::cout << "Map Test Failed!";
+    cout << "Map Test Failed!";
   return ret;
 }

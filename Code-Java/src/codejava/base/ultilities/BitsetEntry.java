@@ -33,10 +33,8 @@ public class BitsetEntry {
     bitset1.clear();
     bitset1.set(0, bitset1.size() - 1);
     bitset1.flip(0, bitset1.size() - 1);
-    //get bit value
+    //get a bit value
     boolean value = bitset1.get(3);
-    //get a sub bitset
-    BitSet subset = bitset1.get(10, 10 + 16);
     //whether bitset all 0
     boolean empty = bitset1.isEmpty();
     //whether bitset any 1

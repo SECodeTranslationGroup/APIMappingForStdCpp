@@ -17,9 +17,10 @@ void WeakPtrEntry::WeakPtrProgram() {
 }
 
 bool WeakPtrEntry::TestAll() {
+  using namespace std;
   bool ret = true;
-  auto strong = std::make_shared<ExampleObject>();
-  auto weak = std::weak_ptr<ExampleObject>(strong);
+  auto strong = make_shared<ExampleObject>();
+  auto weak = weak_ptr<ExampleObject>(strong);
 
   strong->SetVal(10);
   ExampleObject example_object = *weak.lock();
@@ -32,15 +33,15 @@ bool WeakPtrEntry::TestAll() {
   weak.reset();
   ret = ret && weak.expired();
 
-  weak = std::weak_ptr<ExampleObject>(strong);
+  weak = weak_ptr<ExampleObject>(strong);
   ret = ret && !weak.expired();
   strong = nullptr;
   ret = ret && weak.expired();
 
-  auto strongInt = std::make_shared<int>(1);
-  auto weakInt = std::weak_ptr<int>(strongInt);
+  auto strongInt = make_shared<int>(1);
+  auto weakInt = weak_ptr<int>(strongInt);
   ret = ret && (*weakInt.lock() == 1);
   if (!ret)
-    std::cout << "Weakptr Test Failed!";
+    cout << "Weakptr Test Failed!";
   return ret;
 }

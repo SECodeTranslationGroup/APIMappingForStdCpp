@@ -21,7 +21,18 @@ void RandomEntry::RandomProgram() {
 }
 bool RandomEntry::TestAll() {
   bool ret = true;
+  using namespace std;
+  random_device rd;
+  default_random_engine eng(rd());
+  int random_int = uniform_int_distribution<>(3, 12)(eng);
+  ret = ret && random_int >= 3 && random_int <= 12;
+  double random_double = uniform_real_distribution<>(17, 22)(eng);
+  ret = ret && random_double >= 17 && random_double <= 22;
+  vector<int> list(10);
+  uniform_int_distribution<int> dist(0, 10);
+  generate(list.begin(), list.end(), [&]()mutable { return dist(eng); });
+  ret = ret && all_of(list.begin(), list.end(), [](auto i) { return i >= 0 && i <= 10; });
   if (!ret)
-    std::cout << "Random Test Failed!";
+    cout << "Random Test Failed!";
   return ret;
 }

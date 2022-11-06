@@ -62,6 +62,6 @@ bool StackEntry::TestAll() {
     ret = ret && it.first == it.second;
   }
   if (!ret)
-    std::cout << "Stack Test Failed!";
+    cout << "Stack Test Failed!";
   return ret;
 }

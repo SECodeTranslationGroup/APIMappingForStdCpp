@@ -64,6 +64,6 @@ bool QueueEntry::TestAll() {
     ret = ret && it.first == it.second;
   }
   if (!ret)
-    std::cout << "Queue Test Failed!";
+    cout << "Queue Test Failed!";
   return ret;
 }

@@ -36,7 +36,24 @@ void OptionalEntry::OptionalProgram() {
 }
 bool OptionalEntry::TestAll() {
   bool ret = true;
+  using namespace std;
+  int i = 1;
+  optional<int> opt = make_optional(i);
+  ret = ret && opt.has_value();
+  ret = ret && opt.value_or(-1) == 1;
+  opt = nullopt;
+  ret = ret && !opt.has_value();
+  ret = ret && opt.value_or(-1) == -1;
+  string str = "example";
+  std::any any = std::any();
+  ret = ret && !any.has_value();
+  any= make_any<string>(str);
+  ret = ret && any.has_value();
+  ret = ret && any_cast<int>(&any) == nullptr;
+  ret = ret && any_cast<string>(&any) != nullptr;
+  ret = ret && any_cast<string>(any) == "example";
+
   if (!ret)
-    std::cout << "Optional Test Failed!";
+    cout << "Optional Test Failed!";
   return ret;
 }

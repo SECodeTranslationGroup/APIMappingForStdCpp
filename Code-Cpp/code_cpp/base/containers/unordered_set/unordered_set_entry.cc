@@ -68,6 +68,6 @@ bool UnorderedSetEntry::TestAll() {
     ret = ret && it.first == it.second;
   }
   if (!ret)
-    std::cout << "Hash Set Test Failed!";
+    cout << "Hash Set Test Failed!";
   return ret;
 }

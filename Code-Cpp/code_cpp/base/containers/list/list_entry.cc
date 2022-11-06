@@ -154,6 +154,6 @@ bool ListEntry::TestAll() {
     ret = ret && it.first == it.second;
   }
   if (!ret)
-    std::cout << "List Test Failed!";
+    cout << "List Test Failed!";
   return ret;
 }

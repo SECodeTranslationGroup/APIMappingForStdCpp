@@ -164,6 +164,5 @@ bool ChronoEntry::TestAll() {
   }
   if (!ret)
     cout << "Chrono Test Failed!";
-
   return ret;
 }

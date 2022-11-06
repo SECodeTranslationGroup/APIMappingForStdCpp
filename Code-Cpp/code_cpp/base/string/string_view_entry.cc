@@ -20,7 +20,19 @@ void StringViewEntry::StringViewProgram() {
 }
 bool StringViewEntry::TestAll() {
   bool ret = true;
+  using namespace std;
+  string s = "Example";
+  string_view view = s;
+  ret = ret && view[1] == 'x';
+  ret = ret && view.length() == 7;
+  ret = ret && !view.empty();
+  string_view sub = view.substr(1,2);
+  ret = ret && sub == "xa";
+  ret = ret && view.compare(sub) == -1;
+  view = string_view(s.end(),s.end());
+  ret = ret && view.empty();
+
   if (!ret)
-    std::cout << "String View Test Failed!";
+    cout << "String View Test Failed!";
   return ret;
 }

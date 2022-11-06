@@ -107,6 +107,6 @@ bool VectorEntry::TestAll() {
     ret = ret && it.first == it.second;
   }
   if (!ret)
-    std::cout << "Vector Test Failed!";
+    cout << "Vector Test Failed!";
   return ret;
 }

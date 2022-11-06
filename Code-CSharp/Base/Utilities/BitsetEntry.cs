@@ -33,10 +33,8 @@ public class BitsetEntry {
     bitset1.SetAll(false);
     bitset1.SetAll(true);
     bitset1.Not();
-    //get bit value
+    //get a bit value
     bool value = bitset1[3];
-    //get a sub bitset
-    BitArray subset = new BitArray(bitset1.Cast<bool>().Skip(10).Take(16).ToArray());
     //whether bitset all 0
     bool empty = bitset1.Cast<bool>().All(b => !b);
     //whether bitset any 1

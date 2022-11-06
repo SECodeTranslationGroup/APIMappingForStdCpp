@@ -67,6 +67,6 @@ bool PriorityQueueEntry::TestAll() {
     ret = ret && it.first == it.second;
   }
   if (!ret)
-    std::cout << "Priority Queue Test Failed!";
+    cout << "Priority Queue Test Failed!";
   return ret;
 }

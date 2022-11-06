@@ -368,6 +368,6 @@ bool AlgorithmEntry::TestAll() {
     ret = ret && it.first == it.second;
   }
   if (!ret)
-    std::cout << "Algorithm Test Failed!";
+    cout << "Algorithm Test Failed!";
   return ret;
 }

@@ -132,6 +132,6 @@ bool SetEntry::TestAll() {
     ret = ret && it.first == it.second;
   }
   if (!ret)
-    std::cout << "Set Test Failed!";
+    cout << "Set Test Failed!";
   return ret;
 }

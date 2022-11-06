@@ -97,6 +97,6 @@ bool UnorderedMapEntry::TestAll() {
     ret = ret && it.first == it.second;
   }
   if (!ret)
-    std::cout << "Hash Map Test Failed!";
+    cout << "Hash Map Test Failed!";
   return ret;
 }
