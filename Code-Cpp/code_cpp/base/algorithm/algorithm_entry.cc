@@ -51,7 +51,7 @@ void AlgorithmEntry::AlgorithmProgram() {
   //fill a list with value
   std::fill(list.begin(), list.end(), 1);
   //fill a list with length and value
-  std::fill_n(list.begin()+1, 3, 1);
+  std::fill_n(list.begin() + 1, 3, 1);
   //remove all elements equal value
   list.erase(std::remove(list.begin(), list.end(), 1), list.end());//std::erase(list,1);
   //remove all elements satisfy condition
@@ -97,7 +97,11 @@ void AlgorithmEntry::AlgorithmProgram() {
   //initialize partition lists
   std::vector<int> list1, list2;
   //partition to two lists with condition
-  std::partition_copy(list.begin(), list.end(), std::back_inserter(list1), std::back_inserter(list2), [](auto i) { return i > 1; });
+  std::partition_copy(list.begin(),
+                      list.end(),
+                      std::back_inserter(list1),
+                      std::back_inserter(list2),
+                      [](auto i) { return i > 1; });
   //sort list
   std::sort(list.begin(), list.end());
   //sort list with compare function
@@ -158,20 +162,90 @@ void AlgorithmEntry::AlgorithmProgram() {
 }
 bool AlgorithmEntry::TestAll() {
   bool ret = true;
-  std::vector<int> list1{1, 2, 1, 2, 3};
-  std::vector<int> list2{1, 2, 1, 2, 3};
+  using namespace std;
+  vector<int> l1{1, 3, 5, 7, 9, 9, 7, 5, 3, 1};
+  vector<int> l2, l3, l4, l5, l6, l7, l8, l9, l10;
+  for_each(l1.begin(), l1.end(), [&l2](auto i) { l2.emplace_back(i * 2); });
+  vector<pair<bool, bool>> bool_result_list = {
+      {all_of(l1.begin(), l1.end(), [](auto i) { return i > 0; }),
+       true},
+      {all_of(l1.begin(), l1.end(), [](auto i) { return i > 5; }),
+       false},
+      {any_of(l1.begin(), l1.end(), [](auto i) { return i > 5; }),
+       true},
+      {any_of(l1.begin(), l1.end(), [](auto i) { return i > 10; }),
+       false},
+      {none_of(l1.begin(), l1.end(), [](auto i) { return i > 10; }),
+       true},
+      {none_of(l1.begin(), l1.end(), [](auto i) { return i > 5; }),
+       false},
+  };
+  vector<pair<int, int>> int_result_list = {
+      {count(l1.begin(), l1.end(), 1),
+       2},
+      {count_if(l1.begin(), l1.end(), [](auto i) { return i > 5; }),
+       4},
+      {find(l1.begin(), l1.end(), 5) - l1.begin(),
+       2},
+      {l1.rend() - find(l1.rbegin(), l1.rend(), 5) - 1,
+       7},
+      {find_if(l1.begin(), l1.end(), [](auto i) { return i > 4; }) - l1.begin(),
+       2},
+      {find_if_not(l1.begin(), l1.end(), [](auto i) { return i < 4; }) - l1.begin(),
+       2},
+  };
+  transform(l2.begin(), l2.end(), std::back_inserter(l3), [](auto i) { return i + 1; });
+  copy(l2.begin()+1, l2.end()-1, std::back_inserter(l4));
+  copy_if(l2.begin(), l2.end(), std::back_inserter(l5),[](auto i) { return i > 6; });
+  copy_n(l2.begin(), 5, std::back_inserter(l6));
+  l7.resize(10,0);
+  fill(l7.begin(),l7.end(),1);
+  l8.resize(10,0);
+  fill_n(l8.begin(),5,1);
+  l9 = l2;
+  l9.erase(remove(l9.begin(),l9.end(),6),l9.end());
+  l10 = l2;
+  l10.erase(remove_if(l10.begin(),l10.end(),[](auto i) { return i > 6; }),l10.end());
+  vector<pair<vector<int>, vector<int>>> vector_result_list = {
+       {l2,
+        {2, 6, 10, 14, 18, 18, 14, 10, 6, 2}},
+      {l3,
+       {3, 7, 11, 15, 19, 19, 15, 11, 7, 3}},
+       {l4,
+        {6, 10, 14, 18, 18, 14, 10, 6}},
+       {l5,
+        {10, 14, 18, 18, 14, 10}},
+       {l6,
+        {2, 6, 10, 14, 18}},
+       {l7,
+        {1,1,1,1,1,1,1,1,1,1}},
+       {l8,
+        {1,1,1,1,1,0,0,0,0,0}},
+       {l9,
+        {2, 10, 14, 18, 18, 14, 10, 2}},
+       {l10,
+        {2, 6, 6, 2}}
+  };
 
-  int sum = std::inner_product(list1.begin(), list1.end(), list2.begin(),
-                               1, [](auto a, auto b) { return a * b; },
-                               [](auto a, auto b) { return a + b; });
-
-  std::partial_sum(list1.begin(), list1.end(), list2.begin(),
-                   [](auto a, auto b) { return a * b; });
-
-  std::vector<int> list3, list4;
-  std::partition_copy(list1.begin(), list1.end(),
-                      std::back_inserter(list3), std::back_inserter(list4), [](auto i) { return i > 3; });
-
+//  int sum = std::inner_product(list1.begin(), list1.end(), list2.begin(),
+//                               1, [](auto a, auto b) { return a * b; },
+//                               [](auto a, auto b) { return a + b; });
+//
+//  std::partial_sum(list1.begin(), list1.end(), list2.begin(),
+//                   [](auto a, auto b) { return a * b; });
+//
+//  std::vector<int> list3, list4;
+//  std::partition_copy(list1.begin(), list1.end(),
+//                      std::back_inserter(list3), std::back_inserter(list4), [](auto i) { return i > 3; });
+  for (const auto &it : vector_result_list) {
+    ret = ret && it.first == it.second;
+  }
+  for (auto it : bool_result_list) {
+    ret = ret && it.first == it.second;
+  }
+  for (auto it :int_result_list) {
+    ret = ret && it.first == it.second;
+  }
   if (!ret)
     std::cout << "Algorithm Test Failed!";
   return ret;

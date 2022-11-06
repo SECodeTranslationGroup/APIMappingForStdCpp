@@ -1,5 +1,6 @@
 #include "cctype_entry.h"
 #include "../misc/example_object.h"
+#include <vector>
 
 void CctypeEntry::CctypeProgram() {
   //initialize char
@@ -36,22 +37,39 @@ void CctypeEntry::CctypeProgram() {
 
 bool CctypeEntry::TestAll() {
   bool ret = true;
-  ret = ret && isalnum('7') && isalnum('a') && isalnum('A') && !isalnum('\0') && !isalnum(' ');
-  ret = ret && !isalpha('7') && isalpha('a') && isalpha('A') && !isalpha('\0') && !isalpha(' ');
-  ret = ret && isdigit('7') && !isdigit('a') && !isdigit('A') && !isdigit('x') && !isdigit('U');
-  ret = ret && isxdigit('7') && isxdigit('a') && isxdigit('A') && !isxdigit('x') && !isxdigit('U');
-  ret = ret && !islower('7') && islower('a') && !islower('A') && !islower('\0') && !islower(' ');
-  ret = ret && !isupper('7') && !isupper('a') && isupper('A') && !isupper('\0') && !isupper(' ');
-  ret = ret && (tolower('C') == 'c') && (tolower('c') == 'c') && tolower('9') == '9' && tolower('\0') == '\0';
-  ret = ret && (toupper('C') == 'C') && (toupper('c') == 'C') && toupper('9') == '9' && toupper('\0') == '\0';
-  ret = ret && iscntrl('\0') && iscntrl('\b') && iscntrl('\t') && !iscntrl(' ') && !iscntrl('C');
-  ret = ret && !isprint('\0') && !isprint('\b') && !isprint('\t') && isprint(' ') && isprint('C');
-  ret = ret && !isgraph('\0') && !isgraph('\b') && !isgraph('\t') && !isgraph(' ') && isgraph('C');
-  ret = ret && !isspace('\0') && !isspace('\b') && isspace('\t') && isspace(' ') && !isspace('C');
-  ret = ret && !('\0' == ' ') && !('\b' == ' ') && !('\t' == ' ') && (' ' == ' ') && !('c' == ' ');
-  ret = ret && !ispunct('\0') && !ispunct('\b') && !ispunct('\t') && !ispunct(' ') && !ispunct('C');
-  ret = ret && ispunct(',') && ispunct('!') && ispunct('/') && ispunct(':') && ispunct('?');
+  using namespace std;
+  vector<pair<char, char>> char_result_list = {
+      {tolower('C'), 'c'},
+      {tolower('c'), 'c'},
+      {tolower('9'), '9'},
+      {tolower('\0'), '\0'},
+      {toupper('C'), 'C'},
+      {toupper('c'), 'C'},
+      {toupper('9'), '9'},
+      {toupper('\0'), '\0'}
+  };
+  vector<bool> bool_result_list = {
+      isalnum('7') && isalnum('a') && isalnum('A') && !isalnum('\0') && !isalnum(' '),
+      !isalpha('7') && isalpha('a') && isalpha('A') && !isalpha('\0') && !isalpha(' '),
+      isdigit('7') && !isdigit('a') && !isdigit('A') && !isdigit('x') && !isdigit('U'),
+      isxdigit('7') && isxdigit('a') && isxdigit('A') && !isxdigit('x') && !isxdigit('U'),
+      !islower('7') && islower('a') && !islower('A') && !islower('\0') && !islower(' '),
+      !isupper('7') && !isupper('a') && isupper('A') && !isupper('\0') && !isupper(' '),
+       iscntrl('\0') && iscntrl('\b') && iscntrl('\t') && !iscntrl(' ') && !iscntrl('C'),
+      !isprint('\0') && !isprint('\b') && !isprint('\t') && isprint(' ') && isprint('C'),
+      !isgraph('\0') && !isgraph('\b') && !isgraph('\t') && !isgraph(' ') && isgraph('C'),
+      !isspace('\0') && !isspace('\b') && isspace('\t') && isspace(' ') && !isspace('C'),
+      !('\0' == ' ') && !('\b' == ' ') && !('\t' == ' ') && (' ' == ' ') && !('c' == ' '),
+      !ispunct('\0') && !ispunct('\b') && !ispunct('\t') && !ispunct(' ') && !ispunct('C'),
+      ispunct(',') && ispunct('!') && ispunct('/') && ispunct(':') && ispunct('?')
+  };
+  for (auto it : char_result_list) {
+    ret = ret && it.first == it.second;
+  }
+  for (auto it : bool_result_list) {
+    ret = ret && it;
+  }
   if (!ret)
-    std::cout << "Ctype Test Failed!";
+    cout << "Ctype Test Failed!";
   return ret;
 }
