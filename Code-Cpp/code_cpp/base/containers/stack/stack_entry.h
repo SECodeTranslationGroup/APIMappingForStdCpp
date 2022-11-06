@@ -7,7 +7,7 @@
 class StackEntry {
  public:
   static void StackProgram();
-
+  static bool TestAll();
 };
 
 #endif //CODE_CPP_CODE_CPP_BASE_STACK_STACK_ENTRY_H_

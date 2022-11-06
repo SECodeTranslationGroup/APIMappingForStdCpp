@@ -7,7 +7,7 @@
 class QueueEntry {
  public:
   static void QueueProgram();
-
+  static bool TestAll();
 };
 
 #endif //CODE_CPP_CODE_CPP_BASE_QUEUE_QUEUE_ENTRY_H_

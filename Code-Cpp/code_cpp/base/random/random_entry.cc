@@ -1,4 +1,5 @@
 #include "random_entry.h"
+#include <iostream>
 void RandomEntry::RandomProgram() {
   //initialize random generator
   std::random_device rd;
@@ -17,4 +18,10 @@ void RandomEntry::RandomProgram() {
   std::vector<double> list2(10);
   std::uniform_real_distribution<double> dist2(0, 10);
   std::generate(list.begin(), list.end(), [&]()mutable { return dist2(eng); });
+}
+bool RandomEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Random Test Failed!";
+  return ret;
 }

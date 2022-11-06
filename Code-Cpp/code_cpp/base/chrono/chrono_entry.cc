@@ -1,4 +1,5 @@
 #include "chrono_entry.h"
+#include <iostream>
 
 void ChronoEntry::ChronoProgram() {
   using namespace std::literals;
@@ -83,4 +84,10 @@ void ChronoEntry::ChronoProgram() {
   duration = std::chrono::minutes(10);
   //get a duration of several seconds
   duration = std::chrono::seconds(10);
+}
+bool ChronoEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Chrono Test Failed!";
+  return ret;
 }

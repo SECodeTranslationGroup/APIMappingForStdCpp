@@ -61,3 +61,9 @@ void ListEntry::ListProgram() {
   //remove all elements satisfy condition
   list.remove_if([](auto e) { return e > "dd"; });
 }
+bool ListEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "List Test Failed!";
+  return ret;
+}

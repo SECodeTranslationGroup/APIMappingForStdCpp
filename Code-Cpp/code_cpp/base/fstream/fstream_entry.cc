@@ -1,5 +1,5 @@
 #include "fstream_entry.h"
-#include <sstream>
+#include <iostream>
 void FstreamEntry::FstreamProgram() {
   //initialize string
   std::string str = "output";
@@ -71,4 +71,10 @@ void FstreamEntry::FstreamProgram() {
   random_access_file.put('d');
   //close
   random_access_file.close();
+}
+bool FstreamEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Fstream Test Failed!";
+  return ret;
 }

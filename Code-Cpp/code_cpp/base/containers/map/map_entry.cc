@@ -46,3 +46,9 @@ void MapEntry::MapProgram() {
   it = map.upper_bound("cc");
   result = it != map.end() ? std::make_optional(it->second) : std::nullopt;
 }
+bool MapEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Map Test Failed!";
+  return ret;
+}

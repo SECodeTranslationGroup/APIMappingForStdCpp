@@ -5,10 +5,9 @@
 #include "../../misc/example_object.h"
 
 class UnorderedMapEntry {
-public:
-    static void UnorderedMapProgram();
-
+ public:
+  static void UnorderedMapProgram();
+  static bool TestAll();
 };
-
 
 #endif //CODE_CPP_CODE_CPP_BASE_UNORDERED_MAP_UNORDERED_MAP_ENTRY_H_

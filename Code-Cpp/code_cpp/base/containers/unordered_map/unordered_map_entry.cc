@@ -40,3 +40,9 @@ void UnorderedMapEntry::UnorderedMapProgram() {
   //get optional value of key
   std::optional<std::string> result = it != hash_map.end() ? std::make_optional(it->second) : std::nullopt;
 }
+bool UnorderedMapEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Hash Map Test Failed!";
+  return ret;
+}

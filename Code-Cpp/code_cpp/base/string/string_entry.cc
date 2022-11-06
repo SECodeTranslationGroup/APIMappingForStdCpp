@@ -1,4 +1,5 @@
 #include "string_entry.h"
+#include <iostream>
 void StringEntry::StringProgram() {
   //initialize string with const literal
   std::string str = "123456789";
@@ -102,4 +103,10 @@ void StringEntry::StringProgram() {
   //string concat other type of values
   std::string add_string3 = str + std::to_string(1);
 
+}
+bool StringEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "String Test Failed!";
+  return ret;
 }

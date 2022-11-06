@@ -5,6 +5,7 @@
 class RegexEntry {
  public:
   static void RegexProgram();
+  static bool TestAll();
 };
 
 #endif //CODE_CPP_CODE_CPP_BASE_REGEX_REGEX_ENTRY_H_

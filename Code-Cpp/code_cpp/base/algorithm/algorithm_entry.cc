@@ -156,7 +156,8 @@ void AlgorithmEntry::AlgorithmProgram() {
   to_list.clear();
   std::partial_sum(c_list.begin(), c_list.end(), std::back_inserter(to_list), [](auto a, auto b) { return a * b; });
 }
-bool AlgorithmEntry::Test1() {
+bool AlgorithmEntry::TestAll() {
+  bool ret = true;
   std::vector<int> list1{1, 2, 1, 2, 3};
   std::vector<int> list2{1, 2, 1, 2, 3};
 
@@ -169,7 +170,9 @@ bool AlgorithmEntry::Test1() {
 
   std::vector<int> list3, list4;
   std::partition_copy(list1.begin(), list1.end(),
-                      list3.begin(), list4.begin(), [](auto i) { return i > 3; });
+                      std::back_inserter(list3), std::back_inserter(list4), [](auto i) { return i > 3; });
 
-  return sum > 0;
+  if (!ret)
+    std::cout << "Algorithm Test Failed!";
+  return ret;
 }

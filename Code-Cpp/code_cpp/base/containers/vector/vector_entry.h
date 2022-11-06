@@ -7,7 +7,7 @@
 class VectorEntry {
  public:
   static void VectorProgram();
-
+  static bool TestAll();
 };
 
 #endif //CODE_CPP_CODE_CPP_BASE_VECTOR_VECTOR_ENTRY_H_

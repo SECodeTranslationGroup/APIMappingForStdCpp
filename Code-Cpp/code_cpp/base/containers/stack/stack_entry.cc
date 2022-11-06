@@ -25,3 +25,9 @@ void StackEntry::StackProgram() {
   //get first element
   std::string element = stack.top();
 }
+bool StackEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Stack Test Failed!";
+  return ret;
+}

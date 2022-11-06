@@ -1,4 +1,5 @@
 #include "bitset_entry.h"
+#include <iostream>
 void BitsetEntry::BitsetProgram() {
   //initialize empty bitset
   std::bitset<64> bitset1;
@@ -43,4 +44,10 @@ void BitsetEntry::BitsetProgram() {
   bitset1 >>= 7;
   //left shift
   bitset1 <<= 7;
+}
+bool BitsetEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Bitset Test Failed!";
+  return ret;
 }

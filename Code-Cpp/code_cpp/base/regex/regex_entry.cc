@@ -1,4 +1,5 @@
 #include "regex_entry.h"
+#include <iostream>
 void RegexEntry::RegexProgram() {
   //initialize string
   std::string str("foo.txt");
@@ -32,4 +33,10 @@ void RegexEntry::RegexProgram() {
   std::string replace_first_str =  std::regex_replace(str,pattern,"[$&]",std::regex_constants::format_first_only);
   //replace all substring matches regex pattern
   std::string replace_str =  std::regex_replace(str,pattern,"[$&]");
+}
+bool RegexEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Regex Test Failed!";
+  return ret;
 }

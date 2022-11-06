@@ -44,3 +44,9 @@ void VectorEntry::VectorProgram() {
   //remove a range of elements at given position
   vec.erase(vec.begin()+1,vec.begin()+3);
 }
+bool VectorEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Vector Test Failed!";
+  return ret;
+}

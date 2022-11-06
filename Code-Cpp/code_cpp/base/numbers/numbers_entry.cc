@@ -1,4 +1,5 @@
 #include "numbers_entry.h"
+#include <iostream>
 void NumbersEntry::NumbersProgram() {
   //e
   double e = std::numbers::e;
@@ -17,4 +18,10 @@ void NumbersEntry::NumbersProgram() {
   float float_min = std::numeric_limits<float>::min();
   double double_max = std::numeric_limits<double>::max();
   double double_min = std::numeric_limits<double>::min();
+}
+bool NumbersEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Numbers Test Failed!";
+  return ret;
 }

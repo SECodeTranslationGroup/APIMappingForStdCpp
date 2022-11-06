@@ -34,3 +34,9 @@ void OptionalEntry::OptionalProgram() {
   std::optional<double> any_value =
       b3 ? std::make_optional(std::any_cast<double>(any_map[2])) : std::nullopt;
 }
+bool OptionalEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Optional Test Failed!";
+  return ret;
+}

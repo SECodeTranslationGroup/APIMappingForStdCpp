@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-void VectorEntry::UnorderedSetProgram() {
+void UnorderedSetEntry::UnorderedSetProgram() {
   //initialize a hash set
   std::unordered_set<std::string> hash_set;
   //initialize a hash set with value
@@ -29,4 +29,10 @@ void VectorEntry::UnorderedSetProgram() {
   bool b2 = hash_set == hash_set1;
   //remove element equal value
   hash_set.erase("dd");
+}
+bool UnorderedSetEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Hash Set Test Failed!";
+  return ret;
 }

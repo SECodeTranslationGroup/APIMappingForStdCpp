@@ -6,6 +6,7 @@
 class FstreamEntry {
  public:
   static void FstreamProgram();
+  static bool TestAll();
 };
 
 #endif //CODE_CPP_CODE_CPP_BASE_FSTREAM_FSTREAM_ENTRY_H_

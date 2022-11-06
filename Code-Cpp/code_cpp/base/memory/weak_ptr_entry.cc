@@ -16,56 +16,31 @@ void WeakPtrEntry::WeakPtrProgram() {
   bool expired = weak.expired();
 }
 
-bool WeakPtrEntry::Test1() {
+bool WeakPtrEntry::TestAll() {
   bool ret = true;
   auto strong = std::make_shared<ExampleObject>();
   auto weak = std::weak_ptr<ExampleObject>(strong);
+
+  strong->SetVal(10);
+  ExampleObject example_object = *weak.lock();
+  ret = ret && (example_object.GetVal() == 10);
+
+  weak.lock()->SetVal(10);
+  ret = ret && (strong->GetVal() == 10);
+
   ret = ret && !weak.expired();
   weak.reset();
   ret = ret && weak.expired();
-  return ret;
-}
 
-bool WeakPtrEntry::Test2() {
-  bool ret = true;
-  auto strong = std::make_shared<ExampleObject>();
-  auto weak = std::weak_ptr<ExampleObject>(strong);
+  weak = std::weak_ptr<ExampleObject>(strong);
   ret = ret && !weak.expired();
   strong = nullptr;
   ret = ret && weak.expired();
-  return ret;
-}
 
-bool WeakPtrEntry::Test3() {
-  bool ret = true;
-  auto strong = std::make_shared<ExampleObject>();
-  strong->SetVal(10);
-  auto weak = std::weak_ptr<ExampleObject>(strong);
-  ExampleObject example_object = *weak.lock();
-  ret = ret && (example_object.GetVal() == 10);
+  auto strongInt = std::make_shared<int>(1);
+  auto weakInt = std::weak_ptr<int>(strongInt);
+  ret = ret && (*weakInt.lock() == 1);
+  if (!ret)
+    std::cout << "Weakptr Test Failed!";
   return ret;
-}
-
-bool WeakPtrEntry::Test4() {
-  bool ret = true;
-  auto strong = std::make_shared<ExampleObject>();
-  auto weak = std::weak_ptr<ExampleObject>(strong);
-  weak.lock()->SetVal(10);
-  ret = ret && (strong->GetVal() == 10);
-  return ret;
-}
-
-bool WeakPtrEntry::Test5() {
-  bool ret = true;
-  auto strong = std::make_shared<int>(1);
-  auto weak = std::weak_ptr<int>(strong);
-  ret = ret && (*weak.lock() == 1);
-  return ret;
-}
-
-bool WeakPtrEntry::TestAll() {
-  bool test = Test1() && Test2() && Test3() && Test4() && Test5();
-  if (!test)
-    std::cout << "WeakPtr Test Failed!";
-  return test;
 }

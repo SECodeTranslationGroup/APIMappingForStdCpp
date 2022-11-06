@@ -7,7 +7,7 @@
 class ListEntry {
  public:
   static void ListProgram();
-
+  static bool TestAll();
 };
 
 #endif //CODE_CPP_CODE_CPP_BASE_LIST_LIST_ENTRY_H_

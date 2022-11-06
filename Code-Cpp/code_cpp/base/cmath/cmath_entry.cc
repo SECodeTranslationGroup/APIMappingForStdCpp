@@ -1,4 +1,5 @@
 #include "cmath_entry.h"
+#include <iostream>
 
 void CmathEntry::CmathProgram() {
   //initialize math values
@@ -82,4 +83,10 @@ void CmathEntry::CmathProgram() {
   bool is_inf = std::isinf(d1);
   //whether float is nan
   bool is_nan = std::isnan(d1);
+}
+bool CmathEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Cmath Test Failed!";
+  return ret;
 }

@@ -65,3 +65,9 @@ void SetEntry::SetProgram() {
   it = set.upper_bound("cc");
   result = it != set.end() ? std::make_optional(*it) : std::nullopt;
 }
+bool SetEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Set Test Failed!";
+  return ret;
+}

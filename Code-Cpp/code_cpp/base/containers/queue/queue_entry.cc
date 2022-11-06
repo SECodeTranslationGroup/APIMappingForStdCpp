@@ -27,3 +27,9 @@ void QueueEntry::QueueProgram() {
   //get last element
   element = queue.back();
 }
+bool QueueEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Queue Test Failed!";
+  return ret;
+}

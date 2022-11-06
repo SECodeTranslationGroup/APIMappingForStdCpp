@@ -24,3 +24,9 @@ void PriorityQueueEntry::PriorityQueueProgram() {
   //get smallest element
   std::string element = heap.top();
 }
+bool PriorityQueueEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "Priority Queue Test Failed!";
+  return ret;
+}

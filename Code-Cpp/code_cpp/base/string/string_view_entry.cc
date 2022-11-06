@@ -1,4 +1,5 @@
 #include "string_view_entry.h"
+#include <iostream>
 void StringViewEntry::StringViewProgram() {
   //initialize string
   std::string s = std::string("Example");
@@ -16,4 +17,10 @@ void StringViewEntry::StringViewProgram() {
   int result = view.compare(sub);
   //build new string from view
   std::string s1 = std::string(view);
+}
+bool StringViewEntry::TestAll() {
+  bool ret = true;
+  if (!ret)
+    std::cout << "String View Test Failed!";
+  return ret;
 }

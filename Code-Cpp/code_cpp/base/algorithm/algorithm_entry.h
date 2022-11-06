@@ -6,7 +6,7 @@
 class AlgorithmEntry {
  public:
   static void AlgorithmProgram();
-  static bool Test1();
+  static bool TestAll();
 };
 
 #endif //CODE_CPP_CODE_CPP_BASE_ALGORITHM_ALGORITHM_ENTRY_H_

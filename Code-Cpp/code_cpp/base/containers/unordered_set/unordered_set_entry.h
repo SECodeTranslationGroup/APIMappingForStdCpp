@@ -4,10 +4,10 @@
 #include <unordered_set>
 #include "../../misc/example_object.h"
 
-class VectorEntry {
+class UnorderedSetEntry {
  public:
   static void UnorderedSetProgram();
-
+  static bool TestAll();
 };
 
 
