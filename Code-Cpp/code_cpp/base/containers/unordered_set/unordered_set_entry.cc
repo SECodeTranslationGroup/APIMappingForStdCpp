@@ -32,6 +32,41 @@ void UnorderedSetEntry::UnorderedSetProgram() {
 }
 bool UnorderedSetEntry::TestAll() {
   bool ret = true;
+  using namespace std;
+  unordered_set<int> c, c1, c2, c3, c4;
+  vector<int> vec{1, 3, 5, 7, 9};
+  c = {1, 2, 3, 4, 5};
+  c2 = c;
+  c.clear();
+  c1 = c;
+  c.insert(vec.begin(), vec.end());
+  c3 = c;
+  c.erase(3);
+  c4 = c;
+  vector<pair<bool, bool>> bool_result_list = {
+      {c1.empty(), true},
+      {c.count(7) > 0, true}
+  };
+  vector<pair<unordered_set<int>, unordered_set<int>>> container_result_list = {
+      {c2,
+       {1, 2, 3, 4, 5}},
+      {c3,
+       {1, 3, 5, 7, 9}},
+      {c4,
+       {1, 5, 7, 9}}
+  };
+  vector<pair<int, int>> int_result_list = {
+      {c4.size(), 4}
+  };
+  for (const auto &it : container_result_list) {
+    ret = ret && it.first == it.second;
+  }
+  for (auto it : bool_result_list) {
+    ret = ret && it.first == it.second;
+  }
+  for (auto it : int_result_list) {
+    ret = ret && it.first == it.second;
+  }
   if (!ret)
     std::cout << "Hash Set Test Failed!";
   return ret;

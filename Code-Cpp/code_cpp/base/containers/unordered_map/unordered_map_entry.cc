@@ -42,6 +42,60 @@ void UnorderedMapEntry::UnorderedMapProgram() {
 }
 bool UnorderedMapEntry::TestAll() {
   bool ret = true;
+  using namespace std;
+  unordered_map<int, int> c, c1, c2, c3, c4, c5, c6, c7, c8;
+  unordered_map<int, int> m{{1, 10}, {2, 8}, {3, 13}, {4, 9}};
+  c = {{1, 10}, {2, 8}, {3, 13}, {4, 9}};
+  c.clear();
+  c1 = c;
+  c = m;
+  c2 = c;
+  c.try_emplace(2,10);
+  c3 = c;
+  c.try_emplace(5,10);
+  c4 = c;
+  c[2] = 10;
+  c5 = c;
+  m = {{0, 3}, {1, 8}, {2, 7}, {10, 3}};
+  c.merge(m);
+  c6 = c;
+  for (const auto &p : m)
+    c[p.first] = p.second;
+  c7 = c;
+  c.erase(2);
+  c8 = c;
+  vector<pair<bool, bool>> bool_result_list = {
+      {c1.empty(), true},
+      {c.count(3) > 0, true}
+  };
+  vector<pair<unordered_map<int, int>, unordered_map<int, int>>> container_result_list = {
+      {c2,
+       {{1, 10}, {2, 8}, {3, 13}, {4, 9}}},
+      {c3,
+       {{1, 10}, {2, 8}, {3, 13}, {4, 9}}},
+      {c4,
+       {{1, 10}, {2, 8}, {3, 13}, {4, 9},{5,10}}},
+      {c5,
+       {{1, 10}, {2, 10}, {3, 13}, {4, 9},{5,10}}},
+      {c6,
+       {{0,3},{1, 10}, {2, 10}, {3, 13}, {4, 9},{5,10},{10,3}}},
+      {c7,
+       {{0,3},{1, 8}, {2, 7}, {3, 13}, {4, 9},{5,10},{10,3}}},
+      {c8,
+       {{0,3},{1, 8}, {3, 13}, {4, 9},{5,10},{10,3}}}
+  };
+  vector<pair<int, int>> int_result_list = {
+      {c.find(3)->second, 13}
+  };
+  for (const auto &it : container_result_list) {
+    ret = ret && it.first == it.second;
+  }
+  for (auto it : bool_result_list) {
+    ret = ret && it.first == it.second;
+  }
+  for (auto it : int_result_list) {
+    ret = ret && it.first == it.second;
+  }
   if (!ret)
     std::cout << "Hash Map Test Failed!";
   return ret;

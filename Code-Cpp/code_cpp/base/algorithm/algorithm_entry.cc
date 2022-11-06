@@ -172,56 +172,56 @@ void AlgorithmEntry::AlgorithmProgram() {
 bool AlgorithmEntry::TestAll() {
   bool ret = true;
   using namespace std;
-  vector<int> l1{1, 3, 5, 7, 9, 9, 7, 5, 3, 1};
-  vector<int> sort_l{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  vector<int> l{1, 3, 5, 7, 9, 9, 7, 5, 3, 1};
+  vector<int> l1{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
   vector<int> l2, l3, l4, l5, l6, l7, l8, l9, l10;
   vector<int> l11, l12, l13, l14, l15, l16, l17, l18;
   vector<int> l19, l20, l21, l22, l23, l24, l25, l26;
   vector<int> l27, l28, l29, l30, l31, l32;
-  for_each(l1.begin(), l1.end(), [&l2](auto i) { l2.emplace_back(i * 2); });
+  for_each(l.begin(), l.end(), [&l2](auto i) { l2.emplace_back(i * 2); });
   vector<pair<bool, bool>> bool_result_list = {
-      {all_of(l1.begin(), l1.end(), [](auto i) { return i > 0; }),
+      {all_of(l.begin(), l.end(), [](auto i) { return i > 0; }),
        true},
-      {all_of(l1.begin(), l1.end(), [](auto i) { return i > 5; }),
+      {all_of(l.begin(), l.end(), [](auto i) { return i > 5; }),
        false},
-      {any_of(l1.begin(), l1.end(), [](auto i) { return i > 5; }),
+      {any_of(l.begin(), l.end(), [](auto i) { return i > 5; }),
        true},
-      {any_of(l1.begin(), l1.end(), [](auto i) { return i > 10; }),
+      {any_of(l.begin(), l.end(), [](auto i) { return i > 10; }),
        false},
-      {none_of(l1.begin(), l1.end(), [](auto i) { return i > 10; }),
+      {none_of(l.begin(), l.end(), [](auto i) { return i > 10; }),
        true},
-      {none_of(l1.begin(), l1.end(), [](auto i) { return i > 5; }),
+      {none_of(l.begin(), l.end(), [](auto i) { return i > 5; }),
        false},
-      {binary_search(sort_l.begin(), sort_l.end(), 5),
+      {binary_search(l1.begin(), l1.end(), 5),
        true},
-      {binary_search(sort_l.begin(), sort_l.end(), 0),
+      {binary_search(l1.begin(), l1.end(), 0),
        false},
   };
   vector<pair<int, int>> int_result_list = {
-      {count(l1.begin(), l1.end(), 1),
+      {count(l.begin(), l.end(), 1),
        2},
-      {count_if(l1.begin(), l1.end(), [](auto i) { return i > 5; }),
+      {count_if(l.begin(), l.end(), [](auto i) { return i > 5; }),
        4},
-      {find(l1.begin(), l1.end(), 5) - l1.begin(),
+      {find(l.begin(), l.end(), 5) - l.begin(),
        2},
-      {l1.rend() - find(l1.rbegin(), l1.rend(), 5) - 1,
+      {l.rend() - find(l.rbegin(), l.rend(), 5) - 1,
        7},
-      {find_if(l1.begin(), l1.end(), [](auto i) { return i > 4; }) - l1.begin(),
+      {find_if(l.begin(), l.end(), [](auto i) { return i > 4; }) - l.begin(),
        2},
-      {find_if_not(l1.begin(), l1.end(), [](auto i) { return i < 4; }) - l1.begin(),
+      {find_if_not(l.begin(), l.end(), [](auto i) { return i < 4; }) - l.begin(),
        2},
       {max(1, 2),
        2},
-      {*max_element(l1.begin(), l1.end()),
+      {*max_element(l.begin(), l.end()),
        9},
-      {*max_element(l1.begin(), l1.end(),
+      {*max_element(l.begin(), l.end(),
                     [](auto a, auto b) { return abs(a - 4) < abs(b - 4); }),
        9},
       {min(1, 2),
        1},
-      {*min_element(l1.begin(), l1.end()),
+      {*min_element(l.begin(), l.end()),
        1},
-      {*min_element(l1.begin(), l1.end(),
+      {*min_element(l.begin(), l.end(),
                     [](auto a, auto b) { return abs(a - 5) < abs(b - 5); }),
        5},
       {clamp(5, 0, 100),
@@ -230,13 +230,13 @@ bool AlgorithmEntry::TestAll() {
        3},
       {clamp(5, 6, 100),
        6},
-      {accumulate(l1.begin(), l1.end(), 0),
+      {accumulate(l.begin(), l.end(), 0),
        50},
-      {accumulate(l1.begin(), l1.end(), 1, [](auto a, auto b) { return a * b; }),
+      {accumulate(l.begin(), l.end(), 1, [](auto a, auto b) { return a * b; }),
        893025},
-      {inner_product(l1.begin(), l1.end(), l1.begin(), 0),
+      {inner_product(l.begin(), l.end(), l.begin(), 0),
        330},
-      {inner_product(l1.begin(), l1.end(), l1.begin(),
+      {inner_product(l.begin(), l.end(), l.begin(),
                      1, [](auto a, auto b) { return a * b; },
                      [](auto a, auto b) { return a + b; }),
        914457600}
@@ -293,7 +293,7 @@ bool AlgorithmEntry::TestAll() {
   adjacent_difference(l2.begin(), l2.end(), back_inserter(l30),
                       [](auto a, auto b) { return a * b; });
   partial_sum(l2.begin(), l2.end(), back_inserter(l31));
-  partial_sum(sort_l.begin(), sort_l.end(), back_inserter(l32), [](auto a, auto b) { return a * b; });
+  partial_sum(l1.begin(), l1.end(), back_inserter(l32), [](auto a, auto b) { return a * b; });
   vector<pair<vector<int>, vector<int>>> vector_result_list = {
       {l2,
        {2, 6, 10, 14, 18, 18, 14, 10, 6, 2}},
@@ -358,17 +358,6 @@ bool AlgorithmEntry::TestAll() {
       {l32,
        {1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800}}
   };
-
-//  int sum = std::inner_product(list1.begin(), list1.end(), list2.begin(),
-//                               1, [](auto a, auto b) { return a * b; },
-//                               [](auto a, auto b) { return a + b; });
-//
-//  std::partial_sum(list1.begin(), list1.end(), list2.begin(),
-//                   [](auto a, auto b) { return a * b; });
-//
-//  std::vector<int> list3, list4;
-//  std::partition_copy(list1.begin(), list1.end(),
-//                      std::back_inserter(list3), std::back_inserter(list4), [](auto i) { return i > 3; });
   for (const auto &it : vector_result_list) {
     ret = ret && it.first == it.second;
   }

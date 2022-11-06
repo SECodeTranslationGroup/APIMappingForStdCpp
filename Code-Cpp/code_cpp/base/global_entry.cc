@@ -15,7 +15,6 @@
 #include "containers/unordered_set/unordered_set_entry.h"
 #include "containers/vector/vector_entry.h"
 #include "fstream/fstream_entry.h"
-#include "numbers/numbers_entry.h"
 #include "random/random_entry.h"
 #include "regex/regex_entry.h"
 #include "string/string_entry.h"
@@ -43,7 +42,6 @@ void GlobalEntry::TestAllEntry() {
   test = test && VectorEntry::TestAll();
   test = test && FstreamEntry::TestAll();
   test = test && WeakPtrEntry::TestAll();
-  test = test && NumbersEntry::TestAll();
   test = test && RandomEntry::TestAll();
   test = test && RegexEntry::TestAll();
   test = test && StringEntry::TestAll();

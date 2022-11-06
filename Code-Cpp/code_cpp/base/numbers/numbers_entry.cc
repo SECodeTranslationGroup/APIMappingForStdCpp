@@ -19,9 +19,3 @@ void NumbersEntry::NumbersProgram() {
   double double_max = std::numeric_limits<double>::max();
   double double_min = std::numeric_limits<double>::min();
 }
-bool NumbersEntry::TestAll() {
-  bool ret = true;
-  if (!ret)
-    std::cout << "Numbers Test Failed!";
-  return ret;
-}
