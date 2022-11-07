@@ -84,4 +84,59 @@ public class CmathEntry {
     //whether float is nan
     bool isNan = double.IsNaN(d1);
   }
+  
+  public static bool TestAll() {
+    bool ret = true;
+    double epsilon = 1e-10;
+    ret = Math.Abs(Math.Abs(-3.5) - 3.5) < epsilon
+        && Math.Abs(6.8 % 2.4 - 2) < epsilon
+        && Math.Abs(Math.IEEERemainder(6.8, 2.4) + 0.4) < epsilon
+        && Math.Abs(Math.FusedMultiplyAdd(0.9, 0.9, 0.19) - 1.0) < epsilon
+        && Math.Abs((-1 > -4 ? -1+4:0)-3) <epsilon
+        && Math.Abs((-4> -1 ? -4+1:0) - 0) < epsilon
+        && Math.Abs(1 + 0.2 * (5 - 1) - 1.8) < epsilon
+        && Math.Abs(5 + 0.2 * (1 - 5) - 4.2) < epsilon
+        && Math.Abs(Math.Exp(2) - Math.E * Math.E) < epsilon
+        && Math.Abs(Math.Pow(2, 2) - 4) < epsilon
+        && Math.Abs(Math.Exp(2)-1 - Math.E * Math.E + 1) < epsilon
+        && Math.Abs(Math.Log(Math.E * Math.E) - 2) < epsilon
+        && Math.Abs(Math.Log(4) / Math.Log(2) - 2) < epsilon
+        && Math.Abs(Math.Log10(100) - 2) < epsilon
+        && Math.Abs(Math.Log(Math.E * Math.E - 1+1) - 2) < epsilon
+        && Math.Abs(Math.Log(9) / Math.Log(3) - 2) < epsilon
+        && Math.Abs(Math.Pow(2, 3) - 8) < epsilon
+        && Math.Abs(Math.Sqrt(3*3+4*4) - 5) < epsilon
+        && Math.Abs(Math.Sqrt(3*3+4*4+12*12) - 13) < epsilon
+        && Math.Abs(Math.Sin(Math.PI / 6) - 0.5) < epsilon
+        && Math.Abs(Math.Cos(Math.PI / 3) - 0.5) < epsilon
+        && Math.Abs(Math.Tan(Math.PI / 4) - 1) < epsilon
+        && Math.Abs(Math.Asin(0.5) - Math.PI / 6) < epsilon
+        && Math.Abs(Math.Acos(0.5) - Math.PI / 3) < epsilon
+        && Math.Abs(Math.Atan(1) - Math.PI / 4) < epsilon
+        && Math.Abs(Math.Atan2(1, 1) - Math.PI / 4) < epsilon
+        && Math.Abs(Math.Sinh(1) - (Math.E - 1 / Math.E) / 2) < epsilon
+        && Math.Abs(Math.Cosh(1) - (Math.E + 1 / Math.E) / 2) < epsilon
+        && Math.Abs(Math.Tanh(1) - Math.Sinh(1) / Math.Cosh(1)) < epsilon
+        && Math.Abs(Math.Ceiling(0.2) - 1) < epsilon
+        && Math.Abs(Math.Floor(1.7) - 1) < epsilon
+        && Math.Abs((1.7 < 0 ? Math.Ceiling(1.7) : Math.Floor(1.7)) - 1) < epsilon
+        && Math.Abs((-1.7 < 0 ? Math.Ceiling(-1.7) : Math.Floor(-1.7)) + 1) < epsilon
+        && Math.Abs(Math.Round(1.7) - 2) < epsilon
+        && Math.Abs(Math.ScaleB(1.5, 3) - 12) < epsilon
+        && Math.Abs(Math.BitIncrement(0) - Double.Epsilon) < epsilon
+        && Math.Abs(Math.BitDecrement(0) + Double.Epsilon) < epsilon
+        && Math.Abs(Math.CopySign(1.3, -1) + 1.3) < epsilon
+        && Double.IsFinite(3.1)
+        && !Double.IsFinite(Double.PositiveInfinity)
+        && !Double.IsFinite(Math.Sqrt(-1))
+        && !Double.IsInfinity(3.1)
+        && Double.IsInfinity(Double.PositiveInfinity)
+        && !Double.IsInfinity(Math.Sqrt(-1))
+        && !Double.IsNaN(3.1)
+        && !Double.IsNaN(Double.PositiveInfinity)
+        && Double.IsNaN(Math.Sqrt(-1));
+    if (!ret)
+      Console.WriteLine("Cmath Test Failed!");
+    return ret;
+  }
 }

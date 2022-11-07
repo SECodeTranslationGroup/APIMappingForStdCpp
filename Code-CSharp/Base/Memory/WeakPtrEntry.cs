@@ -16,4 +16,11 @@ public class WeakPtrEntry {
     //whether weak ref contains value
     bool expired = !weak.IsAlive;
   }
+  
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Weakptr Test Failed!");
+    return ret;
+  }
 }

@@ -43,4 +43,11 @@ public class UnorderedMapEntry {
     //get optional value of key
     string? result = hashMap.GetValueOrDefault("cc", null);
   }
+  
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Unordered Map Test Failed!");
+    return ret;
+  }
 }

@@ -38,4 +38,10 @@ public class RegexEntry {
     //replace all substring matches regex pattern
     string replaceStr = pattern.Replace(str,"[$&]");
   }
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Regex Test Failed!");
+    return ret;
+  }
 }

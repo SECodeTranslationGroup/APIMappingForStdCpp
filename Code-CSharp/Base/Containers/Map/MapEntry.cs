@@ -47,4 +47,10 @@ public class MapEntry {
     //get optional value of first key greater or equal given key
     result = map.FirstOrDefault(e => string.CompareOrdinal(e.Key, "cc") >= 0,new KeyValuePair<string, string>(string.Empty,null)).Value;
   }
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Map Test Failed!");
+    return ret;
+  }
 }

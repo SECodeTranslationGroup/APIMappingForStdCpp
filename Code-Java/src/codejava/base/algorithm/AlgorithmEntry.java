@@ -86,10 +86,10 @@ public class AlgorithmEntry {
     Collections.reverse(list);
     //copy a reversed list to another list
     Collections.reverse(toList = new ArrayList<>(list));
-    //rotate right with distance
-    Collections.rotate(list, 1);
-    //copy a list rotate right with distance to another list
-    Collections.rotate(toList = new ArrayList<>(list), 1);
+    //rotate left with distance
+    Collections.rotate(list, -1);
+    //copy a list rotate left with distance to another list
+    Collections.rotate(toList = new ArrayList<>(list), -1);
     //initialize random generator
     Random rng = new Random();
     //random shuffle
@@ -237,8 +237,8 @@ public class AlgorithmEntry {
         && !l.stream().allMatch(i -> i > 10)
         && l.stream().noneMatch(i -> i > 10)
         && !l.stream().noneMatch(i -> i > 5)
-        && Collections.binarySearch(l, 5) >= 0
-        && !(Collections.binarySearch(l, 0) >= 0)
+        && Collections.binarySearch(l1, 5) >= 0
+        && !(Collections.binarySearch(l1, 0) >= 0)
         && Collections.frequency(l, 1) == 2
         && l.stream().filter(i -> i > 5).count() == 4
         && l.indexOf(5) == 2
@@ -292,8 +292,7 @@ public class AlgorithmEntry {
         && l29.equals(Arrays.asList(2, 4, 4, 4, 4, 0, -4, -4, -4, -4))
         && l30.equals(Arrays.asList(2, 12, 60, 140, 252, 324, 252, 140, 60, 12))
         && l31.equals(Arrays.asList(2, 8, 18, 32, 50, 68, 82, 92, 98, 100))
-        && l32.equals(Arrays.asList(1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800))
-    ;
+        && l32.equals(Arrays.asList(1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800));
     if (!ret)
       System.out.print("Algorithm Test Failed!");
     return ret;

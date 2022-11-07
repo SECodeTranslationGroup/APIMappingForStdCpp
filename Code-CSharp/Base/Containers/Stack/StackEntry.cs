@@ -23,4 +23,11 @@ public class StackEntry {
     //get first element
     string element = stack.Peek();
   }
+  
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Stack Test Failed!");
+    return ret;
+  }
 }

@@ -46,4 +46,10 @@ public class BitsetEntry {
     //left shift
     bitset1.LeftShift(7);
   }
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Bitset Test Failed!");
+    return ret;
+  }
 }

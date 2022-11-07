@@ -50,4 +50,11 @@ public class VectorEntry {
     //remove a range of elements at given position
     vec.RemoveRange(1,3);
   }
+  
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Vector Test Failed!");
+    return ret;
+  }
 }

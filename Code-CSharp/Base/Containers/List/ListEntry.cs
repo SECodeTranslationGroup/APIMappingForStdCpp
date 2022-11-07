@@ -85,4 +85,10 @@ public class ListEntry {
       node = nextNode;
     }
   }
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("List Test Failed!");
+    return ret;
+  }
 }

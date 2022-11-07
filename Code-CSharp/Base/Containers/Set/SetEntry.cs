@@ -57,4 +57,11 @@ public class SetEntry {
     //get optional of first value greater or equal given value
     result = set.GetViewBetween("cc", set.Max).Min;
   }
+  
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Set Test Failed!");
+    return ret;
+  }
 }

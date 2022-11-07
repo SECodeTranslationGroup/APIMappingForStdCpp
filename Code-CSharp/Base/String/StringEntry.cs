@@ -110,4 +110,10 @@ public class StringEntry {
     //string concat other type of values
     string addString3 = myString + 1;
   }
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("String Test Failed!");
+    return ret;
+  }
 }

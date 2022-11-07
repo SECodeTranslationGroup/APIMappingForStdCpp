@@ -24,4 +24,11 @@ public class PriorityQueueEntry {
     //get smallest element
     string element = heap.Peek();
   }
+  
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Priority Queue Test Failed!");
+    return ret;
+  }
 }

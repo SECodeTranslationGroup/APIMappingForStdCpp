@@ -30,6 +30,11 @@ public class OptionalEntry {
     bool b3 = anyMap[2] is double;
     //any cast to optional
     double? anyValue = b3 ? (double)anyMap[2] : null;
-
+  }
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Optional Test Failed!");
+    return ret;
   }
 }

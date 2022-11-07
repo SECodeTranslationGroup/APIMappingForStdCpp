@@ -19,4 +19,10 @@ public class StringViewEntry {
     //build new string from view
     string s1 = view.ToString();
   }
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("String View Test Failed!");
+    return ret;
+  }
 }

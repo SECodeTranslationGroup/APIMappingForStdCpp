@@ -109,8 +109,6 @@ bool ChronoEntry::TestAll() {
       && hms.minutes().count() == 30
       && hms.seconds().count() == 45
       && duration_cast<milliseconds>(time.time_since_epoch()).count() == 1666877445000L
-      && floor<days>(time) ==
-          sys_days{2022y / 10 / 27}
       && sys_days{ymd + years(1)} + time_dur ==
           sys_days{2023y / 10 / 27} + 13h + 30min + 45s
       && sys_days{ymd + months(2)} + time_dur ==

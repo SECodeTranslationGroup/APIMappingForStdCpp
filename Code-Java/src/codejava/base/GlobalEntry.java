@@ -28,7 +28,6 @@ public class GlobalEntry {
   }
   public static void testAllEntry(){
     boolean test = true;
-
     test = test && AlgorithmEntry.testAll();
     test = test && CctypeEntry.testAll();
     test = test && ChronoEntry.testAll();

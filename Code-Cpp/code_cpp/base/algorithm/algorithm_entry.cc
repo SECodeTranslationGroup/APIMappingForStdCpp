@@ -86,9 +86,9 @@ void AlgorithmEntry::AlgorithmProgram() {
   //copy a reversed list to another list
   to_list.clear();
   std::reverse_copy(list.begin(), list.end(), std::back_inserter(to_list));
-  //rotate right with distance
-  std::rotate(list.begin(), list.end() - 1, list.end());
-  //copy a list rotate right with distance to another list
+  //rotate left with distance
+  std::rotate(list.begin(), list.begin()+1, list.end());
+  //copy a list rotate left with distance to another list
   to_list.clear();
   std::rotate_copy(list.begin(), list.end() - 1, list.end(), std::back_inserter(to_list));
   //initialize random generator

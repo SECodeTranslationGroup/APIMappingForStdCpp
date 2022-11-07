@@ -91,8 +91,7 @@ public class ChronoEntry {
     boolean ret = true;
     LocalDateTime now = LocalDateTime.now();
     LocalDateTime time = LocalDateTime.of(2022, 10, 27, 13, 30, 45);
-    ret = ret
-        && !now.isBefore(time)
+    ret = !now.isBefore(time)
         && now.isAfter(time)
         && !now.isEqual(time)
         && time.getYear() == 2022
@@ -103,7 +102,6 @@ public class ChronoEntry {
         && time.getMinute() == 30
         && time.getSecond() == 45
         && time.atZone(ZoneOffset.UTC).toInstant().toEpochMilli() == 1666877445000L
-        && time.truncatedTo(DAYS).isEqual(LocalDateTime.of(2022, 10, 27, 0, 0, 0))
         && time.plusYears(1).isEqual(LocalDateTime.of(
         2023, 10, 27, 13, 30, 45))
         && time.plusMonths(2).isEqual(LocalDateTime.of(

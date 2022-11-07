@@ -101,4 +101,11 @@ public class FstreamEntry {
     } catch (IOException exception) {
     }
   }
+  
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Fstream Test Failed!");
+    return ret;
+  }
 }

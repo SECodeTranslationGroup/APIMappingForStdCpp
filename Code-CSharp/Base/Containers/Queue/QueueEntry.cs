@@ -25,4 +25,11 @@ public class QueueEntry {
     //get last element
     element = queue.Last();
   }
+  
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Queue Test Failed!");
+    return ret;
+  }
 }

@@ -31,4 +31,11 @@ public class UnorderedSetEntry {
     //remove element equal value
     hashSet.Remove("cc");
   }
+  
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Unordered Set Test Failed!");
+    return ret;
+  }
 }

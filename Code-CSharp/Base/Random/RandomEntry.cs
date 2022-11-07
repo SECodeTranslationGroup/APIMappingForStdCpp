@@ -19,4 +19,10 @@ public class RandomEntry {
     List<Double> list2;
     list2 = Enumerable.Repeat(0, 10).Select(i => eng.NextDouble() * 10).ToList();
   }
+  public static bool TestAll() {
+    bool ret = true;
+    if (!ret)
+      Console.WriteLine("Random Test Failed!");
+    return ret;
+  }
 }
