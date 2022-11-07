@@ -29,7 +29,7 @@ bool StringViewEntry::TestAll() {
   string_view sub = view.substr(1, 2);
   ret = ret
       && sub == "xa"
-      && view.compare(sub) == -1;
+      && view.compare(sub) <0;
   view = string_view(s.end(), s.end());
   ret = ret && view.empty();
   if (!ret)

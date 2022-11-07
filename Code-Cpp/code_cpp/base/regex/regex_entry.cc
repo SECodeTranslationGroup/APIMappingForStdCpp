@@ -12,7 +12,7 @@ void RegexEntry::RegexProgram() {
   std::smatch match;
   bool b2 = std::regex_search(str, match, pattern);
   //size of match group
-  int group_size = match.size();
+  int group_size = match.size()-1;
   //whole matched string
   std::string match_str = match[0].str();
   //begin index of matched string
@@ -45,7 +45,7 @@ bool RegexEntry::TestAll() {
   string str1("1053foo.aaa.bbb0561");
   ret = ret
       && regex_search(str1, match, pattern)
-      && match.size() == 4
+      && match.size()-1 == 3
       && match[0].str() == "foo.aaa.bbb"
       && match.position(0) == 4
       && match.length(0) == 11

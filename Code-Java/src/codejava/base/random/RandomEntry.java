@@ -24,4 +24,20 @@ public class RandomEntry {
     list2 = eng.doubles(10, 0, 10).
         boxed().collect(Collectors.toList());
   }
+
+  public static boolean testAll() {
+    boolean ret = true;
+    Random eng = new Random();
+    int randomInt = 3 + eng.nextInt(12 - 3);
+    ret = randomInt >= 3 && randomInt <= 12;
+    double randomDouble = 17 + eng.nextDouble(22 - 17);
+    ret = ret && randomDouble >= 17 && randomDouble <= 22;
+    List<Integer> list;
+    list = eng.ints(10, 0, 10).
+        boxed().collect(Collectors.toList());
+    ret = ret && list.stream().allMatch(i -> i >= 0 && i <= 10);
+    if (!ret)
+      System.out.print("Random Test Failed!");
+    return ret;
+  }
 }

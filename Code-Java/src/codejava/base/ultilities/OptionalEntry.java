@@ -3,6 +3,7 @@ package codejava.base.ultilities;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.TreeMap;
 
 public class OptionalEntry {
@@ -36,5 +37,29 @@ public class OptionalEntry {
     //any cast to optional
     Optional<Double> anyValue = b3 ?
         Optional.of((Double) anyMap.get(2)) : Optional.empty();
+  }
+
+  public static boolean testAll() {
+    boolean ret = true;
+    int i = 1;
+    Optional<Integer> opt = Optional.ofNullable(i);
+    ret = opt.isPresent()
+        && opt.orElse(-1) == 1;
+    opt = Optional.empty();
+    ret = ret
+        && !opt.isPresent()
+        && opt.orElse(-1) == -1;
+    String str = "example";
+    Object any = null;
+    ret = ret && any == null;
+    any = str;
+    ret = ret
+        && any!=null
+        && !(any instanceof Integer)
+        && any instanceof String
+        && ((String)any).equals("example");
+    if (!ret)
+      System.out.print("Optional Test Failed!");
+    return ret;
   }
 }

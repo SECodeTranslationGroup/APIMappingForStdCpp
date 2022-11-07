@@ -1,9 +1,12 @@
 package codejava.base.chrono;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
 
 
 public class ChronoEntry {
@@ -84,4 +87,61 @@ public class ChronoEntry {
     duration = Duration.ofSeconds(10);
   }
 
+  public static boolean testAll() {
+    boolean ret = true;
+    LocalDateTime now = LocalDateTime.now();
+    LocalDateTime time = LocalDateTime.of(2022, 10, 27, 13, 30, 45);
+    ret = ret
+        && !now.isBefore(time)
+        && now.isAfter(time)
+        && !now.isEqual(time)
+        && time.getYear() == 2022
+        && time.getMonthValue() == 10
+        && time.getDayOfMonth() == 27
+        && time.getDayOfWeek().getValue() == 4
+        && time.getHour() == 13
+        && time.getMinute() == 30
+        && time.getSecond() == 45
+        && time.atZone(ZoneOffset.UTC).toInstant().toEpochMilli() == 1666877445000L
+        && time.truncatedTo(DAYS).isEqual(LocalDateTime.of(2022, 10, 27, 0, 0, 0))
+        && time.plusYears(1).isEqual(LocalDateTime.of(
+        2023, 10, 27, 13, 30, 45))
+        && time.plusMonths(2).isEqual(LocalDateTime.of(
+        2022, 12, 27, 13, 30, 45))
+        && time.plusDays(3).isEqual(LocalDateTime.of(
+        2022, 10, 30, 13, 30, 45))
+        && time.plusHours(4).isEqual(LocalDateTime.of(
+        2022, 10, 27, 17, 30, 45))
+        && time.plusMinutes(5).isEqual(LocalDateTime.of(
+        2022, 10, 27, 13, 35, 45))
+        && time.plusSeconds(6).isEqual(LocalDateTime.of(
+        2022, 10, 27, 13, 30, 51))
+        && time.minusYears(1).isEqual(LocalDateTime.of(
+        2021, 10, 27, 13, 30, 45))
+        && time.minusMonths(2).isEqual(LocalDateTime.of(
+        2022, 8, 27, 13, 30, 45))
+        && time.minusDays(3).isEqual(LocalDateTime.of(
+        2022, 10, 24, 13, 30, 45))
+        && time.minusHours(4).isEqual(LocalDateTime.of(
+        2022, 10, 27, 9, 30, 45))
+        && time.minusMinutes(5).isEqual(LocalDateTime.of(
+        2022, 10, 27, 13, 25, 45))
+        && time.minusSeconds(6).isEqual(LocalDateTime.of(
+        2022, 10, 27, 13, 30, 39))
+        && time.withYear(2011).isEqual(LocalDateTime.of(
+        2011, 10, 27, 13, 30, 45))
+        && time.withMonth(11).isEqual(LocalDateTime.of(
+        2022, 11, 27, 13, 30, 45))
+        && time.withDayOfMonth(11).isEqual(LocalDateTime.of(
+        2022, 10, 11, 13, 30, 45))
+        && time.withHour(11).isEqual(LocalDateTime.of(
+        2022, 10, 27, 11, 30, 45))
+        && time.withMinute(11).isEqual(LocalDateTime.of(
+        2022, 10, 27, 13, 11, 45))
+        && time.withSecond(11).isEqual(LocalDateTime.of(
+        2022, 10, 27, 13, 30, 11));
+    if (!ret)
+      System.out.print("Chrono Test Failed!");
+    return ret;
+  }
 }

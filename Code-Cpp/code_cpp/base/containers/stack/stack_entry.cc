@@ -42,7 +42,7 @@ bool StackEntry::TestAll() {
       && c.top() == 5
       && c2 == stack<int>({2, 4, 3, 1, 5})
       && c3 == stack<int>({2, 4, 3, 1, 5, 6})
-      && c4 == stack<int>({2, 4,3, 1, 5});
+      && c4 == stack<int>({2, 4, 3, 1, 5});
 
   if (!ret)
     cout << "Stack Test Failed!";

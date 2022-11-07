@@ -1,5 +1,7 @@
 package codejava.base.cmath;
 
+import java.rmi.MarshalException;
+
 public class CmathEntry {
   public static void NumbersProgram() {
     //initialize math values
@@ -83,5 +85,60 @@ public class CmathEntry {
     boolean isInf = Double.isInfinite(d1);
     //whether float is nan
     boolean isNan = Double.isNaN(d1);
+  }
+
+  public static boolean testAll() {
+    boolean ret = true;
+    double epsilon = 1e-10;
+    ret = Math.abs(Math.abs(-3.5) - 3.5) < epsilon
+        && Math.abs(6.8 % 2.4 - 2) < epsilon
+        && Math.abs(Math.IEEEremainder(6.8, 2.4) + 0.4) < epsilon
+        && Math.abs(Math.fma(0.9, 0.9, 0.19) - 1.0) < epsilon
+        && Math.abs((-1 > -4 ? -1+4:0)-3) <epsilon
+        && Math.abs((-4> -1 ? -4+1:0) - 0) < epsilon
+        && Math.abs(1 + 0.2 * (5 - 1) - 1.8) < epsilon
+        && Math.abs(5 + 0.2 * (1 - 5) - 4.2) < epsilon
+        && Math.abs(Math.exp(2) - Math.E * Math.E) < epsilon
+        && Math.abs(Math.pow(2, 2) - 4) < epsilon
+        && Math.abs(Math.expm1(2) - Math.E * Math.E + 1) < epsilon
+        && Math.abs(Math.log(Math.E * Math.E) - 2) < epsilon
+        && Math.abs(Math.log(4) / Math.log(2) - 2) < epsilon
+        && Math.abs(Math.log10(100) - 2) < epsilon
+        && Math.abs(Math.log1p(Math.E * Math.E - 1) - 2) < epsilon
+        && Math.abs(Math.log(9) / Math.log(3) - 2) < epsilon
+        && Math.abs(Math.pow(2, 3) - 8) < epsilon
+        && Math.abs(Math.hypot(3, 4) - 5) < epsilon
+        && Math.abs(Math.hypot(Math.hypot(3, 4), 12) - 13) < epsilon
+        && Math.abs(Math.sin(Math.PI / 6) - 0.5) < epsilon
+        && Math.abs(Math.cos(Math.PI / 3) - 0.5) < epsilon
+        && Math.abs(Math.tan(Math.PI / 4) - 1) < epsilon
+        && Math.abs(Math.asin(0.5) - Math.PI / 6) < epsilon
+        && Math.abs(Math.acos(0.5) - Math.PI / 3) < epsilon
+        && Math.abs(Math.atan(1) - Math.PI / 4) < epsilon
+        && Math.abs(Math.atan2(1, 1) - Math.PI / 4) < epsilon
+        && Math.abs(Math.sinh(1) - (Math.E - 1 / Math.E) / 2) < epsilon
+        && Math.abs(Math.cosh(1) - (Math.E + 1 / Math.E) / 2) < epsilon
+        && Math.abs(Math.tanh(1) - Math.sinh(1) / Math.cosh(1)) < epsilon
+        && Math.abs(Math.ceil(0.2) - 1) < epsilon
+        && Math.abs(Math.floor(1.7) - 1) < epsilon
+        && Math.abs((1.7 < 0 ? Math.ceil(1.7) : Math.floor(1.7)) - 1) < epsilon
+        && Math.abs((-1.7 < 0 ? Math.ceil(-1.7) : Math.floor(-1.7)) + 1) < epsilon
+        && Math.abs(Math.round(1.7) - 2) < epsilon
+        && Math.abs(Math.scalb(1.5, 3) - 12) < epsilon
+        && Math.abs(Math.nextUp(0) - Double.MIN_VALUE) < epsilon
+        && Math.abs(Math.nextDown(0) + Double.MIN_VALUE) < epsilon
+        && Math.abs(Math.copySign(1.3, -1) + 1.3) < epsilon
+        && Double.isFinite(3.1)
+        && !Double.isFinite(Double.POSITIVE_INFINITY)
+        && !Double.isFinite(Math.sqrt(-1))
+        && !Double.isInfinite(3.1)
+        && Double.isInfinite(Double.POSITIVE_INFINITY)
+        && !Double.isInfinite(Math.sqrt(-1))
+        && !Double.isNaN(3.1)
+        && !Double.isNaN(Double.POSITIVE_INFINITY)
+        && Double.isNaN(Math.sqrt(-1));
+    if (!ret)
+      System.out.print("Cmath Test Failed!");
+    return ret;
   }
 }

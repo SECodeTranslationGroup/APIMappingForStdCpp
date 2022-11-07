@@ -49,4 +49,47 @@ public class MapEntry {
     //get optional value of first key greater or equal given key
     result = Optional.ofNullable(map.ceilingEntry("cc").getValue());
   }
+
+  public static boolean testAll() {
+    boolean ret = true;
+    TreeMap<Integer, Integer> c, c1, c2, c3, c4, c5, c6, c7, c8;
+    TreeMap<Integer, Integer> m = new TreeMap<>(Map.of(
+        1, 10, 2, 8, 3, 13, 4, 9));
+    c = new TreeMap<>(Map.of(
+        1, 10, 2, 8, 3, 13, 4, 9));
+    c.clear();
+    c1 = new TreeMap<>(c);
+    c = new TreeMap<>(m);
+    c2 = new TreeMap<>(c);
+    c.putIfAbsent(2, 10);
+    c3 = new TreeMap<>(c);
+    c.putIfAbsent(5, 10);
+    c4 = new TreeMap<>(c);
+    c.put(2, 10);
+    c5 = new TreeMap<>(c);
+    m = new TreeMap<>(Map.of(
+        0, 3, 1, 8, 2, 7, 10, 3));
+    for (var ent : m.entrySet())
+      c.putIfAbsent(ent.getKey(), ent.getValue());
+    c6 = new TreeMap<>(c);
+    c.putAll(m);
+    c7 = new TreeMap<>(c);
+    c.remove(2);
+    c8 = new TreeMap<>(c);
+    ret = c1.isEmpty()
+        && c.containsKey(3)
+        && c.get(3) == 13
+        && c.ceilingEntry(2).getValue() == 13
+        && c.floorEntry(2).getValue() == 8
+        && c2.equals(Map.of(1, 10, 2, 8, 3, 13, 4, 9))
+        && c3.equals(Map.of(1, 10, 2, 8, 3, 13, 4, 9))
+        && c4.equals(Map.of(1, 10, 2, 8, 3, 13, 4, 9, 5, 10))
+        && c5.equals(Map.of(1, 10, 2, 10, 3, 13, 4, 9, 5, 10))
+        && c6.equals(Map.of(0, 3, 1, 10, 2, 10, 3, 13, 4, 9, 5, 10, 10, 3))
+        && c7.equals(Map.of(0, 3, 1, 8, 2, 7, 3, 13, 4, 9, 5, 10, 10, 3))
+        && c8.equals(Map.of(0, 3, 1, 8, 3, 13, 4, 9, 5, 10, 10, 3))    ;
+    if (!ret)
+      System.out.print("Map Test Failed!");
+    return ret;
+  }
 }

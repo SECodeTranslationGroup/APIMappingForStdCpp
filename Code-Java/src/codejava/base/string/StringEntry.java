@@ -105,4 +105,98 @@ public class StringEntry {
     //string concat other type of values
     String addString3 = myString + 1;
   }
+
+  public static boolean testAll() {
+    boolean ret = true;
+    String s, s1, s2, s3, s4, s5, s6, s7, s8, s9;
+    StringBuilder sb, sb1, sb2, sb3, sb4, sb5, sb6, sb7, sb8;
+    StringBuilder sb9, sb10, sb11, sb12, sb13, sb14, sb15, sb16, sb17, sb18;
+    String str = "123456789";
+    s = str;
+    s1 = "";
+    s2 = String.valueOf('c').repeat(3);
+    s3 = new String(str.toCharArray(), 2, 5);
+    s4 = s.substring(2, 2 + 5);
+    s5 = Integer.valueOf(12345).toString();
+    s6 = Double.valueOf(3.1415).toString();
+    s7 = s + s2;
+    s8 = s + 'c';
+    s9 = s + 1;
+    sb = new StringBuilder(str);
+    sb.setLength(0);
+    sb1 = new StringBuilder(sb);
+    sb.setLength(5);
+    sb.replace(0, sb.length(), String.valueOf('c').repeat(sb.length()));
+    sb2 = new StringBuilder(sb);
+    sb3 = new StringBuilder(sb);
+    sb3.ensureCapacity(100);
+    sb4 = new StringBuilder(sb3);
+    sb4.ensureCapacity(100);
+    sb4.trimToSize();
+    sb5 = new StringBuilder(sb);
+    sb5.append(str);
+    sb6 = new StringBuilder(sb);
+    sb6.append(str, 2, 2 + 5);
+    sb7 = new StringBuilder(sb);
+    sb7.append(String.valueOf('b').repeat(5));
+    sb.append('a');
+    sb8 = new StringBuilder(sb);
+    sb.deleteCharAt(sb.length() - 1);
+    sb9 = new StringBuilder(sb);
+    sb.delete(1, 1 + 2);
+    sb10 = new StringBuilder(sb);
+    sb11 = new StringBuilder(sb);
+    sb11.replace(1, 1 + 2, str);
+    sb12 = new StringBuilder(sb);
+    sb12.replace(1, 1 + 2, String.valueOf('f').repeat(5));
+    sb13 = new StringBuilder(sb);
+    sb13.insert(2, str);
+    sb14 = new StringBuilder(sb);
+    sb14.insert(2, String.valueOf('f').repeat(5));
+    sb15 = new StringBuilder(sb);
+    sb15.insert(2, str, 2, 2 + 5);
+    ret = s1.isEmpty()
+        && s.startsWith(String.valueOf('1'))
+        && s.startsWith("123")
+        && s.endsWith(String.valueOf('9'))
+        && s.endsWith("789")
+        && s.contains(String.valueOf('5'))
+        && s.contains("456")
+        && sb3.capacity() >= 100
+        && sb4.capacity() < 100
+        && s.length() == 9
+        && s.charAt(2) == '3'
+        && s.charAt(0) == '1'
+        && s.charAt(s.length() - 1) == '9'
+        && s.compareTo(str) == 0
+        && s.indexOf('1') == 0
+        && s.indexOf("345") == 2
+        && s.lastIndexOf('1') == 0
+        && s.lastIndexOf("345") == 2
+        && Integer.valueOf("123") == 123
+        && Double.valueOf("3.1415") * 10000 == 3.1415 * 10000
+        && s2.equals("ccc")
+        && s3.equals("34567")
+        && s4.equals("34567")
+        && s5.equals("12345")
+        && s6.equals("3.1415")
+        && s7.equals("123456789ccc")
+        && s8.equals("123456789c")
+        && s9.equals("1234567891")
+        && sb2.toString().equals("ccccc")
+        && sb5.toString().equals("ccccc123456789")
+        && sb6.toString().equals("ccccc34567")
+        && sb7.toString().equals("cccccbbbbb")
+        && sb8.toString().equals("ccccca")
+        && sb9.toString().equals("ccccc")
+        && sb10.toString().equals("ccc")
+        && sb11.toString().equals("c123456789")
+        && sb12.toString().equals("cfffff")
+        && sb13.toString().equals("cc123456789c")
+        && sb14.toString().equals("ccfffffc")
+        && sb15.toString().equals("cc34567c");
+    if (!ret)
+      System.out.print("String Test Failed!");
+    return ret;
+  }
 }

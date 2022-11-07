@@ -119,9 +119,6 @@ bool CmathEntry::TestAll() {
       && abs(sinh(1) - (numbers::e - 1 / numbers::e) / 2) < epsilon
       && abs(cosh(1) - (numbers::e + 1 / numbers::e) / 2) < epsilon
       && abs(tanh(1) - sinh(1) / cosh(1)) < epsilon
-      && abs(asinh((numbers::e - 1 / numbers::e) / 2) - 1) < epsilon
-      && abs(acosh((numbers::e + 1 / numbers::e) / 2) - 1) < epsilon
-      && abs(atanh(0) - 0) < epsilon
       && abs(ceil(0.2) - 1) < epsilon
       && abs(floor(1.7) - 1) < epsilon
       && abs(trunc(1.7) - 1) < epsilon

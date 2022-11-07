@@ -27,7 +27,7 @@ void ChronoEntry::ChronoProgram() {
   int minute = hms.minutes().count();
   int second = hms.seconds().count();
   //get time since unix epoch
-  long milli = time.time_since_epoch().count();
+  long milli = std::chrono::duration_cast<std::chrono::milliseconds>(time.time_since_epoch()).count() / 1000;
   //add years to a time point
   std::chrono::time_point time1 = std::chrono::sys_days{ymd + std::chrono::years(1)} + times_in_day;
   //add months to a time point
@@ -108,7 +108,7 @@ bool ChronoEntry::TestAll() {
       && hms.hours().count() == 13
       && hms.minutes().count() == 30
       && hms.seconds().count() == 45
-      && time.time_since_epoch().count() == 16668774450000000
+      && duration_cast<milliseconds>(time.time_since_epoch()).count() == 1666877445000L
       && floor<days>(time) ==
           sys_days{2022y / 10 / 27}
       && sys_days{ymd + years(1)} + time_dur ==
