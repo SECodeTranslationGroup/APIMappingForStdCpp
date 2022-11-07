@@ -25,6 +25,17 @@ void PriorityQueueEntry::PriorityQueueProgram() {
   //get smallest element
   std::string element = heap.top();
 }
+
+bool EqualPQ(std::priority_queue<int, std::vector<int>, std::greater<>> a,
+             std::priority_queue<int, std::vector<int>, std::greater<>> b){
+  if (a.size() != b.size()) return false;
+  for(int i = 0; i <a.size();i++) {
+    if (a.top() != b.top()) return false;
+    a.pop();b.pop();
+  }
+  return true;
+}
+
 bool PriorityQueueEntry::TestAll() {
   bool ret = true;
   using namespace std;
@@ -37,35 +48,15 @@ bool PriorityQueueEntry::TestAll() {
   c3 = c;
   c.emplace(0);
   c4 = c;
-  vector<pair<bool, bool>> bool_result_list = {
-      {c1.empty(), true}
-  };
-  vector<pair<priority_queue<int, vector<int>, greater<>>,
-              priority_queue<int, vector<int>, greater<>>>> container_result_list = {
-      {c2,
-       priority_queue<int, vector<int>, greater<>>(greater<>(), {1, 2, 3, 4, 5})},
-      {c3,
-       priority_queue<int, vector<int>, greater<>>(greater<>(), {2, 3, 4, 5})},
-      {c4,
-       priority_queue<int, vector<int>, greater<>>(greater<>(), {0, 2, 3, 4, 5})},
-  };
-  vector<pair<int, int>> int_result_list = {
-      {c4.size(), 5},
-      {c.top(), 0}
-  };
-  for (auto &it : container_result_list) {
-    ret = ret && it.first.size() == it.second.size();
-    for(int i = 0; i < min(it.first.size(),it.second.size());i++)
-      ret = ret && it.first.top() == it.second.top();
-      it.first.pop();
-      it.second.pop();
-  }
-  for (auto it : bool_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : int_result_list) {
-    ret = ret && it.first == it.second;
-  }
+  ret = c1.empty()
+      && c4.size() == 5
+      && c.top() == 0
+      && EqualPQ(c2,
+                 priority_queue<int, vector<int>, greater<>>(greater<>(), {1, 2, 3, 4, 5}))
+      && EqualPQ(c3,
+                 priority_queue<int, vector<int>, greater<>>(greater<>(), {2, 3, 4, 5}))
+      && EqualPQ(c4,
+                 priority_queue<int, vector<int>, greater<>>(greater<>(), {0, 2, 3, 4, 5}));
   if (!ret)
     cout << "Priority Queue Test Failed!";
   return ret;

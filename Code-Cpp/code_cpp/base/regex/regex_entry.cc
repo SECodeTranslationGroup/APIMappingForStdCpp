@@ -40,29 +40,28 @@ bool RegexEntry::TestAll() {
   string str("foo.aaa.bbb");
   string reg_str("([a-z]+)\\.([a-z]+)\\.([a-z]+)");
   regex pattern(reg_str);
-  ret = ret && regex_match(str, pattern);
+  ret = regex_match(str, pattern);
   smatch match;
   string str1("1053foo.aaa.bbb0561");
-  ret = ret && regex_search(str1, match, pattern);
-  ret = ret && match.size() == 4;
-  ret = ret && match[0].str() == "foo.aaa.bbb";
-  ret = ret && match.position(0) == 4;
-  ret = ret && match.length(0) == 11;
-  ret = ret && match.position(0) + match.length(0) == 15;
-  ret = ret && match[1].str() == "foo";
-  ret = ret && match.position(1) == 4;
-  ret = ret && match.length(1) == 3;
-  ret = ret && match.position(1) + match.length(1) == 7;
-  ret = ret && match[2].str() == "aaa";
-  auto s = regex_replace(str, pattern, "[$&]",
-                           regex_constants::format_first_only);
+  ret = ret
+      && regex_search(str1, match, pattern)
+      && match.size() == 4
+      && match[0].str() == "foo.aaa.bbb"
+      && match.position(0) == 4
+      && match.length(0) == 11
+      && match.position(0) + match.length(0) == 15
+      && match[1].str() == "foo"
+      && match.position(1) == 4
+      && match.length(1) == 3
+      && match.position(1) + match.length(1) == 7
+      && match[2].str() == "aaa";
   string str2("1053foo.aaa.bbb0561foo.aaa.bbb6941");
-  ret = ret && "1053[foo.aaa.bbb]0561foo.aaa.bbb6941" ==
-      regex_replace(str2, pattern, "[$&]",
-                    regex_constants::format_first_only);
-  ret = ret && "1053[foo.aaa.bbb]0561[foo.aaa.bbb]6941" ==
-      regex_replace(str2, pattern, "[$&]");
-
+  ret = ret
+      && "1053[foo.aaa.bbb]0561foo.aaa.bbb6941" ==
+          regex_replace(str2, pattern, "[$&]",
+                        regex_constants::format_first_only)
+      && "1053[foo.aaa.bbb]0561[foo.aaa.bbb]6941" ==
+          regex_replace(str2, pattern, "[$&]");
   if (!ret)
     cout << "Regex Test Failed!";
   return ret;

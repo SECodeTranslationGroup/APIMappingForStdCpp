@@ -37,30 +37,13 @@ bool StackEntry::TestAll() {
   c3 = c;
   c.pop();
   c4 = c;
-  vector<pair<bool, bool>> bool_result_list = {
-      {c1.empty(), true}
-  };
-  vector<pair<stack<int>, stack<int>>> container_result_list = {
-      {c2,
-       stack<int>({2, 4, 3, 1, 5})},
-      {c3,
-       stack<int>({2, 4, 3, 1, 5, 6})},
-      {c4,
-       stack<int>({2, 4, 3, 1, 5})}
-  };
-  vector<pair<int, int>> int_result_list = {
-      {c4.size(), 5},
-      {c.top(), 5}
-  };
-  for (const auto &it : container_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : bool_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : int_result_list) {
-    ret = ret && it.first == it.second;
-  }
+  ret = c1.empty()
+      && c4.size() == 5
+      && c.top() == 5
+      && c2 == stack<int>({2, 4, 3, 1, 5})
+      && c3 == stack<int>({2, 4, 3, 1, 5, 6})
+      && c4 == stack<int>({2, 4,3, 1, 5});
+
   if (!ret)
     cout << "Stack Test Failed!";
   return ret;

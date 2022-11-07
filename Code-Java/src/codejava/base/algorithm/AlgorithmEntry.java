@@ -1,11 +1,13 @@
 package codejava.base.algorithm;
 
+import codejava.base.containers.map.MapEntry;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -158,23 +160,8 @@ public class AlgorithmEntry {
     toList = list.stream().map(i -> s.getAndSet(s.get() * i)).collect(Collectors.toList());
   }
 
-  public boolean Test1() {
-    List<Integer> list1 = Arrays.asList(1, 2, 1, 2, 3);
-    List<Integer> list2 = Arrays.asList(1, 2, 1, 2, 3);
-
-    List<Integer> finalList = list2;
-    int sum = IntStream.range(0, list1.size())
-        .mapToObj(i -> list1.get(i) + finalList.get(i))
-        .reduce(1, (a, b) -> a * b);
-
-    AtomicReference<Integer> a = new AtomicReference<>(1);
-    list2 = list1.stream().map(i -> a.getAndSet(a.get() * i)).collect(Collectors.toList());
-
-    Map<Boolean, List<Integer>> groups = list1.stream().
-        collect(Collectors.partitioningBy(i -> i > 3));
-    List<Integer> list3 = groups.get(true);
-    List<Integer> list4 = groups.get(false);
-
-    return sum > 0;
+  public boolean Test1All() {
+    boolean ret = true;
+    return ret;
   }
 }

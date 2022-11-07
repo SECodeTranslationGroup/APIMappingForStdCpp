@@ -153,62 +153,46 @@ bool StringEntry::TestAll() {
   sb14.insert(2, 5, 'f');
   sb15 = sb;
   sb15.insert(2, str, 2, 5);
-
-  vector<pair<bool, bool>> bool_result_list = {
-      {s1.empty(), true},
-      {s.starts_with('1'),true},
-      {s.starts_with("123"),true},
-      {s.ends_with('9'),true},
-      {s.ends_with("789"),true},
-      {s.contains('5'),true},
-      {s.contains("456"),true},
-      {sb3.capacity()>=100,true},
-      {sb4.capacity()<100,true}
-  };
-  vector<pair<string, string>> string_result_list = {
-      {s2, "ccc"},
-      {s3, "34567"},
-      {s4, "34567"},
-      {s5, "12345"},
-      {s6, "3.141500"},
-      {s7, "123456789ccc"},
-      {s8, "123456789c"},
-      {s9, "1234567891"},
-      {sb2, "ccccc"},
-      {sb5, "ccccc123456789"},
-      {sb6, "ccccc34567"},
-      {sb7, "cccccbbbbb"},
-      {sb8, "ccccca"},
-      {sb9, "ccccc"},
-      {sb10, "ccc"},
-      {sb11, "c123456789"},
-      {sb12, "cfffff"},
-      {sb13, "cc123456789c"},
-      {sb14, "ccfffffc"},
-      {sb15, "cc34567c"},
-  };
-  vector<pair<int, int>> int_result_list = {
-      {s.size(), 9},
-      {s[2], '3'},
-      {s.front(), '1'},
-      {s.back(), '9'},
-      {s.compare(str),0},
-      {s.find('1'),0},
-      {s.find("345"),2},
-      {s.rfind('1'),0},
-      {s.rfind("345"),2},
-      {stoi("123"),123},
-      {stod("3.1415")*10000,3.1415*10000},
-  };
-  for (const auto &it : string_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : bool_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : int_result_list) {
-    ret = ret && it.first == it.second;
-  }
+  ret = s1.empty()
+      && s.starts_with('1')
+      && s.starts_with("123")
+      && s.ends_with('9')
+      && s.ends_with("789")
+      && s.contains('5')
+      && s.contains("456")
+      && sb3.capacity() >= 100
+      && sb4.capacity() < 100
+      && s.size() == 9
+      && s[2] == '3'
+      && s.front() == '1'
+      && s.back() == '9'
+      && s.compare(str) == 0
+      && s.find('1') == 0
+      && s.find("345") == 2
+      && s.rfind('1') == 0
+      && s.rfind("345") == 2
+      && stoi("123") == 123
+      && stod("3.1415") * 10000 == 3.1415 * 10000
+      && s2 == "ccc"
+      && s3 == "34567"
+      && s4 == "34567"
+      && s5 == "12345"
+      && s6 == "3.141500"
+      && s7 == "123456789ccc"
+      && s8 == "123456789c"
+      && s9 == "1234567891"
+      && sb2 == "ccccc"
+      && sb5 == "ccccc123456789"
+      && sb6 == "ccccc34567"
+      && sb7 == "cccccbbbbb"
+      && sb8 == "ccccca"
+      && sb9 == "ccccc"
+      && sb10 == "ccc"
+      && sb11 == "c123456789"
+      && sb12 == "cfffff"
+      && sb13 == "cc123456789c"
+      && sb14 == "ccfffffc"
+      && sb15 == "cc34567c";
   if (!ret)
     cout << "String Test Failed!";
   return ret;

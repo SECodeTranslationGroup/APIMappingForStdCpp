@@ -25,7 +25,7 @@ bool RandomEntry::TestAll() {
   random_device rd;
   default_random_engine eng(rd());
   int random_int = uniform_int_distribution<>(3, 12)(eng);
-  ret = ret && random_int >= 3 && random_int <= 12;
+  ret = random_int >= 3 && random_int <= 12;
   double random_double = uniform_real_distribution<>(17, 22)(eng);
   ret = ret && random_double >= 17 && random_double <= 22;
   vector<int> list(10);

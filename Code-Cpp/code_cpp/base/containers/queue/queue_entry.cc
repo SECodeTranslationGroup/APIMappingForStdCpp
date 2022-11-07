@@ -38,31 +38,13 @@ bool QueueEntry::TestAll() {
   c3 = c;
   c.pop();
   c4 = c;
-  vector<pair<bool, bool>> bool_result_list = {
-      {c1.empty(), true}
-  };
-  vector<pair<queue<int>, queue<int>>> container_result_list = {
-      {c2,
-       queue<int>({2, 4, 3, 1, 5})},
-      {c3,
-       queue<int>({2, 4, 3, 1, 5, 6})},
-      {c4,
-       queue<int>({4, 3, 1, 5, 6})}
-  };
-  vector<pair<int, int>> int_result_list = {
-      {c4.size(), 5},
-      {c.front(), 4},
-      {c.back(), 6}
-  };
-  for (const auto &it : container_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : bool_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : int_result_list) {
-    ret = ret && it.first == it.second;
-  }
+  ret = c1.empty()
+      && c4.size() == 5
+      && c.front() == 4
+      && c.back() == 6
+      && c2 == queue<int>({2, 4, 3, 1, 5})
+      && c3 == queue<int>({2, 4, 3, 1, 5, 6})
+      && c4 == queue<int>({4, 3, 1, 5, 6});
   if (!ret)
     cout << "Queue Test Failed!";
   return ret;

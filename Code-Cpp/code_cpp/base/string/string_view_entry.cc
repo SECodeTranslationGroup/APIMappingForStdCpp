@@ -12,7 +12,7 @@ void StringViewEntry::StringViewProgram() {
   //whether view empty
   bool b1 = view.empty();
   //sub string view
-  std::string_view sub = view.substr(1,2);
+  std::string_view sub = view.substr(1, 2);
   //compare string view
   int result = view.compare(sub);
   //build new string from view
@@ -23,15 +23,15 @@ bool StringViewEntry::TestAll() {
   using namespace std;
   string s = "Example";
   string_view view = s;
-  ret = ret && view[1] == 'x';
-  ret = ret && view.length() == 7;
-  ret = ret && !view.empty();
-  string_view sub = view.substr(1,2);
-  ret = ret && sub == "xa";
-  ret = ret && view.compare(sub) == -1;
-  view = string_view(s.end(),s.end());
+  ret = view[1] == 'x'
+      && view.length() == 7
+      && !view.empty();
+  string_view sub = view.substr(1, 2);
+  ret = ret
+      && sub == "xa"
+      && view.compare(sub) == -1;
+  view = string_view(s.end(), s.end());
   ret = ret && view.empty();
-
   if (!ret)
     cout << "String View Test Failed!";
   return ret;

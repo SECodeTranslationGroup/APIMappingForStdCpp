@@ -24,7 +24,7 @@ bool WeakPtrEntry::TestAll() {
 
   strong->SetVal(10);
   ExampleObject example_object = *weak.lock();
-  ret = ret && (example_object.GetVal() == 10);
+  ret = (example_object.GetVal() == 10);
 
   weak.lock()->SetVal(10);
   ret = ret && (strong->GetVal() == 10);

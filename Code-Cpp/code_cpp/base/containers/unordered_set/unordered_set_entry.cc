@@ -43,30 +43,12 @@ bool UnorderedSetEntry::TestAll() {
   c3 = c;
   c.erase(3);
   c4 = c;
-  vector<pair<bool, bool>> bool_result_list = {
-      {c1.empty(), true},
-      {c.count(7) > 0, true}
-  };
-  vector<pair<unordered_set<int>, unordered_set<int>>> container_result_list = {
-      {c2,
-       {1, 2, 3, 4, 5}},
-      {c3,
-       {1, 3, 5, 7, 9}},
-      {c4,
-       {1, 5, 7, 9}}
-  };
-  vector<pair<int, int>> int_result_list = {
-      {c4.size(), 4}
-  };
-  for (const auto &it : container_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : bool_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : int_result_list) {
-    ret = ret && it.first == it.second;
-  }
+  ret = c1.empty()
+      && c.count(7) > 0
+      && c4.size() == 4
+      && c2 == unordered_set<int>{1, 2, 3, 4, 5}
+      && c3 == unordered_set<int>{1, 3, 5, 7, 9}
+      && c4 == unordered_set<int>{1, 5, 7, 9};
   if (!ret)
     cout << "Hash Set Test Failed!";
   return ret;

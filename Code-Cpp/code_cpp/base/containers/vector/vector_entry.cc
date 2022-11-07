@@ -69,43 +69,19 @@ bool VectorEntry::TestAll() {
   c9 = c;
   c.erase(c.begin() + 1, c.begin() + 3);
   c10 = c;
-  vector<pair<bool, bool>> bool_result_list = {
-      {c1.empty(), true},
-      {find(c.begin(), c.end(), 3) != c.end(), true}
-  };
-  vector<pair<vector<int>, vector<int>>> container_result_list = {
-      {c2,
-       {1, 2, 3, 4, 5}},
-      {c3,
-       {1, 2, 3, 4, 5, 0, 0, 0, 0, 0}},
-      {c4,
-       {2, 4, 3, 1, 5}},
-      {c5,
-       {2, 2, 4, 3, 1, 5, 4, 3, 1, 5}},
-      {c6,
-       {2, -1, 2, 4, 3, 1, 5, 4, 3, 1, 5}},
-      {c7,
-       {2, -1, 2, 4, 3, 1, 5, 4, 3, 1, 5, 10}},
-      {c8,
-       {2, -1, 2, 3, 1, 5, 4, 3, 1, 5, 10}},
-      {c9,
-       {2, -1, 2, 3, 1, 5, 4, 3, 1, 5}},
-      {c10,
-       {2, 3, 1, 5, 4, 3, 1, 5}}
-  };
-  vector<pair<int, int>> int_result_list = {
-      {c7.size(), 12},
-      {c[2], 1}
-  };
-  for (const auto &it : container_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : bool_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : int_result_list) {
-    ret = ret && it.first == it.second;
-  }
+  ret = c1.empty()
+      && find(c.begin(), c.end(), 3) != c.end()
+      && c7.size() == 12
+      && c[2] == 1
+      && c2 == vector<int>{1, 2, 3, 4, 5}
+      && c3 == vector<int>{1, 2, 3, 4, 5, 0, 0, 0, 0, 0}
+      && c4 == vector<int>{2, 4, 3, 1, 5}
+      && c5 == vector<int>{2, 2, 4, 3, 1, 5, 4, 3, 1, 5}
+      && c6 == vector<int>{2, -1, 2, 4, 3, 1, 5, 4, 3, 1, 5}
+      && c7 == vector<int>{2, -1, 2, 4, 3, 1, 5, 4, 3, 1, 5, 10}
+      && c8 == vector<int>{2, -1, 2, 3, 1, 5, 4, 3, 1, 5, 10}
+      && c9 == vector<int>{2, -1, 2, 3, 1, 5, 4, 3, 1, 5}
+      && c10 == vector<int>{2, 3, 1, 5, 4, 3, 1, 5};
   if (!ret)
     cout << "Vector Test Failed!";
   return ret;

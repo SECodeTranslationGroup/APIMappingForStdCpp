@@ -77,7 +77,7 @@ bool FstreamEntry::TestAll() {
   using namespace std;
   string str = "output";
   ofstream out_file("test.txt", ios::out | ios::trunc);
-  ret = ret && out_file.is_open();
+  ret = out_file.is_open();
   out_file.put('c');
   out_file << str << endl;
   out_file.close();

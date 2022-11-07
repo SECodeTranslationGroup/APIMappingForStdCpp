@@ -179,68 +179,6 @@ bool AlgorithmEntry::TestAll() {
   vector<int> l19, l20, l21, l22, l23, l24, l25, l26;
   vector<int> l27, l28, l29, l30, l31, l32;
   for_each(l.begin(), l.end(), [&l2](auto i) { l2.emplace_back(i * 2); });
-  vector<pair<bool, bool>> bool_result_list = {
-      {all_of(l.begin(), l.end(), [](auto i) { return i > 0; }),
-       true},
-      {all_of(l.begin(), l.end(), [](auto i) { return i > 5; }),
-       false},
-      {any_of(l.begin(), l.end(), [](auto i) { return i > 5; }),
-       true},
-      {any_of(l.begin(), l.end(), [](auto i) { return i > 10; }),
-       false},
-      {none_of(l.begin(), l.end(), [](auto i) { return i > 10; }),
-       true},
-      {none_of(l.begin(), l.end(), [](auto i) { return i > 5; }),
-       false},
-      {binary_search(l1.begin(), l1.end(), 5),
-       true},
-      {binary_search(l1.begin(), l1.end(), 0),
-       false},
-  };
-  vector<pair<int, int>> int_result_list = {
-      {count(l.begin(), l.end(), 1),
-       2},
-      {count_if(l.begin(), l.end(), [](auto i) { return i > 5; }),
-       4},
-      {find(l.begin(), l.end(), 5) - l.begin(),
-       2},
-      {l.rend() - find(l.rbegin(), l.rend(), 5) - 1,
-       7},
-      {find_if(l.begin(), l.end(), [](auto i) { return i > 4; }) - l.begin(),
-       2},
-      {find_if_not(l.begin(), l.end(), [](auto i) { return i < 4; }) - l.begin(),
-       2},
-      {max(1, 2),
-       2},
-      {*max_element(l.begin(), l.end()),
-       9},
-      {*max_element(l.begin(), l.end(),
-                    [](auto a, auto b) { return abs(a - 4) < abs(b - 4); }),
-       9},
-      {min(1, 2),
-       1},
-      {*min_element(l.begin(), l.end()),
-       1},
-      {*min_element(l.begin(), l.end(),
-                    [](auto a, auto b) { return abs(a - 5) < abs(b - 5); }),
-       5},
-      {clamp(5, 0, 100),
-       5},
-      {clamp(5, 0, 3),
-       3},
-      {clamp(5, 6, 100),
-       6},
-      {accumulate(l.begin(), l.end(), 0),
-       50},
-      {accumulate(l.begin(), l.end(), 1, [](auto a, auto b) { return a * b; }),
-       893025},
-      {inner_product(l.begin(), l.end(), l.begin(), 0),
-       330},
-      {inner_product(l.begin(), l.end(), l.begin(),
-                     1, [](auto a, auto b) { return a * b; },
-                     [](auto a, auto b) { return a + b; }),
-       914457600}
-  };
   transform(l2.begin(), l2.end(), back_inserter(l3),
             [](auto i) { return i + 1; });
   copy(l2.begin() + 1, l2.end() - 1, back_inserter(l4));
@@ -260,8 +198,8 @@ bool AlgorithmEntry::TestAll() {
   remove_copy_if(l2.begin(), l2.end(), back_inserter(l12),
                  [](auto i) { return i > 6; });
   l13 = l2;
-  l14 = l2;
   replace(l13.begin(), l13.end(), 2, 3);
+  l14 = l2;
   replace_if(l14.begin(), l14.end(), [](auto i) { return i > 6; }, 3);
   replace_copy(l2.begin(), l2.end(), back_inserter(l15), 2, 3);
   replace_copy_if(l2.begin(), l2.end(), back_inserter(l16),
@@ -283,6 +221,7 @@ bool AlgorithmEntry::TestAll() {
   l25 = l2;
   sort(l25.begin(), l25.end(),
        [](int a, int b) { return abs(a - 7) < abs(b - 7); });
+
   l26.resize(10, 0);
   partial_sort_copy(l2.begin(), l2.end(), l26.begin(), l26.end());
   l27.resize(10);
@@ -294,79 +233,66 @@ bool AlgorithmEntry::TestAll() {
                       [](auto a, auto b) { return a * b; });
   partial_sum(l2.begin(), l2.end(), back_inserter(l31));
   partial_sum(l1.begin(), l1.end(), back_inserter(l32), [](auto a, auto b) { return a * b; });
-  vector<pair<vector<int>, vector<int>>> vector_result_list = {
-      {l2,
-       {2, 6, 10, 14, 18, 18, 14, 10, 6, 2}},
-      {l3,
-       {3, 7, 11, 15, 19, 19, 15, 11, 7, 3}},
-      {l4,
-       {6, 10, 14, 18, 18, 14, 10, 6}},
-      {l5,
-       {10, 14, 18, 18, 14, 10}},
-      {l6,
-       {2, 6, 10, 14, 18}},
-      {l7,
-       {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}},
-      {l8,
-       {1, 1, 1, 1, 1, 0, 0, 0, 0, 0}},
-      {l9,
-       {2, 10, 14, 18, 18, 14, 10, 2}},
-      {l10,
-       {2, 6, 6, 2}},
-      {l11,
-       {2, 10, 14, 18, 18, 14, 10, 2}},
-      {l12,
-       {2, 6, 6, 2}},
-      {l13,
-       {3, 6, 10, 14, 18, 18, 14, 10, 6, 3}},
-      {l14,
-       {2, 6, 3, 3, 3, 3, 3, 3, 6, 2}},
-      {l15,
-       {3, 6, 10, 14, 18, 18, 14, 10, 6, 3}},
-      {l16,
-       {2, 6, 3, 3, 3, 3, 3, 3, 6, 2}},
-      {l17,
-       {2, 10, 6, 14, 18, 18, 14, 10, 6, 2}},
-      {l18,
-       {2, 6, 10, 14, 18, 18, 14, 6, 10, 2}},
-      {l19,
-       {2, 6, 10, 14, 18, 18, 14, 6, 10, 2}},
-      {l20,
-       {2, 2, 6, 10, 14, 18, 18, 14, 10, 6}},
-      {l21,
-       {2, 2, 6, 10, 14, 18, 18, 14, 10, 6}},
-      {l22,
-       {10, 14, 18, 18, 14, 10}},
-      {l23,
-       {2, 6, 6, 2}},
-      {l24,
-       {2, 2, 6, 6, 10, 10, 14, 14, 18, 18}},
-      {l25,
-       {6, 6, 10, 10, 2, 2, 14, 14, 18, 18}},
-      {l26,
-       {2, 2, 6, 6, 10, 10, 14, 14, 18, 18}},
-      {l27,
-       {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}},
-      {l28,
-       {-3, -2, -1, 0, 1, 2, 3, 4, 5, 6}},
-      {l29,
-       {2, 4, 4, 4, 4, 0, -4, -4, -4, -4}},
-      {l30,
-       {2, 12, 60, 140, 252, 324, 252, 140, 60, 12}},
-      {l31,
-       {2, 8, 18, 32, 50, 68, 82, 92, 98, 100}},
-      {l32,
-       {1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800}}
-  };
-  for (const auto &it : vector_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : bool_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : int_result_list) {
-    ret = ret && it.first == it.second;
-  }
+  ret = all_of(l.begin(), l.end(), [](auto i) { return i > 0; })
+      && !all_of(l.begin(), l.end(), [](auto i) { return i > 5; })
+      && any_of(l.begin(), l.end(), [](auto i) { return i > 5; })
+      && !any_of(l.begin(), l.end(), [](auto i) { return i > 10; })
+      && none_of(l.begin(), l.end(), [](auto i) { return i > 10; })
+      && !none_of(l.begin(), l.end(), [](auto i) { return i > 5; })
+      && binary_search(l1.begin(), l1.end(), 5)
+      && !binary_search(l1.begin(), l1.end(), 0)
+      && count(l.begin(), l.end(), 1) == 2
+      && count_if(l.begin(), l.end(), [](auto i) { return i > 5; }) == 4
+      && find(l.begin(), l.end(), 5) - l.begin() == 2
+      && l.rend() - find(l.rbegin(), l.rend(), 5) - 1 == 7
+      && find_if(l.begin(), l.end(), [](auto i) { return i > 4; }) - l.begin() == 2
+      && find_if_not(l.begin(), l.end(), [](auto i) { return i < 4; }) - l.begin() == 2
+      && max(1, 2) == 2
+      && *max_element(l.begin(), l.end()) == 9
+      && *max_element(l.begin(), l.end(), [](auto a, auto b) { return abs(a - 4) < abs(b - 4); }) == 9
+      && min(1, 2) == 1
+      && *min_element(l.begin(), l.end()) == 1
+      && *min_element(l.begin(), l.end(), [](auto a, auto b) { return abs(a - 5) < abs(b - 5); }) == 5
+      && clamp(5, 0, 100) == 5
+      && clamp(5, 0, 3) == 3
+      && clamp(5, 6, 100) == 6
+      && accumulate(l.begin(), l.end(), 0) == 50
+      && accumulate(l.begin(), l.end(), 1, [](auto a, auto b) { return a * b; }) == 893025
+      && inner_product(l.begin(), l.end(), l.begin(), 0) == 330
+      && inner_product(l.begin(), l.end(), l.begin(),
+                       1, [](auto a, auto b) { return a * b; },
+                       [](auto a, auto b) { return a + b; }) == 914457600
+      && l2 == vector<int>{2, 6, 10, 14, 18, 18, 14, 10, 6, 2}
+      && l3 == vector<int>{3, 7, 11, 15, 19, 19, 15, 11, 7, 3}
+      && l4 == vector<int>{6, 10, 14, 18, 18, 14, 10, 6}
+      && l5 == vector<int>{10, 14, 18, 18, 14, 10}
+      && l6 == vector<int>{2, 6, 10, 14, 18}
+      && l7 == vector<int>{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+      && l8 == vector<int>{1, 1, 1, 1, 1, 0, 0, 0, 0, 0}
+      && l9 == vector<int>{2, 10, 14, 18, 18, 14, 10, 2}
+      && l10 == vector<int>{2, 6, 6, 2}
+      && l11 == vector<int>{2, 10, 14, 18, 18, 14, 10, 2}
+      && l12 == vector<int>{2, 6, 6, 2}
+      && l13 == vector<int>{3, 6, 10, 14, 18, 18, 14, 10, 6, 3}
+      && l14 == vector<int>{2, 6, 3, 3, 3, 3, 3, 3, 6, 2}
+      && l15 == vector<int>{3, 6, 10, 14, 18, 18, 14, 10, 6, 3}
+      && l16 == vector<int>{2, 6, 3, 3, 3, 3, 3, 3, 6, 2}
+      && l17 == vector<int>{2, 10, 6, 14, 18, 18, 14, 10, 6, 2}
+      && l18 == vector<int>{2, 6, 10, 14, 18, 18, 14, 6, 10, 2}
+      && l19 == vector<int>{2, 6, 10, 14, 18, 18, 14, 6, 10, 2}
+      && l20 == vector<int>{2, 2, 6, 10, 14, 18, 18, 14, 10, 6}
+      && l21 == vector<int>{2, 2, 6, 10, 14, 18, 18, 14, 10, 6}
+      && l22 == vector<int>{10, 14, 18, 18, 14, 10}
+      && l23 == vector<int>{2, 6, 6, 2}
+      && l24 == vector<int>{2, 2, 6, 6, 10, 10, 14, 14, 18, 18}
+      && l25 == vector<int>{6, 6, 10, 10, 2, 2, 14, 14, 18, 18}
+      && l26 == vector<int>{2, 2, 6, 6, 10, 10, 14, 14, 18, 18}
+      && l27 == vector<int>{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+      && l28 == vector<int>{-3, -2, -1, 0, 1, 2, 3, 4, 5, 6}
+      && l29 == vector<int>{2, 4, 4, 4, 4, 0, -4, -4, -4, -4}
+      && l30 == vector<int>{2, 12, 60, 140, 252, 324, 252, 140, 60, 12}
+      && l31 == vector<int>{2, 8, 18, 32, 50, 68, 82, 92, 98, 100}
+      && l32 == vector<int>{1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800};
   if (!ret)
     cout << "Algorithm Test Failed!";
   return ret;

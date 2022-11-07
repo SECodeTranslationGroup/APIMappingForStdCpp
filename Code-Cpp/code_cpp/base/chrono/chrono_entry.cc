@@ -93,75 +93,60 @@ bool ChronoEntry::TestAll() {
   using sys_tp = std::chrono::time_point<system_clock>;
   sys_tp now = system_clock::now();
   sys_tp time = sys_days{2022y / 10 / 27} + 13h + 30min + 45s;
-  vector<pair<bool, bool>> bool_result_list = {
-      {now < time, false},
-      {now > time, true},
-      {now == time, false}
-  };
+  ret = ret
+      && !(now < time)
+      && now > time
+      && !(now == time);
   year_month_day ymd = floor<days>(time);
   duration time_dur = time - floor<days>(time);
   duration d = days(3) + hours(6) + minutes(9) + seconds(12);
   hh_mm_ss hms(time_dur);
-  vector<pair<long, long>> int_result_list = {
-      {(int)ymd.year(), 2022},
-      {(unsigned)ymd.month(), 10},
-      {(unsigned)ymd.day(), 27},
-      {weekday(floor<days>(time)).iso_encoding(), 4},
-      {hms.hours().count(), 13},
-      {hms.minutes().count(), 30},
-      {hms.seconds().count(), 45},
-      {time.time_since_epoch().count(), 16668774450000000},
-
-  };
-  vector<pair<sys_tp, sys_tp>> time_point_result_list = {
-      {floor<days>(time),
-       sys_days{2022y / 10 / 27}},
-      {sys_days{ymd + years(1)} + time_dur,
-       sys_days{2023y / 10 / 27} + 13h + 30min + 45s},
-      {sys_days{ymd + months(2)} + time_dur,
-       sys_days{2022y / 12 / 27} + 13h + 30min + 45s},
-      {time + days(3),
-       sys_days{2022y / 10 / 30} + 13h + 30min + 45s},
-      {time + hours(4),
-       sys_days{2022y / 10 / 27} + 17h + 30min + 45s},
-      {time + minutes(5),
-       sys_days{2022y / 10 / 27} + 13h + 35min + 45s},
-      {time + seconds(6),
-       sys_days{2022y / 10 / 27} + 13h + 30min + 51s},
-      {sys_days{ymd - years(1)} + time_dur,
-       sys_days{2021y / 10 / 27} + 13h + 30min + 45s},
-      {sys_days{ymd - months(2)} + time_dur,
-       sys_days{2022y / 8 / 27} + 13h + 30min + 45s},
-      {time - days(3),
-       sys_days{2022y / 10 / 24} + 13h + 30min + 45s},
-      {time - hours(4),
-       sys_days{2022y / 10 / 27} + 9h + 30min + 45s},
-      {time - minutes(5),
-       sys_days{2022y / 10 / 27} + 13h + 25min + 45s},
-      {time - seconds(6),
-       sys_days{2022y / 10 / 27} + 13h + 30min + 39s},
-      {sys_days{ymd + years(2011 - (int)ymd.year())} + time_dur,
-       sys_days{2011y / 10 / 27} + 13h + 30min + 45s},
-      {sys_days{ymd + months(11 - (unsigned)ymd.month())} + time_dur,
-       sys_days{2022y / 11 / 27} + 13h + 30min + 45s},
-      {time + days(11 - (unsigned)ymd.day()),
-       sys_days{2022y / 10 / 11} + 13h + 30min + 45s},
-      {time + hours(11 - hms.hours().count()),
-       sys_days{2022y / 10 / 27} + 11h + 30min + 45s},
-      {time + minutes(11 - hms.minutes().count()),
-       sys_days{2022y / 10 / 27} + 13h + 11min + 45s},
-      {time + seconds(11 - hms.seconds().count()),
-       sys_days{2022y / 10 / 27} + 13h + 30min + 11s}
-  };
-  for (auto it : int_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : bool_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : time_point_result_list) {
-    ret = ret && it.first == it.second;
-  }
+  ret = (int)ymd.year() == 2022
+      && (unsigned)ymd.month() == 10
+      && (unsigned)ymd.day() == 27
+      && weekday(floor<days>(time)).iso_encoding() == 4
+      && hms.hours().count() == 13
+      && hms.minutes().count() == 30
+      && hms.seconds().count() == 45
+      && time.time_since_epoch().count() == 16668774450000000
+      && floor<days>(time) ==
+          sys_days{2022y / 10 / 27}
+      && sys_days{ymd + years(1)} + time_dur ==
+          sys_days{2023y / 10 / 27} + 13h + 30min + 45s
+      && sys_days{ymd + months(2)} + time_dur ==
+          sys_days{2022y / 12 / 27} + 13h + 30min + 45s
+      && time + days(3) ==
+          sys_days{2022y / 10 / 30} + 13h + 30min + 45s
+      && time + hours(4) ==
+          sys_days{2022y / 10 / 27} + 17h + 30min + 45s
+      && time + minutes(5) ==
+          sys_days{2022y / 10 / 27} + 13h + 35min + 45s
+      && time + seconds(6) ==
+          sys_days{2022y / 10 / 27} + 13h + 30min + 51s
+      && sys_days{ymd - years(1)} + time_dur ==
+          sys_days{2021y / 10 / 27} + 13h + 30min + 45s
+      && sys_days{ymd - months(2)} + time_dur ==
+          sys_days{2022y / 8 / 27} + 13h + 30min + 45s
+      && time - days(3) ==
+          sys_days{2022y / 10 / 24} + 13h + 30min + 45s
+      && time - hours(4) ==
+          sys_days{2022y / 10 / 27} + 9h + 30min + 45s
+      && time - minutes(5) ==
+          sys_days{2022y / 10 / 27} + 13h + 25min + 45s
+      && time - seconds(6) ==
+          sys_days{2022y / 10 / 27} + 13h + 30min + 39s
+      && sys_days{ymd + years(2011 - (int)ymd.year())} + time_dur ==
+          sys_days{2011y / 10 / 27} + 13h + 30min + 45s
+      && sys_days{ymd + months(11 - (unsigned)ymd.month())} + time_dur ==
+          sys_days{2022y / 11 / 27} + 13h + 30min + 45s
+      && time + days(11 - (unsigned)ymd.day()) ==
+          sys_days{2022y / 10 / 11} + 13h + 30min + 45s
+      && time + hours(11 - hms.hours().count()) ==
+          sys_days{2022y / 10 / 27} + 11h + 30min + 45s
+      && time + minutes(11 - hms.minutes().count()) ==
+          sys_days{2022y / 10 / 27} + 13h + 11min + 45s
+      && time + seconds(11 - hms.seconds().count()) ==
+          sys_days{2022y / 10 / 27} + 13h + 30min + 11s;
   if (!ret)
     cout << "Chrono Test Failed!";
   return ret;

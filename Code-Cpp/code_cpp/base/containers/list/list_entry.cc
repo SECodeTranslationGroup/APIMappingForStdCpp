@@ -99,60 +99,29 @@ bool ListEntry::TestAll() {
   c15 = c;
   c.remove(2);
   c16 = c;
-  c.remove_if([](auto e) { return e >3 ;});
+  c.remove_if([](auto e) { return e > 3; });
   c17 = c;
-  vector<pair<bool, bool>> bool_result_list = {
-      {c1.empty(), true},
-      {find(c.begin(), c.end(), 3) != c.end(), true}
-  };
-  vector<pair<list<int>, list<int>>> container_result_list = {
-      {c2,
-       {1,2,3,4,5}},
-      {c3,
-       {1,2,3,4,5,0,0,0,0,0}},
-      {c4,
-       {2,4,3,1,5}},
-      {c5,
-       {2,2,4,3,1,5,4,3,1,5}},
-      {c6,
-       {-1,2,2,4,3,1,5,4,3,1,5}},
-      {c7,
-       {-1,2,2,4,3,1,5,4,3,1,5,10}},
-      {c8,
-       {2,2,4,3,1,5,4,3,1,5,10}},
-      {c9,
-       {2,2,4,3,1,5,4,3,1,5}},
-      {c10,
-       {2,2,4,1,5,4,3,1,5}},
-      {c11,
-       {2,2,4,3,1,5}},
-      {c12,
-       {1,2,2,3,4,5}},
-      {c13,
-       {5,4,3,2,2,1}},
-      {c14,
-       {5,2,4,3,2,2,1}},
-      {c15,
-       {5,4,3,2,2,1}},
-      {c16,
-       {5,4,3,1}},
-      {c17,
-       {3,1}}
-  };
-  vector<pair<int, int>> int_result_list = {
-      {c7.size(), 12},
-      {c.front(), 3},
-      {c.back(), 1}
-  };
-  for (const auto &it : container_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : bool_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : int_result_list) {
-    ret = ret && it.first == it.second;
-  }
+  ret = c1.empty()
+      && find(c.begin(), c.end(), 3) != c.end()
+      && c7.size() == 12
+      && c.front() == 3
+      && c.back() == 1
+      && c2 == list<int>{1, 2, 3, 4, 5}
+      && c3 == list<int>{1, 2, 3, 4, 5, 0, 0, 0, 0, 0}
+      && c4 == list<int>{2, 4, 3, 1, 5}
+      && c5 == list<int>{2, 2, 4, 3, 1, 5, 4, 3, 1, 5}
+      && c6 == list<int>{-1, 2, 2, 4, 3, 1, 5, 4, 3, 1, 5}
+      && c7 == list<int>{-1, 2, 2, 4, 3, 1, 5, 4, 3, 1, 5, 10}
+      && c8 == list<int>{2, 2, 4, 3, 1, 5, 4, 3, 1, 5, 10}
+      && c9 == list<int>{2, 2, 4, 3, 1, 5, 4, 3, 1, 5}
+      && c10 == list<int>{2, 2, 4, 1, 5, 4, 3, 1, 5}
+      && c11 == list<int>{2, 2, 4, 3, 1, 5}
+      && c12 == list<int>{1, 2, 2, 3, 4, 5}
+      && c13 == list<int>{5, 4, 3, 2, 2, 1}
+      && c14 == list<int>{5, 2, 4, 3, 2, 2, 1}
+      && c15 == list<int>{5, 4, 3, 2, 2, 1}
+      && c16 == list<int>{5, 4, 3, 1}
+      && c17 == list<int>{3, 1};
   if (!ret)
     cout << "List Test Failed!";
   return ret;

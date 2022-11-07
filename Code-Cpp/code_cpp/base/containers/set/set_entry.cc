@@ -90,47 +90,21 @@ bool SetEntry::TestAll() {
   copy(c.find(5), ++c.find(7), inserter(c9, c9.begin()));
   copy(c.find(5), c.end(), inserter(c10, c10.begin()));
   copy(c.begin(), ++c.find(7), inserter(c11, c11.begin()));
-
-  vector<pair<bool, bool>> bool_result_list = {
-      {c1.empty(), true},
-      {c.count(7) > 0, true}
-  };
-  vector<pair<set<int>, set<int>>> container_result_list = {
-      {c2,
-       {1, 2, 3, 4, 5}},
-      {c3,
-       {1, 3, 5, 7, 9}},
-      {c4,
-       {1, 5, 7, 9}},
-      {c5,
-       {7, 9}},
-      {c6,
-       {1, 2, 3, 4, 5, 7, 9}},
-      {c7,
-       {1, 5}},
-      {c8,
-       {2, 3, 4, 7, 9}},
-      {c9,
-       {5,7}},
-      {c10,
-       {5,7,9}},
-      {c11,
-       {1,5,7}}
-  };
-  vector<pair<int, int>> int_result_list = {
-      {c6.size(), 7},
-      {*(--c.upper_bound(6)), 5},
-      {*c.lower_bound(6), 7}
-  };
-  for (const auto &it : container_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : bool_result_list) {
-    ret = ret && it.first == it.second;
-  }
-  for (auto it : int_result_list) {
-    ret = ret && it.first == it.second;
-  }
+  ret = c1.empty()
+      && c.count(7) > 0
+      && c6.size() == 7
+      && *(--c.upper_bound(6)) == 5
+      && *c.lower_bound(6) == 7
+      && c2 == set<int>{1, 2, 3, 4, 5}
+      && c3 == set<int>{1, 3, 5, 7, 9}
+      && c4 == set<int>{1, 5, 7, 9}
+      && c5 == set<int>{7, 9}
+      && c6 == set<int>{1, 2, 3, 4, 5, 7, 9}
+      && c7 == set<int>{1, 5}
+      && c8 == set<int>{2, 3, 4, 7, 9}
+      && c9 == set<int>{5, 7}
+      && c10 == set<int>{5, 7, 9}
+      && c11 == set<int>{1, 5, 7};
   if (!ret)
     cout << "Set Test Failed!";
   return ret;
