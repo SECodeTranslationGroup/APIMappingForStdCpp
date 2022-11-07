@@ -95,7 +95,7 @@ public class VectorEntry {
       && c9 .equals(Arrays.asList(2, -1, 2, 3, 1, 5, 4, 3, 1, 5))
       && c10 .equals(Arrays.asList(2, 3, 1, 5, 4, 3, 1, 5));
     if (!ret)
-      System.out.print("Vector Test Failed!");
+      System.out.println("Vector Test Failed!");
     return ret;
   }
 }

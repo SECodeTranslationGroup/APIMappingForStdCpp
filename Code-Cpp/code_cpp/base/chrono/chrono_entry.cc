@@ -146,6 +146,6 @@ bool ChronoEntry::TestAll() {
       && time + seconds(11 - hms.seconds().count()) ==
           sys_days{2022y / 10 / 27} + 13h + 30min + 11s;
   if (!ret)
-    cout << "Chrono Test Failed!";
+    cout << "Chrono Test Failed!" << endl;
   return ret;
 }

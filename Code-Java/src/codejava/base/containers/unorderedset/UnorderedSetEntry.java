@@ -56,7 +56,7 @@ public class UnorderedSetEntry {
         && c3.equals(new HashSet<>(Arrays.asList(1, 3, 5, 7, 9)))
         && c4.equals(new HashSet<>(Arrays.asList(1, 5, 7, 9)));
     if (!ret)
-      System.out.print("Unordered Set Test Failed!");
+      System.out.println("Unordered Set Test Failed!");
     return ret;
   }
 }

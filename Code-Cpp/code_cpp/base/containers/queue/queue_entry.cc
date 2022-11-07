@@ -46,6 +46,6 @@ bool QueueEntry::TestAll() {
       && c3 == queue<int>({2, 4, 3, 1, 5, 6})
       && c4 == queue<int>({4, 3, 1, 5, 6});
   if (!ret)
-    cout << "Queue Test Failed!";
+    cout << "Queue Test Failed!"<< endl;
   return ret;
 }

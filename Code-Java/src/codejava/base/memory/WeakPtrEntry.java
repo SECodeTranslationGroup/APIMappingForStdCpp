@@ -16,7 +16,6 @@ public class WeakPtrEntry {
     //reset weak ref
     weak.clear();
     //whether weak ref contains value
-    //java: won't take effect immediately
     boolean expired = weak.get() == null;
   }
 
@@ -26,8 +25,8 @@ public class WeakPtrEntry {
     var weak = new WeakReference<>(strong);
 
     strong.setVal(10);
-    ExampleObject example_object = weak.get();
-    ret = (example_object.getVal() == 10);
+    ExampleObject exampleObject = weak.get();
+    ret = (exampleObject.getVal() == 10);
 
     weak.get().setVal(10);
     ret = ret && (strong.getVal() == 10);
@@ -41,11 +40,8 @@ public class WeakPtrEntry {
     strong = null;
     //ret = ret && weak.get() == null;
 
-    var strongInt = Integer.valueOf(1);
-    var weakInt = new WeakReference<>(strongInt);
-    ret = ret && (weakInt.get() == 1);
     if (!ret)
-      System.out.print("Weakptr Test Failed!");
+      System.out.println("Weakptr Test Failed!");
     return ret;
   }
 }

@@ -108,6 +108,6 @@ bool BitsetEntry::TestAll() {
       && bs15 == bitset<8>{"00100100"};
 
   if (!ret)
-    std::cout << "Bitset Test Failed!";
+    std::cout << "Bitset Test Failed!"<< endl;
   return ret;
 }

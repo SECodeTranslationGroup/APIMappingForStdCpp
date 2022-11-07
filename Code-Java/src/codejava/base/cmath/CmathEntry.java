@@ -138,7 +138,7 @@ public class CmathEntry {
         && !Double.isNaN(Double.POSITIVE_INFINITY)
         && Double.isNaN(Math.sqrt(-1));
     if (!ret)
-      System.out.print("Cmath Test Failed!");
+      System.out.println("Cmath Test Failed!");
     return ret;
   }
 }

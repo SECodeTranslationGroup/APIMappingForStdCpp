@@ -139,9 +139,8 @@ public class BitsetEntry {
         && less8BitsEqual(bs13, stringToBs("00110110"))
         && less8BitsEqual(bs14, stringToBs("00110010"))
         && less8BitsEqual(bs15, stringToBs("00100100"));
-    ;
     if (!ret)
-      System.out.print("Bitset Test Failed!");
+      System.out.println("Bitset Test Failed!");
     return ret;
   }
 }

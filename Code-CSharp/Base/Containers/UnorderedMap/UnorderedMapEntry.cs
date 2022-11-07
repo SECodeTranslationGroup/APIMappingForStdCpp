@@ -35,7 +35,8 @@ public class UnorderedMapEntry {
     //create immutable reference of hash map
     ImmutableDictionary<string, string> constHashMapRef = hashMap.ToImmutableDictionary();
     //whether two hash maps equal
-    bool b2 = Enumerable.SequenceEqual(hashMap, constHashMapRef);
+    bool b2 = Enumerable.SequenceEqual(hashMap.OrderBy(kv => kv.Key),
+        constHashMapRef.OrderBy(kv => kv.Key));
     //remove element equal key
     hashMap.Remove("cc");
     //get value of key or else default
@@ -43,9 +44,53 @@ public class UnorderedMapEntry {
     //get optional value of key
     string? result = hashMap.GetValueOrDefault("cc", null);
   }
-  
+
   public static bool TestAll() {
     bool ret = true;
+    Dictionary<int, int> c, c1, c2, c3, c4, c5, c6, c7, c8;
+    Dictionary<int, int> m = new Dictionary<int, int> { { 1, 10 }, { 2, 8 }, { 3, 13 }, { 4, 9 } };
+    c = new Dictionary<int, int> { { 1, 10 }, { 2, 8 }, { 3, 13 }, { 4, 9 } };
+    c.Clear();
+    c1 = new Dictionary<int, int>(c);
+    c = new Dictionary<int, int>(m);
+    c2 = new Dictionary<int, int>(c);
+    c.TryAdd(2, 10);
+    c3 = new Dictionary<int, int>(c);
+    c.TryAdd(5, 10);
+    c4 = new Dictionary<int, int>(c);
+    c[2] = 10;
+    c5 = new Dictionary<int, int>(c);
+    m = new Dictionary<int, int> { { 0, 3 }, { 1, 8 }, { 2, 7 }, { 10, 3 } };
+    foreach (var pair in m) c.TryAdd(pair.Key, pair.Value);
+    c6 = new Dictionary<int, int>(c);
+    foreach (var pair in m) c[pair.Key] = pair.Value;
+    c7 = new Dictionary<int, int>(c);
+    c.Remove(2);
+    c8 = new Dictionary<int, int>(c);
+    ret = c1.Count == 0
+          && c.ContainsKey(3)
+          && c.GetValueOrDefault(3) == 13
+          && c2.OrderBy(kv => kv.Key).SequenceEqual(
+              new Dictionary<int, int> { { 1, 10 }, { 2, 8 }, { 3, 13 }, { 4, 9 } }
+                      .OrderBy(kv => kv.Key))
+          && c3.OrderBy(kv => kv.Key).SequenceEqual(
+              new Dictionary<int, int> { { 1, 10 }, { 2, 8 }, { 3, 13 }, { 4, 9 } }
+                  .OrderBy(kv => kv.Key))
+          && c4.OrderBy(kv => kv.Key).SequenceEqual(new Dictionary<int, int> {
+              { 1, 10 }, { 2, 8 }, { 3, 13 }, { 4, 9 }, { 5, 10 }
+          }.OrderBy(kv => kv.Key))
+          && c5.OrderBy(kv => kv.Key).SequenceEqual(new Dictionary<int, int> {
+              { 1, 10 }, { 2, 10 }, { 3, 13 }, { 4, 9 }, { 5, 10 }
+          }.OrderBy(kv => kv.Key))
+          && c6.OrderBy(kv => kv.Key).SequenceEqual(new Dictionary<int, int> {
+              { 0, 3 }, { 1, 10 }, { 2, 10 }, { 3, 13 }, { 4, 9 }, { 5, 10 }, { 10, 3 }
+          }.OrderBy(kv => kv.Key))
+          && c7.OrderBy(kv => kv.Key).SequenceEqual(new Dictionary<int, int> {
+              { 0, 3 }, { 1, 8 }, { 2, 7 }, { 3, 13 }, { 4, 9 }, { 5, 10 }, { 10, 3 }
+          }.OrderBy(kv => kv.Key))
+          && c8.OrderBy(kv => kv.Key).SequenceEqual(new Dictionary<int, int> {
+              { 0, 3 }, { 1, 8 }, { 3, 13 }, { 4, 9 }, { 5, 10 }, { 10, 3 }
+          }.OrderBy(kv => kv.Key));
     if (!ret)
       Console.WriteLine("Unordered Map Test Failed!");
     return ret;

@@ -37,11 +37,7 @@ bool WeakPtrEntry::TestAll() {
   ret = ret && !weak.expired();
   strong = nullptr;
   ret = ret && weak.expired();
-
-  auto strongInt = make_shared<int>(1);
-  auto weakInt = weak_ptr<int>(strongInt);
-  ret = ret && (*weakInt.lock() == 1);
   if (!ret)
-    cout << "Weakptr Test Failed!";
+    cout << "Weakptr Test Failed!"<< endl;
   return ret;
 }

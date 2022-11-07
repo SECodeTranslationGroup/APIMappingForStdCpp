@@ -75,6 +75,6 @@ bool UnorderedMapEntry::TestAll() {
       && c7 == unordered_map<int, int>{{0, 3}, {1, 8}, {2, 7}, {3, 13}, {4, 9}, {5, 10}, {10, 3}}
       && c8 == unordered_map<int, int>{{0, 3}, {1, 8}, {3, 13}, {4, 9}, {5, 10}, {10, 3}};
   if (!ret)
-    cout << "Hash Map Test Failed!";
+    cout << "Hash Map Test Failed!"<< endl;
   return ret;
 }

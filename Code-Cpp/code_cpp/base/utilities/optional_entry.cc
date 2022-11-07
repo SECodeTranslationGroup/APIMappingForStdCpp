@@ -56,6 +56,6 @@ bool OptionalEntry::TestAll() {
       && any_cast<string>(any) == "example";
 
   if (!ret)
-    cout << "Optional Test Failed!";
+    cout << "Optional Test Failed!"<< endl;
   return ret;
 }

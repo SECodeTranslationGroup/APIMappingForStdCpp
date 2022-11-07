@@ -58,6 +58,6 @@ bool PriorityQueueEntry::TestAll() {
       && EqualPQ(c4,
                  priority_queue<int, vector<int>, greater<>>(greater<>(), {0, 2, 3, 4, 5}));
   if (!ret)
-    cout << "Priority Queue Test Failed!";
+    cout << "Priority Queue Test Failed!"<< endl;
   return ret;
 }

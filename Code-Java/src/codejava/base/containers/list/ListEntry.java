@@ -73,7 +73,7 @@ public class ListEntry {
     LinkedList<Integer> c, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10;
     LinkedList<Integer> c11, c12, c13, c14, c15, c16, c17;
     List<Integer> vec = Arrays.asList(2, 4, 3, 1, 5);
-    c = new LinkedList<Integer>(Arrays.asList(1, 2, 3, 4, 5));
+    c = new LinkedList<>(Arrays.asList(1, 2, 3, 4, 5));
     c2 = new LinkedList<>(c);
     if (c.size() >= 10)
       c.subList(10, c.size()).clear();
@@ -133,7 +133,7 @@ public class ListEntry {
         && c16.equals(Arrays.asList(5, 4, 3, 1))
         && c17.equals(Arrays.asList(3, 1));
     if (!ret)
-      System.out.print("List Test Failed!");
+      System.out.println("List Test Failed!");
     return ret;
   }
 }

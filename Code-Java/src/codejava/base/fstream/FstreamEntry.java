@@ -184,9 +184,8 @@ public class FstreamEntry {
       ret = ret && (char)randomAccessFile.readByte() == 'e';
     } catch (IOException exception) {
     }
-
     if (!ret)
-      System.out.print("Fstream Test Failed!");
+      System.out.println("Fstream Test Failed!");
     return ret;
   }
 }

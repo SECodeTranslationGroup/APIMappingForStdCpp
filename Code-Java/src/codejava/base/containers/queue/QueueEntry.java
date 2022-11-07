@@ -50,7 +50,7 @@ public class QueueEntry {
         && Arrays.equals(c4.toArray(),
         new ArrayDeque<Integer>(Arrays.asList(4, 3, 1, 5, 6)).toArray());
     if (!ret)
-      System.out.print("Queue Test Failed!");
+      System.out.println("Queue Test Failed!");
     return ret;
   }
 }

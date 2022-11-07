@@ -125,6 +125,6 @@ bool FstreamEntry::TestAll() {
   random_access_file.close();
 
   if (!ret)
-    cout << "Fstream Test Failed!";
+    cout << "Fstream Test Failed!"<< endl;
   return ret;
 }

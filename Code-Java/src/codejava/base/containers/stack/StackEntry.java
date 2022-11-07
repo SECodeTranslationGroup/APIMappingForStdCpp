@@ -47,7 +47,7 @@ public class StackEntry {
         && Arrays.equals(c4.toArray(),
         new ArrayDeque<Integer>(Arrays.asList(5, 1, 3, 4, 2)).toArray());
     if (!ret)
-      System.out.print("Stack Test Failed!");
+      System.out.println("Stack Test Failed!");
     return ret;
   }
 }

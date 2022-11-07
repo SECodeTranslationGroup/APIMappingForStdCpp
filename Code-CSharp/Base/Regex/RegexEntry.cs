@@ -40,6 +40,32 @@ public class RegexEntry {
   }
   public static bool TestAll() {
     bool ret = true;
+    string str = "foo.aaa.bbb";
+    string regStr = "([a-z]+)\\.([a-z]+)\\.([a-z]+)";
+    Regex pattern = new Regex(regStr, RegexOptions.Compiled);
+    Regex wholePattern = new Regex(string.Format("^{0}$",regStr), RegexOptions.Compiled);
+    
+    ret = wholePattern.IsMatch(str);
+    string str1 = "1053foo.aaa.bbb0561";
+    Match match = pattern.Match(str1);
+    ret = ret
+          && pattern.IsMatch(str1)
+          && match.Groups.Count == 4
+        && match.Groups[0].Value.Equals("foo.aaa.bbb")
+        && match.Groups[0].Index == 4
+        && match.Groups[0].Length== 11
+        && match.Groups[0].Index+match.Groups[0].Length == 15
+        && match.Groups[1].Value.Equals("foo")
+        && match.Groups[1].Index  == 4
+        && match.Groups[1].Length == 3
+        && match.Groups[1].Index+match.Groups[1].Length == 7
+        && match.Groups[2].Value.Equals("aaa");
+    string str2 = "1053foo.aaa.bbb0561foo.aaa.bbb6941";
+    ret = ret
+          && "1053[foo.aaa.bbb]0561foo.aaa.bbb6941"
+              .Equals(pattern.Replace(str2, "[$&]", 1))
+          && "1053[foo.aaa.bbb]0561[foo.aaa.bbb]6941"
+              .Equals(pattern.Replace(str2, "[$&]"));
     if (!ret)
       Console.WriteLine("Regex Test Failed!");
     return ret;

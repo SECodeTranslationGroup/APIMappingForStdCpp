@@ -55,11 +55,11 @@ public class SetEntry {
     //initialize set for subset
     SortedSet<String> subset;
     //create a subset from given range
-    subset = set.subSet("bb", "dd");
+    subset = set.subSet("bb",true, "dd",true);
     //create a subset greater than given value
-    subset = set.tailSet("bb");
+    subset = set.tailSet("bb",true);
     //create a subset less than given value
-    subset = set.headSet("dd");
+    subset = set.headSet("dd",true);
     //get optional of first value lower or equal given value
     Optional<String> result = Optional.ofNullable(set.floor("cc"));
     //get optional of first value greater or equal given value
@@ -87,9 +87,9 @@ public class SetEntry {
     c8 = new TreeSet<>(c);
     c8.addAll(c2);
     c8.removeAll(c7);
-    c9 = (TreeSet<Integer>) c.subSet(5, 9);
-    c10 = (TreeSet<Integer>) c.tailSet(5);
-    c11 = (TreeSet<Integer>) c.headSet(9);
+    c9 = (TreeSet<Integer>) c.subSet(5, true, 7, true);
+    c10 = (TreeSet<Integer>) c.tailSet(5, true);
+    c11 = (TreeSet<Integer>) c.headSet(7, true);
 
     ret = c1.isEmpty()
         && c.contains(7)
@@ -107,7 +107,7 @@ public class SetEntry {
         && c10.equals(new TreeSet<>(Arrays.asList(5, 7, 9)))
         && c11.equals(new TreeSet<>(Arrays.asList(1, 5, 7)));
     if (!ret)
-      System.out.print("Set Test Failed!");
+      System.out.println("Set Test Failed!");
     return ret;
   }
 }

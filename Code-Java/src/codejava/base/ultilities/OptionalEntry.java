@@ -59,7 +59,7 @@ public class OptionalEntry {
         && any instanceof String
         && ((String)any).equals("example");
     if (!ret)
-      System.out.print("Optional Test Failed!");
+      System.out.println("Optional Test Failed!");
     return ret;
   }
 }

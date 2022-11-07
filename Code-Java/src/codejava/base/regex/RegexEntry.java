@@ -16,7 +16,7 @@ public class RegexEntry {
     //whether some substring match regex
     boolean b2 = match.find();
     //size of match group
-    int groupSize = match.groupCount();
+    int groupSize = match.groupCount()+1;
     //whole matched string
     String matchStr = match.group(0);
     //begin index of matched string
@@ -50,7 +50,7 @@ public class RegexEntry {
     match = pattern.matcher(str1);
     ret = ret
         && match.find()
-        && match.groupCount() == 3
+        && match.groupCount()+1 == 4
         && match.group(0).equals("foo.aaa.bbb")
         && match.start(0) == 4
         && match.end(0) - match.start(0) == 11
@@ -68,7 +68,7 @@ public class RegexEntry {
         && "1053[foo.aaa.bbb]0561[foo.aaa.bbb]6941".
         equals(match.replaceAll("[$0]"));
     if (!ret)
-      System.out.print("Regex Test Failed!");
+      System.out.println("Regex Test Failed!");
     return ret;
   }
 }

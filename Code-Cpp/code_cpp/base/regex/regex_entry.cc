@@ -12,7 +12,7 @@ void RegexEntry::RegexProgram() {
   std::smatch match;
   bool b2 = std::regex_search(str, match, pattern);
   //size of match group
-  int group_size = match.size()-1;
+  int group_size = match.size();
   //whole matched string
   std::string match_str = match[0].str();
   //begin index of matched string
@@ -63,6 +63,6 @@ bool RegexEntry::TestAll() {
       && "1053[foo.aaa.bbb]0561[foo.aaa.bbb]6941" ==
           regex_replace(str2, pattern, "[$&]");
   if (!ret)
-    cout << "Regex Test Failed!";
+    cout << "Regex Test Failed!"<< endl;
   return ret;
 }

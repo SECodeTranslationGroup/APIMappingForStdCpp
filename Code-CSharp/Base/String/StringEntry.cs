@@ -112,6 +112,95 @@ public class StringEntry {
   }
   public static bool TestAll() {
     bool ret = true;
+    string s, s1, s2, s3, s4, s5, s6, s7, s8, s9;
+    StringBuilder sb, sb1, sb2, sb3, sb4, sb5, sb6, sb7, sb8;
+    StringBuilder sb9, sb10, sb11, sb12, sb13, sb14, sb15;
+    string str = "123456789";
+    s = str;
+    s1 = string.Empty;
+    s2 = new string('c', 3);
+    s3 = new string(str.ToCharArray(), 2, 5);
+    s4 = s.Substring(2, 5);
+    s5 = 12345.ToString();
+    s6 = 3.1415.ToString();
+    s7 = s + s2;
+    s8 = s + 'c';
+    s9 = s + 1;
+    sb = new StringBuilder(str);
+    sb.Clear();
+    sb1 = new StringBuilder(sb.ToString());
+    sb.Append('c', 5);
+    sb2 = new StringBuilder(sb.ToString());
+    sb3 = new StringBuilder(sb.ToString());
+    sb3.EnsureCapacity(100);
+    sb4 = new StringBuilder(sb3.ToString());
+    sb4.EnsureCapacity(100);
+    sb4.Capacity = sb4.Length;
+    sb5 = new StringBuilder(sb.ToString());
+    sb5.Append(str);
+    sb6 = new StringBuilder(sb.ToString());
+    sb6.Append(str, 2, 5);
+    sb7 = new StringBuilder(sb.ToString());
+    sb7.Append('b',5);
+    sb.Append('a');
+    sb8 = new StringBuilder(sb.ToString());
+    sb.Remove(sb.Length - 1,1);
+    sb9 = new StringBuilder(sb.ToString());
+    sb.Remove(1, 2);
+    sb10 = new StringBuilder(sb.ToString());
+    sb11 = new StringBuilder(sb.ToString());
+    sb11.Remove(1, 2);
+    sb11.Insert(1, str);
+    sb12 = new StringBuilder(sb.ToString());
+    sb12.Remove(1, 2);
+    sb12.Insert(1, new string('f', 5));
+    sb13 = new StringBuilder(sb.ToString());
+    sb13.Insert(2, str);
+    sb14 = new StringBuilder(sb.ToString());
+    sb14.Insert(2, new string('f', 5));
+    sb15 = new StringBuilder(sb.ToString());
+    sb15.Insert(2, str.ToArray(), 2, 5);
+    ret = s1.Length == 0
+        && s.StartsWith('1')
+        && s.StartsWith("123")
+        && s.EndsWith('9')
+        && s.EndsWith("789")
+        && s.Contains('5')
+        && s.Contains("456")
+        && sb1.Length == 0
+        && sb3.Capacity >= 100
+        && sb4.Capacity < 100
+        && s.Length == 9
+        && s[2] == '3'
+        && s[0] == '1'
+        && s[^1] == '9'
+        &&  string.CompareOrdinal(s,str) == 0
+        && s.IndexOf('1') == 0
+        && s.IndexOf("345") == 2
+        && s.LastIndexOf('1') == 0
+        && s.LastIndexOf("345") == 2
+        && int.Parse("123") == 123
+        & double.Parse("3.1415") == 3.1415
+        && s2.Equals("ccc")
+        && s3.Equals("34567")
+        && s4.Equals("34567")
+        && s5.Equals("12345")
+        && s6.Equals("3.1415")
+        && s7.Equals("123456789ccc")
+        && s8.Equals("123456789c")
+        && s9.Equals("1234567891")
+        && sb2.ToString().Equals("ccccc")
+        && sb5.ToString().Equals("ccccc123456789")
+        && sb6.ToString().Equals("ccccc34567")
+        && sb7.ToString().Equals("cccccbbbbb")
+        && sb8.ToString().Equals("ccccca")
+        && sb9.ToString().Equals("ccccc")
+        && sb10.ToString().Equals("ccc")
+        && sb11.ToString().Equals("c123456789")
+        && sb12.ToString().Equals("cfffff")
+        && sb13.ToString().Equals("cc123456789c")
+        && sb14.ToString().Equals("ccfffffc")
+        && sb15.ToString().Equals("cc34567c");
     if (!ret)
       Console.WriteLine("String Test Failed!");
     return ret;

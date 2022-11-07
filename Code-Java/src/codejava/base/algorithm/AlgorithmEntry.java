@@ -294,7 +294,7 @@ public class AlgorithmEntry {
         && l31.equals(Arrays.asList(2, 8, 18, 32, 50, 68, 82, 92, 98, 100))
         && l32.equals(Arrays.asList(1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800));
     if (!ret)
-      System.out.print("Algorithm Test Failed!");
+      System.out.println("Algorithm Test Failed!");
     return ret;
   }
 }

@@ -50,6 +50,6 @@ bool UnorderedSetEntry::TestAll() {
       && c3 == unordered_set<int>{1, 3, 5, 7, 9}
       && c4 == unordered_set<int>{1, 5, 7, 9};
   if (!ret)
-    cout << "Hash Set Test Failed!";
+    cout << "Hash Set Test Failed!"<< endl;
   return ret;
 }

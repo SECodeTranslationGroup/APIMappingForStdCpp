@@ -139,7 +139,7 @@ public class ChronoEntry {
         && time.withSecond(11).isEqual(LocalDateTime.of(
         2022, 10, 27, 13, 30, 11));
     if (!ret)
-      System.out.print("Chrono Test Failed!");
+      System.out.println("Chrono Test Failed!");
     return ret;
   }
 }

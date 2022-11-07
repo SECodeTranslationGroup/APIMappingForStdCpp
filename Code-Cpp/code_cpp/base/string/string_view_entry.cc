@@ -33,6 +33,6 @@ bool StringViewEntry::TestAll() {
   view = string_view(s.end(), s.end());
   ret = ret && view.empty();
   if (!ret)
-    cout << "String View Test Failed!";
+    cout << "String View Test Failed!"<< endl;
   return ret;
 }

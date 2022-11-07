@@ -33,6 +33,23 @@ public class OptionalEntry {
   }
   public static bool TestAll() {
     bool ret = true;
+    int i = 1;
+    int? opt = i;
+    ret = opt.HasValue
+          && (opt ?? -1) == 1;
+    opt = null;
+    ret = ret
+          && !opt.HasValue
+          && (opt ?? -1) == -1;
+    string str = "example";
+    object any = null;
+    ret = ret && any == null;
+    any = str;
+    ret = ret
+          && any!=null
+          && !(any is int)
+        && any is string
+        && ((string)any).Equals("example");
     if (!ret)
       Console.WriteLine("Optional Test Failed!");
     return ret;

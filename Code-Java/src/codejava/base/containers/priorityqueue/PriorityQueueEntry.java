@@ -56,7 +56,7 @@ public class PriorityQueueEntry {
         && equalPQ(c3,new PriorityQueue<Integer>(Arrays.asList(2, 3, 4, 5)))
         && equalPQ(c4,new PriorityQueue<Integer>(Arrays.asList(0, 2, 3, 4, 5)));
     if (!ret)
-      System.out.print("Prior Queue Test Failed!");
+      System.out.println("Prior Queue Test Failed!");
     return ret;
   }
 }

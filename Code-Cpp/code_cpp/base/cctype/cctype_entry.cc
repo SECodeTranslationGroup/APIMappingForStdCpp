@@ -56,6 +56,6 @@ bool CctypeEntry::TestAll() {
       && !ispunct('\0') && !ispunct('\b') && !ispunct('\t') && !ispunct(' ') && !ispunct('C')
       && ispunct(',') && ispunct('!') && ispunct('/') && ispunct(':') && ispunct('?');
   if (!ret)
-    cout << "Ctype Test Failed!";
+    cout << "Ctype Test Failed!" << endl;
   return ret;
 }

@@ -89,7 +89,7 @@ public class MapEntry {
         && c7.equals(Map.of(0, 3, 1, 8, 2, 7, 3, 13, 4, 9, 5, 10, 10, 3))
         && c8.equals(Map.of(0, 3, 1, 8, 3, 13, 4, 9, 5, 10, 10, 3))    ;
     if (!ret)
-      System.out.print("Map Test Failed!");
+      System.out.println("Map Test Failed!");
     return ret;
   }
 }

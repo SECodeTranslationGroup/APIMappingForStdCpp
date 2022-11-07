@@ -34,10 +34,10 @@ public class StringViewEntry {
         && sub.toString().equals("xa")
         && view.compareTo(sub) < 0;
     String s2 = "";
-    view = CharBuffer.wrap(s2).asReadOnlyBuffer();;
+    view = CharBuffer.wrap(s2).asReadOnlyBuffer();
     ret = ret && view.isEmpty();
     if (!ret)
-      System.out.print("String View Test Failed!");
+      System.out.println("String View Test Failed!");
     return ret;
   }
 }

@@ -34,6 +34,25 @@ public class UnorderedSetEntry {
   
   public static bool TestAll() {
     bool ret = true;
+    HashSet<int> c, c1, c2, c3, c4;
+    List<int> vec = new List<int> { 1, 3, 5, 7, 9 };
+    c = new HashSet<int>(new List<int> { 1, 2, 3, 4, 5 });
+    c2 = new HashSet<int>(c);
+    c.Clear();
+    c1 = new HashSet<int>(c);
+    c.UnionWith(vec);
+    c3 = new HashSet<int>(c);
+    c.Remove(3);
+    c4 = new HashSet<int>(c);
+    ret = c1.Count == 0
+          && c.Contains(7)
+          && c4.Count == 4
+          && c2.OrderBy(k=>k).SequenceEqual(
+              new HashSet<int>(new List<int> { 1, 2, 3, 4, 5 }.OrderBy(k=>k)))
+          && c3.OrderBy(k=>k).SequenceEqual(
+              new HashSet<int>(new List<int> { 1, 3, 5, 7, 9 }.OrderBy(k=>k)))
+          && c4.OrderBy(k=>k).SequenceEqual(
+              new HashSet<int>(new List<int> { 1, 5, 7, 9 }.OrderBy(k=>k)));
     if (!ret)
       Console.WriteLine("Unordered Set Test Failed!");
     return ret;

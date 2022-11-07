@@ -21,6 +21,14 @@ public class RandomEntry {
   }
   public static bool TestAll() {
     bool ret = true;
+    Random eng = new Random();
+    int randomInt = eng.Next(3,12);
+    ret = randomInt >= 3 && randomInt <= 12;
+    double randomDouble = 17 + eng.NextDouble() * (22 - 17);
+    ret = ret && randomDouble >= 17 && randomDouble <= 22;
+    List<int> list;
+    list = Enumerable.Repeat(0, 10).Select(i => eng.Next(0, 10)).ToList();
+    ret = ret && list.All(i => i >= 0 && i <= 10);
     if (!ret)
       Console.WriteLine("Random Test Failed!");
     return ret;

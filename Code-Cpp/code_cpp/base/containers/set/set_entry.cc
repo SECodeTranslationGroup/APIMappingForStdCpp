@@ -51,13 +51,13 @@ void SetEntry::SetProgram() {
   //initialize set for subset
   std::set<std::string> subset;
   //create a subset from given range
-  std::copy(set.find("bb"), set.find("dd"), std::inserter(subset, result_set.begin()));
+  std::copy(set.find("bb"), ++set.find("dd"), std::inserter(subset, result_set.begin()));
   //create a subset greater than given value
   subset.clear();
   std::copy(set.find("bb"), set.end(), std::inserter(subset, result_set.begin()));
   //create a subset less than given value
   subset.clear();
-  std::copy(set.begin(), set.find("dd"), std::inserter(subset, result_set.begin()));
+  std::copy(set.begin(), ++set.find("dd"), std::inserter(subset, result_set.begin()));
   //get optional of first value lower or equal given value
   auto it = --set.upper_bound("cc");
   std::optional<std::string> result = it != set.end() ? std::make_optional(*it) : std::nullopt;
@@ -87,9 +87,9 @@ bool SetEntry::TestAll() {
 
   set_symmetric_difference(c.begin(), c.end(), c2.begin(), c2.end(),
                            inserter(c8, c8.begin()));
-  copy(c.find(5), c.find(9), inserter(c9, c9.begin()));
+  copy(c.find(5), ++c.find(7), inserter(c9, c9.begin()));
   copy(c.find(5), c.end(), inserter(c10, c10.begin()));
-  copy(c.begin(), c.find(9), inserter(c11, c11.begin()));
+  copy(c.begin(), ++c.find(7), inserter(c11, c11.begin()));
   ret = c1.empty()
       && c.count(7) > 0
       && c6.size() == 7
@@ -106,6 +106,6 @@ bool SetEntry::TestAll() {
       && c10 == set<int>{5, 7, 9}
       && c11 == set<int>{1, 5, 7};
   if (!ret)
-    cout << "Set Test Failed!";
+    cout << "Set Test Failed!"<< endl;
   return ret;
 }

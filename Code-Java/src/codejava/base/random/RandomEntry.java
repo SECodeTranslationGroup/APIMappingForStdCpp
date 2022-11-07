@@ -37,7 +37,7 @@ public class RandomEntry {
         boxed().collect(Collectors.toList());
     ret = ret && list.stream().allMatch(i -> i >= 0 && i <= 10);
     if (!ret)
-      System.out.print("Random Test Failed!");
+      System.out.println("Random Test Failed!");
     return ret;
   }
 }

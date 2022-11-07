@@ -83,6 +83,6 @@ bool MapEntry::TestAll() {
       && c7 == map<int, int>{{0, 3}, {1, 8}, {2, 7}, {3, 13}, {4, 9}, {5, 10}, {10, 3}}
       && c8 == map<int, int>{{0, 3}, {1, 8}, {3, 13}, {4, 9}, {5, 10}, {10, 3}};
   if (!ret)
-    cout << "Map Test Failed!";
+    cout << "Map Test Failed!"<< endl;
   return ret;
 }

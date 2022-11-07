@@ -77,7 +77,7 @@ public class CctypeEntry {
         && C.toString(':').matches("\\p{Punct}")
         && C.toString('?').matches("\\p{Punct}");
     if (!ret)
-      System.out.print("Ctype Test Failed!");
+      System.out.println("Ctype Test Failed!");
     return ret;
   }
 }

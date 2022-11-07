@@ -123,6 +123,6 @@ bool ListEntry::TestAll() {
       && c16 == list<int>{5, 4, 3, 1}
       && c17 == list<int>{3, 1};
   if (!ret)
-    cout << "List Test Failed!";
+    cout << "List Test Failed!"<< endl;
   return ret;
 }

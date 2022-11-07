@@ -110,7 +110,7 @@ bool StringEntry::TestAll() {
   using namespace std;
   string s, s1, s2, s3, s4, s5, s6, s7, s8, s9;
   string sb, sb1, sb2, sb3, sb4, sb5, sb6, sb7, sb8;
-  string sb9, sb10, sb11, sb12, sb13, sb14, sb15, sb16, sb17, sb18;
+  string sb9, sb10, sb11, sb12, sb13, sb14, sb15;
   string str = "123456789";
   s = str;
   s2 = string(3, 'c');
@@ -160,6 +160,7 @@ bool StringEntry::TestAll() {
       && s.ends_with("789")
       && s.contains('5')
       && s.contains("456")
+      && sb1.empty()
       && sb3.capacity() >= 100
       && sb4.capacity() < 100
       && s.size() == 9
@@ -172,7 +173,7 @@ bool StringEntry::TestAll() {
       && s.rfind('1') == 0
       && s.rfind("345") == 2
       && stoi("123") == 123
-      && stod("3.1415") * 10000 == 3.1415 * 10000
+      && stod("3.1415")  == 3.1415
       && s2 == "ccc"
       && s3 == "34567"
       && s4 == "34567"
@@ -194,6 +195,6 @@ bool StringEntry::TestAll() {
       && sb14 == "ccfffffc"
       && sb15 == "cc34567c";
   if (!ret)
-    cout << "String Test Failed!";
+    cout << "String Test Failed!"<< endl;
   return ret;
 }

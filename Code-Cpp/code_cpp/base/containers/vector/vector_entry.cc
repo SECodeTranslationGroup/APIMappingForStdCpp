@@ -83,6 +83,6 @@ bool VectorEntry::TestAll() {
       && c9 == vector<int>{2, -1, 2, 3, 1, 5, 4, 3, 1, 5}
       && c10 == vector<int>{2, 3, 1, 5, 4, 3, 1, 5};
   if (!ret)
-    cout << "Vector Test Failed!";
+    cout << "Vector Test Failed!"<< endl;
   return ret;
 }

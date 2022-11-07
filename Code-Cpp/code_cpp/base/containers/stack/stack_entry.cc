@@ -45,6 +45,6 @@ bool StackEntry::TestAll() {
       && c4 == stack<int>({2, 4, 3, 1, 5});
 
   if (!ret)
-    cout << "Stack Test Failed!";
+    cout << "Stack Test Failed!"<< endl;
   return ret;
 }

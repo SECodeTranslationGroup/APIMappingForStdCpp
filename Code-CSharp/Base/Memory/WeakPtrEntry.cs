@@ -19,6 +19,25 @@ public class WeakPtrEntry {
   
   public static bool TestAll() {
     bool ret = true;
+    var strong = new ExampleObject();
+    var weak = new WeakReference(strong);
+
+    strong.Val = 10;
+    ExampleObject exampleObject = weak.Target as ExampleObject;
+    ret = exampleObject.Val == 10;
+
+    (weak.Target as ExampleObject) .Val = 10;
+    ret = ret && (strong.Val == 10);
+
+    ret = ret && weak.IsAlive;
+    weak.Target = null;
+    ret = ret && !weak.IsAlive;
+
+    weak = new WeakReference(strong);
+    ret = ret && weak.IsAlive;
+    strong = null;
+    //ret = ret && !weak.IsAlive;
+    
     if (!ret)
       Console.WriteLine("Weakptr Test Failed!");
     return ret;

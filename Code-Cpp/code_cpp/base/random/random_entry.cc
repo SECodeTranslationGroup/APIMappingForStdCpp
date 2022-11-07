@@ -33,6 +33,6 @@ bool RandomEntry::TestAll() {
   generate(list.begin(), list.end(), [&]()mutable { return dist(eng); });
   ret = ret && all_of(list.begin(), list.end(), [](auto i) { return i >= 0 && i <= 10; });
   if (!ret)
-    cout << "Random Test Failed!";
+    cout << "Random Test Failed!"<< endl;
   return ret;
 }

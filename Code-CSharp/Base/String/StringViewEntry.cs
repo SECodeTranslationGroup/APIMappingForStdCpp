@@ -21,6 +21,18 @@ public class StringViewEntry {
   }
   public static bool TestAll() {
     bool ret = true;
+    string s = "Example";
+    ReadOnlySpan<char> view = s.AsSpan();
+    ret = view[1] == 'x'
+          && view.Length == 7
+          && !view.IsEmpty;
+    ReadOnlySpan<char> sub = view.Slice(1, 2);
+    ret = ret
+          && sub.ToString().Equals("xa")
+    && view.CompareTo(sub,StringComparison.Ordinal) < 0;
+    string s2 = string.Empty;
+    view = s2.AsSpan();
+    ret = ret && view.IsEmpty;
     if (!ret)
       Console.WriteLine("String View Test Failed!");
     return ret;

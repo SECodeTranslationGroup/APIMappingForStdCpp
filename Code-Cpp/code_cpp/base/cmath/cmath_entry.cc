@@ -140,6 +140,6 @@ bool CmathEntry::TestAll() {
       && !isnan(numeric_limits<double>::infinity())
       && isnan(sqrt(-1));
   if (!ret)
-    cout << "Cmath Test Failed!";
+    cout << "Cmath Test Failed!"<< endl;
   return ret;
 }
