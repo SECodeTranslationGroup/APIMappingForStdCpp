@@ -23,12 +23,12 @@ public class StackEntry {
     //get first element
     string element = stack.Peek();
   }
-  
+
   public static bool TestAll() {
     bool ret = true;
     Stack<int> c, c1, c2, c3, c4;
     c1 = new Stack<int>();
-    c = new Stack<int>(new List<int> {2, 4, 3, 1, 5});
+    c = new Stack<int>(new List<int> { 2, 4, 3, 1, 5 });
     c2 = new Stack<int>(c.Reverse());
     c.Push(6);
     c3 = new Stack<int>(c.Reverse());
@@ -40,9 +40,9 @@ public class StackEntry {
           && c2.SequenceEqual(
               new Stack<int>(new List<int> { 2, 4, 3, 1, 5 }))
           && c3.SequenceEqual(
-              new Stack<int>(new List<int> {2, 4, 3, 1, 5, 6 }))
+              new Stack<int>(new List<int> { 2, 4, 3, 1, 5, 6 }))
           && c4.SequenceEqual(
-              new Stack<int>(new List<int>  {2, 4, 3, 1, 5 }));
+              new Stack<int>(new List<int> { 2, 4, 3, 1, 5 }));
     if (!ret)
       Console.WriteLine("Stack Test Failed!");
     return ret;
