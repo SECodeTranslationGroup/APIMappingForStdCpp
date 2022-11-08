@@ -1,3 +1,3 @@
 ﻿using CodeCsharp.Base;
 
-GlobalEntry.TestAllEntry();;
+GlobalEntry.TestAllEntry();

@@ -27,7 +27,7 @@ public class UnorderedSetEntry {
     //create immutable reference of hash set
     ImmutableHashSet<string> constSetRef = hashSet.ToImmutableHashSet();
     //whether two hash sets equal
-    bool b2 = Enumerable.SequenceEqual(hashSet,constSetRef);
+    bool b2 = hashSet.OrderBy(k=>k).SequenceEqual(constSetRef.OrderBy(k=>k));
     //remove element equal value
     hashSet.Remove("cc");
   }

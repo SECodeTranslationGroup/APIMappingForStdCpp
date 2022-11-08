@@ -19,7 +19,7 @@ public class QueueEntry {
     //get size of queue
     int size = queue.Count;
     //whether two queues equal
-    bool b1 = queue.Equals(queue1);
+    bool b1 = queue.SequenceEqual(queue1);
     //get first element
     string element = queue.First();
     //get last element

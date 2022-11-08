@@ -19,7 +19,7 @@ public class StackEntry {
     //get size of stack
     int size = stack.Count;
     //whether two stacks equal
-    bool b1 = stack.Equals(stack1);
+    bool b1 = stack.SequenceEqual(stack1);
     //get first element
     string element = stack.Peek();
   }
